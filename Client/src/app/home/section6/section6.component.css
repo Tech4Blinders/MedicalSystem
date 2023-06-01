@@ -1,0 +1,26 @@
+/*---------------------------------------
+  VENUE
+-----------------------------------------*/
+.venue {
+  background: var(--section-bg-color);
+}
+
+.venue-thumb {
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.venue-info-title,
+.venue-info-body {
+  padding: 40px;
+}
+
+.venue-info-title {
+  background: var(--navbar-bg-color);
+  padding: 20px 40px;
+}
+
+.google-map {
+  border-radius: 20px;
+}

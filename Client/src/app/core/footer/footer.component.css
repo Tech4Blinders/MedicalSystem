@@ -1,0 +1,38 @@
+/*---------------------------------------
+  SITE FOOTER
+-----------------------------------------*/
+.site-footer {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.site-footer .navbar-brand {
+  color: var(--primary-color);
+}
+
+.site-footer .social-icon-link {
+  font-size: var(--h6-font-size);
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+}
+
+.site-footer .copyright-text {
+  font-size: var(--copyright-text-font-size);
+}
+
+.footer-menu {
+  margin: 0;
+  padding: 0;
+}
+
+.footer-menu-item {
+  list-style: none;
+}
+
+.footer-menu-link {
+  font-size: var(--copyright-text-font-size);
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 20px;
+}

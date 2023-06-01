@@ -1,0 +1,22 @@
+/*---------------------------------------
+  PRICING
+-----------------------------------------*/
+.pricing-thumb {
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.pricing-title-wrap,
+.pricing-body {
+  padding: 40px;
+}
+
+.pricing-title-wrap {
+  background: var(--navbar-bg-color);
+  padding: 20px 40px;
+}
+
+.pricing-title {
+  color: var(--white-color);
+}

@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33712.159
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalSystem.Api", "MedicalSystem.Api\MedicalSystem.Api.csproj", "{EC9BDDA4-D645-4402-A6AA-97682A10C7DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedicalSystem.Api", "MedicalSystem.Api\MedicalSystem.Api.csproj", "{EC9BDDA4-D645-4402-A6AA-97682A10C7DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalSystem.BusinessLayer", "MedicalSystem.BusinessLayer\MedicalSystem.BusinessLayer.csproj", "{D48CE4D4-B3EB-463D-9FAB-1E36B3A64978}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedicalSystem.BusinessLayer", "MedicalSystem.BusinessLayer\MedicalSystem.BusinessLayer.csproj", "{D48CE4D4-B3EB-463D-9FAB-1E36B3A64978}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalSystem.CoreLayer", "MedicalSystem.CoreLayer\MedicalSystem.CoreLayer.csproj", "{3B9870DB-EECF-441F-A467-F67BC08B7D6F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedicalSystem.CoreLayer", "MedicalSystem.CoreLayer\MedicalSystem.CoreLayer.csproj", "{3B9870DB-EECF-441F-A467-F67BC08B7D6F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalSystem.DataAccessLayer", "MedicalSystem.DataAccessLayer\MedicalSystem.DataAccessLayer.csproj", "{B9FED642-6915-4B2A-BF22-50CCFEB2AF25}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedicalSystem.DataAccessLayer", "MedicalSystem.DataAccessLayer\MedicalSystem.DataAccessLayer.csproj", "{B9FED642-6915-4B2A-BF22-50CCFEB2AF25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalSystem.DTOs", "MedicalSystem.DTOs\MedicalSystem.DTOs.csproj", "{1860DA29-07D2-4C85-A0A2-B2CD5F437197}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{B9FED642-6915-4B2A-BF22-50CCFEB2AF25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9FED642-6915-4B2A-BF22-50CCFEB2AF25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9FED642-6915-4B2A-BF22-50CCFEB2AF25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1860DA29-07D2-4C85-A0A2-B2CD5F437197}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1860DA29-07D2-4C85-A0A2-B2CD5F437197}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1860DA29-07D2-4C85-A0A2-B2CD5F437197}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1860DA29-07D2-4C85-A0A2-B2CD5F437197}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

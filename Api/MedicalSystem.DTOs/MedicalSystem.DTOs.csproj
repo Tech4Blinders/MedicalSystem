@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MedicalSystem.CoreLayer\MedicalSystem.CoreLayer.csproj" />
+    <ProjectReference Include="..\MedicalSystem.DataAccessLayer\MedicalSystem.DataAccessLayer.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -6,32 +6,32 @@ public class DoctorRepo : GenericRepo<Doctor>, IDoctorRepo
 {
     public DoctorRepo(ApplicationDbContext context) : base(context) { }
 
-    public Task<Doctor>? AddAsync(Doctor entity)
+    public new Task<Doctor>? AddAsync(Doctor entity)
     {
         throw new NotImplementedException();
     }
 
-    public Task<IEnumerable<Doctor>?> AddRange(IEnumerable<Doctor> entities)
+    public new Task<IEnumerable<Doctor>?> AddRange(IEnumerable<Doctor> entities)
     {
         throw new NotImplementedException();
     }
 
-    public Task<int> CountAsyncWhere(System.Linq.Expressions.Expression<Func<Doctor, bool>> Filter)
+    public new Task<int> CountAsyncWhere(System.Linq.Expressions.Expression<Func<Doctor, bool>> Filter)
     {
         throw new NotImplementedException();
     }
 
-    public void Delete(Doctor entity)
+    public new  void Delete(Doctor entity)
     {
         throw new NotImplementedException();
     }
 
-    public Task<IEnumerable<Doctor>?> GetWith(System.Linq.Expressions.Expression<Func<Doctor, bool>>? Filter = null, string[]? Includes = null)
+    public new Task<IEnumerable<Doctor>?> GetWith(System.Linq.Expressions.Expression<Func<Doctor, bool>>? Filter = null, string[]? Includes = null)
     {
         throw new NotImplementedException();
     }
 
-    public Doctor? Update(Doctor entity)
+    public new Doctor? Update(Doctor entity)
     {
         throw new NotImplementedException();
     }

@@ -2,6 +2,6 @@
 
 public interface IUnitOfWork
 {
-    public IDoctorRepo _DoctorRepo { get; }
-    public IDoctorQualificationRepo _DoctorQualificationRepo { get; }
+    public IDoctorRepo? _DoctorRepo { get; }
+    public IDoctorQualificationRepo? _DoctorQualificationRepo { get; }
 }

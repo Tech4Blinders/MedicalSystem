@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedicalSystem.CoreLayer", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedicalSystem.DataAccessLayer", "MedicalSystem.DataAccessLayer\MedicalSystem.DataAccessLayer.csproj", "{B9FED642-6915-4B2A-BF22-50CCFEB2AF25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalSystem.DTOs", "MedicalSystem.DTOs\MedicalSystem.DTOs.csproj", "{1860DA29-07D2-4C85-A0A2-B2CD5F437197}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedicalSystem.DTOs", "MedicalSystem.DTOs\MedicalSystem.DTOs.csproj", "{1860DA29-07D2-4C85-A0A2-B2CD5F437197}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

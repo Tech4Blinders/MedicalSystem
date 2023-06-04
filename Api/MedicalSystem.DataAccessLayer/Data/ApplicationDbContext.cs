@@ -1,26 +1,19 @@
-﻿using MedicalSystem.DataAccessLayer.Models.Doctor;
-using MedicalSystem.DataAccessLayer.Models.Doctor_Qualifications;
+﻿using MedicalSystem.CoreLayer;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Data.Common;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MedicalSystem.DataAccessLayer.Data
+namespace MedicalSystem.DataAccessLayer
 {
     public class ApplicationDbContext : IdentityDbContext<User>
     {
         #region CTOR
         public ApplicationDbContext()
         {
-            
+
         }
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> option):base(option)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> option) : base(option)
         {
-            
+
         }
 
         #endregion 
@@ -28,9 +21,9 @@ namespace MedicalSystem.DataAccessLayer.Data
         #region OnConfiguring
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-             if(!optionsBuilder.IsConfigured)
+            if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source =. ;  Initial Catalog = ELMostshfa; Integrated Security = true "); 
+                optionsBuilder.UseSqlServer("Data Source =. ;  Initial Catalog = ELMostshfa; Integrated Security = true ");
             }
         }
         #endregion
@@ -40,12 +33,12 @@ namespace MedicalSystem.DataAccessLayer.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfigurationsFromAssembly(typeof(DoctorConfiguration).Assembly);
-            builder.ApplyConfigurationsFromAssembly(typeof(DoctorQualificationConfiguration).Assembly); 
+            builder.ApplyConfigurationsFromAssembly(typeof(DoctorQualificationConfiguration).Assembly);
         }
         #endregion
 
         #region Dbset
-        public DbSet<Doctor> Doctor { get; set; } 
+        public DbSet<Doctor> Doctor { get; set; }
         public DbSet<Doctor> DoctorQualification { get; set; }
         #endregion
 

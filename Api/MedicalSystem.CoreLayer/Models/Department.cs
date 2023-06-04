@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using MedicalSystem.CoreLayer.Models;
+
 
 namespace MedicalSystem.CoreLayer
 {

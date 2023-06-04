@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MedicalSystem.CoreLayer
 {
@@ -20,10 +15,10 @@ namespace MedicalSystem.CoreLayer
         [Range(0, 100)]
         public int Rate { get; set; }
 
-        //[Required]
-        //[ForeignKey("Doctor")]
-        //public int DoctorId { get; set; }
-        //public Doctor Doctor { get; set; }
+        [Required]
+        [ForeignKey("Doctor")]
+        public int DoctorId { get; set; }
+        public Doctor? Doctor { get; set; }
 
 
         [Required]

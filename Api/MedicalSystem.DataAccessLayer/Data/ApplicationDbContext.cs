@@ -7,10 +7,6 @@ namespace MedicalSystem.DataAccessLayer
     public class ApplicationDbContext : IdentityDbContext<User>
     {
         #region CTOR
-        public ApplicationDbContext()
-        {
-
-        }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> option) : base(option)
         {
 
@@ -32,14 +28,43 @@ namespace MedicalSystem.DataAccessLayer
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            base.OnModelCreating(builder);
             builder.ApplyConfigurationsFromAssembly(typeof(DoctorConfiguration).Assembly);
             builder.ApplyConfigurationsFromAssembly(typeof(DoctorQualificationConfiguration).Assembly);
+            builder.Entity<BranchDoctor>()
+                .HasKey(a => new { a.DoctorId, a.BranchId });
+            builder.Entity<BranchDoctor>()
+                .HasOne(a => a.Doctor).WithMany(b => b.BranchDoctors)
+                .HasForeignKey(a=>a.DoctorId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
+            builder.Entity<BranchDoctor>()
+                .HasOne(a => a.Branch).WithMany(b => b.BranchDoctors)
+                .HasForeignKey(a => a.BranchId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
+            builder.Entity<DoctorQualification>()
+                .HasKey(a => new { a.DoctorId, a.Certification });
+            builder.Entity<Appointment>().HasOne(a => a.Doctor).WithMany(b => b.Appointments)
+                .OnDelete(DeleteBehavior.Restrict);
+
         }
         #endregion
 
         #region Dbset
-        public DbSet<Doctor> Doctor { get; set; }
-        public DbSet<Doctor> DoctorQualification { get; set; }
+        public DbSet<Doctor> Doctor  => Set<Doctor>();
+        public DbSet<DoctorQualification> DoctorQualification => Set<DoctorQualification>();
+        public DbSet<Clinic> Clinic => Set<Clinic>();
+        public DbSet<Appointment> Appointment => Set<Appointment>();
+        public DbSet<Branch> Branch =>Set<Branch>();
+        public DbSet<Report> Report => Set<Report>();
+        public DbSet<Review> Review => Set<Review>();
+        public DbSet<Hospital> Hospital => Set<Hospital>(); 
+        public DbSet<BranchAddress> BranchAddress => Set<BranchAddress>();
+        public DbSet<BranchDoctor> BranchDoctor => Set<BranchDoctor>();
+        public DbSet<Patient> Patient => Set<Patient>();
+        public DbSet<Department> Department => Set<Department>();
+
         #endregion
 
 

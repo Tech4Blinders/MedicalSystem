@@ -4,5 +4,6 @@ namespace MedicalSystem.CoreLayer
 {
     public class User : IdentityUser
     {
+
     }
 }

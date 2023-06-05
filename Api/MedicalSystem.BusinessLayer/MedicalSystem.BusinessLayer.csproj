@@ -15,7 +15,6 @@
   <ItemGroup>
     <ProjectReference Include="..\MedicalSystem.CoreLayer\MedicalSystem.CoreLayer.csproj" />
     <ProjectReference Include="..\MedicalSystem.DataAccessLayer\MedicalSystem.DataAccessLayer.csproj" />
-    <ProjectReference Include="..\MedicalSystem.DTOs\MedicalSystem.DTOs.csproj" />
   </ItemGroup>
 
 </Project>

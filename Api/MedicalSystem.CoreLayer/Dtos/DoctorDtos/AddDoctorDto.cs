@@ -1,4 +1,4 @@
-﻿namespace MedicalSystem.BusinessLayer;
+﻿namespace MedicalSystem.CoreLayer;
 
 public class AddDoctorDto
 {

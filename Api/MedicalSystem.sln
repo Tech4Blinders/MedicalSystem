@@ -11,8 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedicalSystem.CoreLayer", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedicalSystem.DataAccessLayer", "MedicalSystem.DataAccessLayer\MedicalSystem.DataAccessLayer.csproj", "{B9FED642-6915-4B2A-BF22-50CCFEB2AF25}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedicalSystem.DTOs", "MedicalSystem.DTOs\MedicalSystem.DTOs.csproj", "{1860DA29-07D2-4C85-A0A2-B2CD5F437197}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,10 +33,6 @@ Global
 		{B9FED642-6915-4B2A-BF22-50CCFEB2AF25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9FED642-6915-4B2A-BF22-50CCFEB2AF25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9FED642-6915-4B2A-BF22-50CCFEB2AF25}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1860DA29-07D2-4C85-A0A2-B2CD5F437197}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1860DA29-07D2-4C85-A0A2-B2CD5F437197}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1860DA29-07D2-4C85-A0A2-B2CD5F437197}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1860DA29-07D2-4C85-A0A2-B2CD5F437197}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

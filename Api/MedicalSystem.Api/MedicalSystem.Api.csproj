@@ -17,7 +17,6 @@
   <ItemGroup>
     <ProjectReference Include="..\MedicalSystem.BusinessLayer\MedicalSystem.BusinessLayer.csproj" />
     <ProjectReference Include="..\MedicalSystem.CoreLayer\MedicalSystem.CoreLayer.csproj" />
-    <ProjectReference Include="..\MedicalSystem.DTOs\MedicalSystem.DTOs.csproj" />
   </ItemGroup>
 
   <ItemGroup>

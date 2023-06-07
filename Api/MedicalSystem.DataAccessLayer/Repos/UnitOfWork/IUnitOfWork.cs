@@ -5,5 +5,6 @@ public interface IUnitOfWork
     public IDoctorRepo _DoctorRepo { get; }
     public IDoctorQualificationRepo _DoctorQualificationRepo { get; }
     public IPatientRepo _PatientRepo { get; }
+    public IBranchDoctorRepo _BranchDoctorRepo { get; }
     int SaveChanges();
 }

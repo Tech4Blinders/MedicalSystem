@@ -1,3 +1,4 @@
+using MedicalSystem.BusinessLayer;
 using MedicalSystem.DataAccessLayer;
 
 namespace MedicalSystem.Api
@@ -16,6 +17,13 @@ namespace MedicalSystem.Api
 
             builder.Services.AddDbContext<ApplicationDbContext>();
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+            builder.Services.AddScoped<IDoctorRepo, DoctorRepo>();
+            builder.Services.AddScoped<IDoctorQualificationRepo,DoctorQualificationRepo>();
+            builder.Services.AddScoped<IPatientRepo, PatientRepo>();
+            builder.Services.AddScoped<IBranchDoctorRepo,BranchDoctorRepo>();
+
+            builder.Services.AddScoped<IPatientManager,PatientManager>();
+            builder.Services.AddScoped<IBranchDoctorManager, BranchDoctorManager>();
 
             #region Middlewarees
             var app = builder.Build();

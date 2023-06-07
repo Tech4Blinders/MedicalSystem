@@ -4,7 +4,11 @@ namespace MedicalSystem.DataAccessLayer;
 
 public class DoctorRepo : GenericRepo<Doctor>, IDoctorRepo
 {
-    public DoctorRepo(ApplicationDbContext context) : base(context) { }
+    private readonly ApplicationDbContext _context;
+    public DoctorRepo(ApplicationDbContext context) : base(context) 
+    { 
+        _context = context;
+    }
 
     
 }

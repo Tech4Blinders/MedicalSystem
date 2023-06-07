@@ -2,9 +2,8 @@
 using MedicalSystem.CoreLayer;
 using Microsoft.AspNetCore.Mvc;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace MedicalSystem.Api.Controllers
+namespace MedicalSystem.Api
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -20,8 +19,8 @@ namespace MedicalSystem.Api.Controllers
         [HttpGet]
         public ActionResult<List<PatientReadDto>> GetAll()
         {
-            var patients= _patientManager.GetAll();
-            if(patients.Count==0)
+            var patients = _patientManager.GetAll();
+            if (patients.Count == 0)
             {
                 return NoContent();
             }
@@ -33,7 +32,7 @@ namespace MedicalSystem.Api.Controllers
         public ActionResult<PatientReadDto> Get(int id)
         {
             var patient = _patientManager.GetById(id);
-            if(patient == null)
+            if (patient == null)
             {
                 return NotFound();
             }
@@ -58,7 +57,7 @@ namespace MedicalSystem.Api.Controllers
                 return NotFound();
             }
 
-            return NoContent(); 
+            return NoContent();
         }
 
         [HttpDelete]

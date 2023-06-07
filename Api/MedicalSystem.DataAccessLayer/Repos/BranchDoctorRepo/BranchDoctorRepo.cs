@@ -2,13 +2,11 @@
 
 namespace MedicalSystem.DataAccessLayer;
 
-public class DoctorRepo : GenericRepo<Doctor>, IDoctorRepo
+public class BranchDoctorRepo : GenericRepo<BranchDoctor>, IBranchDoctorRepo
 {
     private readonly ApplicationDbContext _context;
-    public DoctorRepo(ApplicationDbContext context) : base(context) 
-    { 
+    public BranchDoctorRepo(ApplicationDbContext context) : base(context)
+    {
         _context = context;
     }
-
-    
 }

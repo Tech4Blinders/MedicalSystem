@@ -78,6 +78,7 @@ public class PatientManager : IPatientManager
         patientfromdb.Age = patientUpdateDto.Age;
         patientfromdb.Gender = patientfromdb.Gender;
         _unitOfWork._PatientRepo.Update(patientfromdb);
+        _unitOfWork.SaveChanges();
         return true;
 
     }

@@ -26,6 +26,8 @@ public class ReportRepo : GenericRepo<Report>, IReportRepo
 
     public Report? GetReportById(int id)
     {
-        return _context.Set<Report>().FirstOrDefault(report => report.Id == id);
+        return _context.Set<Report>()
+            .Include(a=>a.Appointment)
+            .FirstOrDefault(report => report.Id == id);
     }
 }

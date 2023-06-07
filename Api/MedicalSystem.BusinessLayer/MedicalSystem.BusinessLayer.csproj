@@ -13,6 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\MedicalSystem.CoreLayer\MedicalSystem.CoreLayer.csproj" />
     <ProjectReference Include="..\MedicalSystem.DataAccessLayer\MedicalSystem.DataAccessLayer.csproj" />
   </ItemGroup>

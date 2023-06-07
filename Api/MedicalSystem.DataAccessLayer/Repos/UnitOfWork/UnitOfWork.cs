@@ -7,24 +7,26 @@ public class UnitOfWork : IUnitOfWork
     public IDoctorRepo _DoctorRepo { get; }
     public IDoctorQualificationRepo _DoctorQualificationRepo { get; }
     public IPatientRepo _PatientRepo { get; }
+
+    public IBranchDoctorRepo _BranchDoctorRepo { get; }
+
     public IAppointmentRepo _AppointmentRepo { get; }
     public IReportRepo _ReportRepo { get; }
     public ApplicationDbContext _context;
 
-    public UnitOfWork(IDoctorRepo doctorRepo,
-        IDoctorQualificationRepo doctorQualificationRepo,
-        IPatientRepo patientRepo,
-        IAppointmentRepo appointmentRepo,
-        IReportRepo reportRepo,
-        ApplicationDbContext context)
+    public UnitOfWork(ApplicationDbContext context)
     {
-        _DoctorRepo = doctorRepo;
-        _DoctorQualificationRepo = doctorQualificationRepo;
-        _PatientRepo = patientRepo;
-        _AppointmentRepo = appointmentRepo;
-        _ReportRepo = reportRepo;
         _context = context;
+        _DoctorRepo = new DoctorRepo(_context);
+        _DoctorQualificationRepo = new DoctorQualificationRepo(_context);
+        _PatientRepo = new PatientRepo(_context);
+        _BranchDoctorRepo = new BranchDoctorRepo(_context);
+        _AppointmentRepo = new AppointmentRepo(_context);
+        _ReportRepo = new ReportRepo(_context);
+        
+        
     }
+    
 
     public int SaveChanges()
     {

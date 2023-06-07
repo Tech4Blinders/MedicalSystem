@@ -1,5 +1,5 @@
-﻿using MedicalSystem.CoreLayer;
-using MedicalSystem.CoreLayer.Dtos.BranchDtos;
+﻿
+using MedicalSystem.CoreLayer;
 using MedicalSystem.DataAccessLayer;
 
 namespace MedicalSystem.BusinessLayer
@@ -15,8 +15,6 @@ namespace MedicalSystem.BusinessLayer
         {
             var newBranch = new Branch
             {
-                Id = entity.Id
-                ,
                 Name = entity.Name,
                 PhoneNumber = entity.PhoneNumber,
                 HospitalId = entity.HospitalId,
@@ -29,9 +27,9 @@ namespace MedicalSystem.BusinessLayer
 
         }
 
-        public async void Delete(int id)
+        public  void Delete(int id)
         {
-            var branch = await unitOfWork._BranchRepo.GetByIdAsync(id);
+            var branch =  unitOfWork._BranchRepo.GetByIdAsync(id).Result;
             if (branch == null)
             {
                 return;

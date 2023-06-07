@@ -1,4 +1,4 @@
-﻿using MedicalSystem.CoreLayer.Dtos.BranchAddressDtos;
+﻿using MedicalSystem.CoreLayer;
 
 namespace MedicalSystem.BusinessLayer
 {

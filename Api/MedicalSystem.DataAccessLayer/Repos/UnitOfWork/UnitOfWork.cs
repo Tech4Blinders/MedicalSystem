@@ -1,7 +1,4 @@
-﻿using MedicalSystem.DataAccessLayer.Repos.BranchAddressRepos;
-using MedicalSystem.DataAccessLayer.Repos.BranchRepos;
-
-namespace MedicalSystem.DataAccessLayer;
+﻿namespace MedicalSystem.DataAccessLayer;
 
 public class UnitOfWork : IUnitOfWork
 {
@@ -19,13 +16,9 @@ public class UnitOfWork : IUnitOfWork
     public IReviewRepo _ReviewRepo { get; }
 
     public ApplicationDbContext _context;
-
-    public UnitOfWork(ApplicationDbContext context)
     public IBranchRepo _BranchRepo { get; }
     public IBranchAddressRepo _BranchAddressRepo { get; }
-    public UnitOfWork(IDoctorRepo doctorRepo, IDoctorQualificationRepo doctorQualificationRepo,
-        IPatientRepo patientRepo,
-        ApplicationDbContext context,IBranchRepo branchRepo,IBranchAddressRepo branchAddressRepo)
+    public UnitOfWork(ApplicationDbContext context)
     {
         _context = context;
         _DoctorRepo = new DoctorRepo(_context);
@@ -37,8 +30,8 @@ public class UnitOfWork : IUnitOfWork
         _ClinicRepo = new ClinicRepo(_context);
         _ReviewRepo = new ReviewRepo(_context);
 
-        _BranchRepo = branchRepo;
-        _BranchAddressRepo = branchAddressRepo;
+        _BranchRepo = new BranchRepo(_context);
+        _BranchAddressRepo = new BranchAddressRepo(_context);
     }
 
 

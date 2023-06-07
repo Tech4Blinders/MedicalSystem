@@ -1,25 +1,24 @@
-﻿using MedicalSystem.BusinessLayer.Managers.Branches;
-using MedicalSystem.CoreLayer.Dtos.BranchDtos;
+﻿using MedicalSystem.BusinessLayer;
+using MedicalSystem.CoreLayer;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MedicalSystem.Api.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class BranchController : Controller
     {
+       
         private readonly IBranchManager branchManager;
         public BranchController(IBranchManager _branchManager)
         {
             branchManager = _branchManager;
         }
-        public IActionResult Index()
-        {
-            return View();
-        }
 
         [HttpGet]
         public ActionResult<IEnumerable<ReadBranchDto>> getAll()
         {
-            var branches = branchManager.GetAll();
+            var branches = branchManager.GetAll().Result;
             return Ok(branches);
         }
 
@@ -27,7 +26,7 @@ namespace MedicalSystem.Api.Controllers
         [Route("{id}")]
         public ActionResult<ReadBranchDto> getById(int id)
         {
-            var branch = branchManager.GetById(id);
+            var branch = branchManager.GetById(id).Result;
             if (branch == null)
             {
                 return NotFound();

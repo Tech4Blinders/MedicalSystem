@@ -27,6 +27,8 @@ namespace MedicalSystem.Api
             builder.Services.AddScoped<IReportManager, ReportManager>();
             builder.Services.AddScoped<IClinicManager, ClinicManager>();
             builder.Services.AddScoped<IReviewManager, ReviewManager>();
+            builder.Services.AddScoped<IBranchManager, BranchManager>();
+            builder.Services.AddScoped<IBranchAddManager,BranchAddManager>();
 
             #region Middlewarees
             var app = builder.Build();

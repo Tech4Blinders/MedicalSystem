@@ -1,3 +1,5 @@
+using MedicalSystem.DataAccessLayer;
+
 namespace MedicalSystem.Api
 {
     public class Program
@@ -11,6 +13,9 @@ namespace MedicalSystem.Api
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             #endregion
+
+            builder.Services.AddDbContext<ApplicationDbContext>();
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             #region Middlewarees
             var app = builder.Build();

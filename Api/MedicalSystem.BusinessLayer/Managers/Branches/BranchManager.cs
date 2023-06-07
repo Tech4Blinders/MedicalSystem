@@ -38,7 +38,7 @@ namespace MedicalSystem.BusinessLayer.Managers.Branches
 
         public async void Delete(int id)
         {
-            var branch = await unitOfWork._BranchRepo.GetByIdAsyn(id);
+            var branch = await unitOfWork._BranchRepo.GetByIdAsync(id);
             if (branch == null)
             {
                 return;
@@ -66,7 +66,7 @@ namespace MedicalSystem.BusinessLayer.Managers.Branches
 
         public async Task<ReadBranchDto?> GetById(int id)
         {
-            var branch = await unitOfWork._BranchRepo.GetByIdAsyn(id);
+            var branch = await unitOfWork._BranchRepo.GetByIdAsync(id);
             if (branch == null)
             {
                 return null;
@@ -85,7 +85,7 @@ namespace MedicalSystem.BusinessLayer.Managers.Branches
 
         public  bool Update(UpdateBranchDto entity)
         {
-            var branch =  unitOfWork._BranchRepo.GetByIdAsyn(entity.Id).Result;
+            var branch =  unitOfWork._BranchRepo.GetByIdAsync(entity.Id).Result;
             if (branch == null)
             {
                 return false;

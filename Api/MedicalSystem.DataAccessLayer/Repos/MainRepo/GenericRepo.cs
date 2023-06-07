@@ -11,13 +11,13 @@ public class GenericRepo<T> : IGenericRepo<T> where T : class
     {
         _context = context;
     }
-    public async Task<T>? AddAsync(T entity)
+    public async Task<T> AddAsync(T entity)
     {
         await _context.Set<T>().AddAsync(entity);
         return entity;
     }
 
-    public async Task<IEnumerable<T>?> AddRange(IEnumerable<T> entities)
+    public async Task<IEnumerable<T>> AddRange(IEnumerable<T> entities)
     {
         var entitiesList = entities.ToList();
         await _context.Set<T>().AddRangeAsync(entitiesList);
@@ -39,13 +39,15 @@ public class GenericRepo<T> : IGenericRepo<T> where T : class
         _context.Set<T>().Remove(entity);
     }
 
-    public async Task<IEnumerable<T>?> GetAllAsyn()
+    public async Task<IEnumerable<T>> GetAllAsyn()
    => await _context.Set<T>().ToListAsync();
 
-    public async Task<T?> GetByIdAsyn(int id)
-    => await _context.Set<T>().FindAsync(id);
-
-    public async Task<IEnumerable<T>?> GetWith(Expression<Func<T, bool>>? Filter = null, string[]? Includes = null)
+    public async Task<T?> GetByIdAsync(int id)
+    {
+        return await _context.Set<T>().FindAsync(id);
+        
+    }
+    public async Task<IEnumerable<T>> GetWith(Expression<Func<T, bool>>? Filter = null, string[]? Includes = null)
     {
 
         IQueryable<T> query = _context.Set<T>();
@@ -67,7 +69,7 @@ public class GenericRepo<T> : IGenericRepo<T> where T : class
     }
 
 
-    public T? Update(T entity)
+    public T Update(T entity)
     {
         _context.Set<T>().Update(entity);
         return entity;

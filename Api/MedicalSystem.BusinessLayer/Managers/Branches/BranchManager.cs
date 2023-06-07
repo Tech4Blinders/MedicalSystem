@@ -1,15 +1,8 @@
 ﻿using MedicalSystem.CoreLayer;
 using MedicalSystem.CoreLayer.Dtos.BranchDtos;
 using MedicalSystem.DataAccessLayer;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MedicalSystem.BusinessLayer.Managers.Branches
+namespace MedicalSystem.BusinessLayer
 {
     public class BranchManager : IBranchManager
     {
@@ -33,7 +26,7 @@ namespace MedicalSystem.BusinessLayer.Managers.Branches
             unitOfWork._BranchRepo.AddAsync(newBranch);
             unitOfWork.SaveChanges();
             return newBranch.Id;
-            
+
         }
 
         public async void Delete(int id)
@@ -48,7 +41,7 @@ namespace MedicalSystem.BusinessLayer.Managers.Branches
                 unitOfWork._BranchRepo.Delete(branch);
                 unitOfWork.SaveChanges();
             }
-            
+
         }
 
         public async Task<List<ReadBranchDto>> GetAll()
@@ -56,11 +49,11 @@ namespace MedicalSystem.BusinessLayer.Managers.Branches
             var branches = await unitOfWork._BranchRepo.GetAllAsyn();
             return branches.Select(a => new ReadBranchDto
             {
-                Id= a.Id ,
+                Id = a.Id,
                 Name = a.Name,
-                PhoneNumber = a.PhoneNumber ,
-                HospitalId = a.HospitalId ,
-                BranchAddressId = a.BranchAddressId 
+                PhoneNumber = a.PhoneNumber,
+                HospitalId = a.HospitalId,
+                BranchAddressId = a.BranchAddressId
             }).ToList();
         }
 
@@ -81,11 +74,11 @@ namespace MedicalSystem.BusinessLayer.Managers.Branches
             };
         }
 
-      
 
-        public  bool Update(UpdateBranchDto entity)
+
+        public bool Update(UpdateBranchDto entity)
         {
-            var branch =  unitOfWork._BranchRepo.GetByIdAsync(entity.Id).Result;
+            var branch = unitOfWork._BranchRepo.GetByIdAsync(entity.Id).Result;
             if (branch == null)
             {
                 return false;
@@ -95,7 +88,7 @@ namespace MedicalSystem.BusinessLayer.Managers.Branches
             unitOfWork.SaveChanges();
             return true;
         }
-      
+
     }
 }
 

@@ -2,7 +2,7 @@
 using MedicalSystem.CoreLayer.Dtos.BranchDtos;
 using Microsoft.AspNetCore.Mvc;
 
-namespace MedicalSystem.Api.Controllers.Branch
+namespace MedicalSystem.Api.Controllers
 {
     public class BranchController : Controller
     {

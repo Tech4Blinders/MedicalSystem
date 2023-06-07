@@ -1,14 +1,8 @@
 ﻿using MedicalSystem.CoreLayer;
 using MedicalSystem.CoreLayer.Dtos.BranchAddressDtos;
-using MedicalSystem.CoreLayer.Dtos.BranchDtos;
 using MedicalSystem.DataAccessLayer;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MedicalSystem.BusinessLayer.Managers.BranchAddresses
+namespace MedicalSystem.BusinessLayer
 {
     public class BranchAddManager : IBranchAddManager
     {
@@ -19,21 +13,22 @@ namespace MedicalSystem.BusinessLayer.Managers.BranchAddresses
         }
         public int Add(AddBranchAddressDto entity)
         {
-            var branchAdd = new BranchAddress { 
-                PostalCode = entity.PostalCode ,
-                Street =entity.Street ,
-                City =entity.City ,
-                Country =entity.Country ,
-                State =entity.State 
+            var branchAdd = new BranchAddress
+            {
+                PostalCode = entity.PostalCode,
+                Street = entity.Street,
+                City = entity.City,
+                Country = entity.Country,
+                State = entity.State
             };
             unitOfWork._BranchAddressRepo.AddAsync(branchAdd);
             unitOfWork.SaveChanges();
             return branchAdd.Id;
         }
 
-        public  void Delete(int id)
+        public void Delete(int id)
         {
-            var branchAdd =  unitOfWork._BranchAddressRepo.GetByIdAsync(id).Result;
+            var branchAdd = unitOfWork._BranchAddressRepo.GetByIdAsync(id).Result;
             if (branchAdd == null)
             {
                 return;
@@ -50,7 +45,7 @@ namespace MedicalSystem.BusinessLayer.Managers.BranchAddresses
             var branches = await unitOfWork._BranchAddressRepo.GetAllAsyn();
             return branches.Select(a => new ReadBranchAddressDto
             {
-                Id =a.Id,
+                Id = a.Id,
                 PostalCode = a.PostalCode,
                 Street = a.Street,
                 City = a.City,
@@ -84,11 +79,11 @@ namespace MedicalSystem.BusinessLayer.Managers.BranchAddresses
             {
                 return false;
             }
-            branch.PostalCode = entity.PostalCode ;
-            branch.Street  = entity.Street ;
-            branch.City  = entity.City ;
-            branch.State = entity.State ;
-            branch.Country  = entity.Country ;
+            branch.PostalCode = entity.PostalCode;
+            branch.Street = entity.Street;
+            branch.City = entity.City;
+            branch.State = entity.State;
+            branch.Country = entity.Country;
             unitOfWork.SaveChanges();
             return true;
         }

@@ -1,12 +1,6 @@
 ﻿using MedicalSystem.CoreLayer.Dtos.BranchAddressDtos;
-using MedicalSystem.CoreLayer.Dtos.BranchDtos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MedicalSystem.BusinessLayer.Managers.BranchAddresses
+namespace MedicalSystem.BusinessLayer
 {
     public interface IBranchAddManager
     {

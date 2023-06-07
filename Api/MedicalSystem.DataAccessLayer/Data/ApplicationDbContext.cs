@@ -19,7 +19,7 @@ namespace MedicalSystem.DataAccessLayer
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source =. ;  Initial Catalog = ELMostshfa; Integrated Security = true ");
+                optionsBuilder.UseSqlServer("Server =. ; Database = MedicalLocalDb; Trusted_Connection = true; Encrypt = false;");
             }
         }
         #endregion

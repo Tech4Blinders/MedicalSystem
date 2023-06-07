@@ -4,22 +4,21 @@ namespace MedicalSystem.DataAccessLayer;
 
 public class UnitOfWork : IUnitOfWork
 {
-
     public IDoctorRepo? _DoctorRepo { get; }
     public IDoctorQualificationRepo? _DoctorQualificationRepo { get; }
-    public IBranchRepo? _BranchRepo { get; }
-    public IPatientRepo? _PatientRepo { get; }
+    public IPatientRepo _PatientRepo { get; }
     public ApplicationDbContext _context;
+    public IBranchRepo _BranchRepo { get; }
 
-    public UnitOfWork(IDoctorRepo doctorRepo, IDoctorQualificationRepo doctorQualificationRepo , IBranchRepo branchRepo, IPatientRepo patientRepo,
-        ApplicationDbContext context)
+    public UnitOfWork(IDoctorRepo doctorRepo, IDoctorQualificationRepo doctorQualificationRepo,
+        IPatientRepo patientRepo,
+        ApplicationDbContext context,IBranchRepo branchRepo)
     {
         _DoctorRepo = doctorRepo;
         _DoctorQualificationRepo = doctorQualificationRepo;
-        _BranchRepo = branchRepo;
         _PatientRepo = patientRepo;
         _context = context;
-
+        _BranchRepo = branchRepo;
     }
 
     public int SaveChanges()

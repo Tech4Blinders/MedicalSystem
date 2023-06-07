@@ -5,6 +5,7 @@ public interface IGenericRepo<T> where T : class
 {
     public Task<IEnumerable<T>> GetAllAsyn();
     public Task<T?> GetByIdAsync(int id);
+    public T? GetById(int id);
 
     public Task<T> AddAsync(T entity);
 

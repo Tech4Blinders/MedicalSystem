@@ -19,7 +19,8 @@ namespace MedicalSystem.DataAccessLayer
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source =. ;  Initial Catalog = ELMostshfa; Integrated Security = true ");
+                //optionsBuilder.UseSqlServer("Data Source =. ;  Initial Catalog = ELMostshfa; Integrated Security = true ");
+                optionsBuilder.UseSqlServer("Data Source =Sc-202203151922 ;  Initial Catalog = ELMostshfa; Integrated Security = true ");
             }
         }
         #endregion

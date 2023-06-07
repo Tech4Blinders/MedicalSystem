@@ -1,3 +1,4 @@
+using MedicalSystem.BusinessLayer;
 using MedicalSystem.DataAccessLayer;
 
 namespace MedicalSystem.Api
@@ -15,7 +16,10 @@ namespace MedicalSystem.Api
             #endregion
 
             builder.Services.AddDbContext<ApplicationDbContext>();
+
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+            builder.Services.AddScoped<IClinicManager, ClinicManager>();
+            builder.Services.AddScoped<IReviewManager, ReviewManager>();
 
             #region Middlewarees
             var app = builder.Build();

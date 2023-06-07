@@ -47,6 +47,11 @@ public class GenericRepo<T> : IGenericRepo<T> where T : class
         return await _context.Set<T>().FindAsync(id);
         
     }
+    public T? GetById(int id)
+    {
+        return _context.Set<T>().Find(id);
+        
+    }
     public async Task<IEnumerable<T>> GetWith(Expression<Func<T, bool>>? Filter = null, string[]? Includes = null)
     {
 

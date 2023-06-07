@@ -3,7 +3,7 @@ using MedicalSystem.CoreLayer;
 
 namespace MedicalSystem.DataAccessLayer
 {
-    public interface IDoctorQualificationRepo : IGenericRepo<Doctor>
+    public interface IDoctorQualificationRepo : IGenericRepo<DoctorQualification>
     {
 
     }

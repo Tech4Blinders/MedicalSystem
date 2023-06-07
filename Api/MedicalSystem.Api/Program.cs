@@ -24,6 +24,8 @@ namespace MedicalSystem.Api
 
             builder.Services.AddScoped<IPatientManager,PatientManager>();
             builder.Services.AddScoped<IBranchDoctorManager, BranchDoctorManager>();
+            builder.Services.AddScoped<IDoctorManager,DoctorManager>();
+            builder.Services.AddAutoMapper(typeof(MappingProfile));
 
             #region Middlewarees
             var app = builder.Build();

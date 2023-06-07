@@ -3,7 +3,7 @@
 namespace MedicalSystem.DataAccessLayer;
 
 
-public class DoctorQualificationRepo : GenericRepo<Doctor>, IDoctorQualificationRepo
+public class DoctorQualificationRepo : GenericRepo<DoctorQualification>, IDoctorQualificationRepo
 {
     private readonly ApplicationDbContext _context;
 

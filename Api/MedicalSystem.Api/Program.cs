@@ -1,5 +1,7 @@
 using MedicalSystem.BusinessLayer;
+using MedicalSystem.CoreLayer;
 using MedicalSystem.DataAccessLayer;
+using Microsoft.EntityFrameworkCore;
 
 namespace MedicalSystem.Api
 {
@@ -15,8 +17,14 @@ namespace MedicalSystem.Api
             builder.Services.AddSwaggerGen();
             #endregion
 
-            builder.Services.AddDbContext<ApplicationDbContext>();
+            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+            {
+                var connectionString = builder.Configuration.GetConnectionString("LocalConnection");
+                options.UseSqlServer(connectionString);
+            });
+
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
             builder.Services.AddScoped<IDoctorRepo, DoctorRepo>();
             builder.Services.AddScoped<IDoctorQualificationRepo,DoctorQualificationRepo>();
             builder.Services.AddScoped<IPatientRepo, PatientRepo>();
@@ -26,6 +34,10 @@ namespace MedicalSystem.Api
             builder.Services.AddScoped<IBranchDoctorManager, BranchDoctorManager>();
             builder.Services.AddScoped<IDoctorManager,DoctorManager>();
             builder.Services.AddAutoMapper(typeof(MappingProfile));
+
+            builder.Services.AddScoped<IAppointmentManager, AppointmentManager>();
+            
+
 
             #region Middlewarees
             var app = builder.Build();

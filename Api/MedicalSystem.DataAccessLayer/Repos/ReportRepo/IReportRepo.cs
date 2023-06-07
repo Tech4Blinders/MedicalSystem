@@ -1,6 +1,6 @@
 ﻿using MedicalSystem.CoreLayer;
 
-namespace MedicalSystem.DataAccessLayer.Repos.ReportRepo
+namespace MedicalSystem.DataAccessLayer
 {
     public interface IReportRepo : IGenericRepo<Report>
     {

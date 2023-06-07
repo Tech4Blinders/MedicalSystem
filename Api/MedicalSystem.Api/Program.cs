@@ -25,7 +25,8 @@ namespace MedicalSystem.Api
             builder.Services.AddAutoMapper(typeof(MappingProfile));
             builder.Services.AddScoped<IAppointmentManager, AppointmentManager>();
             builder.Services.AddScoped<IReportManager, ReportManager>();
-            
+            builder.Services.AddScoped<IClinicManager, ClinicManager>();
+            builder.Services.AddScoped<IReviewManager, ReviewManager>();
 
             #region Middlewarees
             var app = builder.Build();

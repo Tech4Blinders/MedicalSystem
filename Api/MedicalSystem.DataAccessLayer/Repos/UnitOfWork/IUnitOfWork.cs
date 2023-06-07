@@ -1,5 +1,4 @@
-﻿using MedicalSystem.DataAccessLayer.Repos.ReportRepo;
-
+﻿
 namespace MedicalSystem.DataAccessLayer;
 
 public interface IUnitOfWork
@@ -10,5 +9,7 @@ public interface IUnitOfWork
     public IBranchDoctorRepo _BranchDoctorRepo { get; }
     public IAppointmentRepo _AppointmentRepo { get; }
     public IReportRepo _ReportRepo { get; }
+    public IClinicRepo _ClinicRepo { get; }
+    public IReviewRepo _ReviewRepo { get; }
     int SaveChanges();
 }

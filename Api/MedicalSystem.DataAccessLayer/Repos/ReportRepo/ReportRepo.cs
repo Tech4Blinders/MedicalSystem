@@ -1,11 +1,5 @@
 ﻿using MedicalSystem.CoreLayer;
-using MedicalSystem.DataAccessLayer.Repos.ReportRepo;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MedicalSystem.DataAccessLayer;
 
@@ -27,7 +21,7 @@ public class ReportRepo : GenericRepo<Report>, IReportRepo
     public Report? GetReportById(int id)
     {
         return _context.Set<Report>()
-            .Include(a=>a.Appointment)
+            .Include(a => a.Appointment)
             .FirstOrDefault(report => report.Id == id);
     }
 }

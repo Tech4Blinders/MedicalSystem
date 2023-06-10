@@ -18,7 +18,8 @@ namespace MedicalSystem.BusinessLayer
                 Name = entity.Name,
                 PhoneNumber = entity.PhoneNumber,
                 HospitalId = entity.HospitalId,
-                BranchAddressId = entity.BranchAddressId
+                BranchAddressId = entity.BranchAddressId,
+                Image = entity.Image 
             };
 
             unitOfWork._BranchRepo.AddAsync(newBranch);

@@ -21,7 +21,7 @@
 
   <div class="video-wrap">
       <video autoplay="" loop="" muted="" class="custom-video" poster="">
-          <source src="../../../assets/videos/pexels-pavel-danilyuk-8716790.mp4" type="video/mp4">
+          <source src="../../../assets/videos/backgroundvideo.mp4" type="video/mp4">
 
           Your browser does not support the video tag.
       </video>
@@ -30,9 +30,8 @@
 
 
 <section class="highlight">
-  <div class="container">
+  <!-- <div class="container">
       <div class="row">
-
           <div class="col-lg-4 col-md-6 col-12">
               <div class="highlight-thumb">
                   <img src="../../../assets/images/highlight/alexandre-pellaes-6vAjp0pscX0-unsplash.jpg" class="highlight-image img-fluid" alt="">
@@ -70,5 +69,25 @@
           </div>
 
       </div>
-  </div>
+  </div> -->
+  <p-galleria [(value)]="images" [responsiveOptions]="responsiveOptions" [autoPlay]="true" [containerStyle]="{ 'max-width': '100%' }" [numVisible]="4">
+        <ng-template pTemplate="item" let-item>
+            <img [src]="item.itemImageSrc" style="width: 50vh; height: 50vh; display: block;" />
+        </ng-template>
+        <!-- <ng-template pTemplate="thumbnail" let-item>
+            <div class="grid grid-nogutter justify-content-between">
+                <img [src]="item.thumbnailImageSrc" style="display: block; width: 20vh; height: 20vh;" />
+            </div>
+        </ng-template> -->
+        <ng-template pTemplate="caption" let-item id="test">
+            <h4 style="margin-bottom: .5rem; color: #ffffff; ">{{ item.title }}</h4>
+            <a [routerLink]="'visit'">{{ item.alt }}</a>
+        </ng-template>
+</p-galleria>
+
+
+
+
+
 </section>
+

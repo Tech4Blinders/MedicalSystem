@@ -1,4 +1,5 @@
-﻿using MedicalSystem.BusinessLayer;
+﻿using MedicalSystem.Api.Services.UploadImage;
+using MedicalSystem.BusinessLayer;
 using MedicalSystem.CoreLayer;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,9 +11,11 @@ namespace MedicalSystem.Api.Controllers
     {
        
         private readonly IBranchManager branchManager;
-        public BranchController(IBranchManager _branchManager)
+        private readonly IUploadImg uploadImg;
+        public BranchController(IBranchManager _branchManager, IUploadImg _uploadImg)
         {
             branchManager = _branchManager;
+            uploadImg = _uploadImg;
         }
 
         [HttpGet]
@@ -35,8 +38,14 @@ namespace MedicalSystem.Api.Controllers
         }
 
         [HttpPost]
-        public ActionResult addBranch(AddBranchDto branch)
+        public ActionResult addBranch([FromForm] AddBranchDto branch)
         {
+            if (branch.File == null || branch.File.Length == 0)
+            {
+                return BadRequest("No file was uploaded.");
+            }
+
+            branch.Image = uploadImg.uploadImg(branch.File.FileName, branch.File.OpenReadStream());
             int newId = branchManager.Add(branch);
             return CreatedAtAction("getById", new { id = newId }, new { m = "branch added successfully" });
         }

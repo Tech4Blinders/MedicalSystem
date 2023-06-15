@@ -15,7 +15,7 @@ public class DoctorManager:IDoctorManager
         _mapper = mapper;
     }
 
-    public ReadDoctorDto Add(AddDoctorDto doctorDto)
+    public async Task<ReadDoctorDto>  Add(AddDoctorDto doctorDto)
     {
         var doctordb = _mapper.Map<Doctor>(doctorDto);
         doctordb.Name = doctorDto.Name;
@@ -27,7 +27,7 @@ public class DoctorManager:IDoctorManager
         doctordb.Street = doctorDto.Street;
         // doctordb.Clinic - _unitOfWork._ClinicRepo.GetById(doctorDto.ClinicId);
         // doctordb.Department = _unitOfWork.DepartmentRepo.GetById(doctorDto.DepartmentId); 
-        _unitOfWork._DoctorRepo.AddAsync(doctordb);
+        await _unitOfWork._DoctorRepo.AddAsync(doctordb);
         _unitOfWork.SaveChanges();
         return _mapper.Map<ReadDoctorDto>(doctordb);
     }

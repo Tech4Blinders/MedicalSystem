@@ -15,6 +15,7 @@ namespace MedicalSystem.CoreLayer
         public string Description { get; set; } = string.Empty;
         [Required, Range(0, 9999)]
         public int RoomNumber { get; set; }
+        public string Image { get; set; } = string.Empty;
 
         public ICollection<Doctor> Doctors = new HashSet<Doctor>();
     }

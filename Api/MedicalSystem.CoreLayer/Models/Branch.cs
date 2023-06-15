@@ -14,6 +14,7 @@ namespace MedicalSystem.CoreLayer
         [Required]
         [StringLength(15)]
         public string PhoneNumber { get; set; } = string.Empty;
+        public string Image { get; set; } = string.Empty;
         [Required]
         [ForeignKey("Hospital")]
         public int HospitalId { get; set; }

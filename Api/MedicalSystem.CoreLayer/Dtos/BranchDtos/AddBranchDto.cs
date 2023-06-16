@@ -1,4 +1,6 @@
-﻿namespace MedicalSystem.CoreLayer
+﻿using Microsoft.AspNetCore.Http;
+
+namespace MedicalSystem.CoreLayer
 {
     public class AddBranchDto
     {
@@ -9,6 +11,8 @@
         public int HospitalId { get; set; }
 
         public int BranchAddressId { get; set; }
+        public string Image { get; set; } = string.Empty;
+        public IFormFile File { get; set; }
 
     }
 }

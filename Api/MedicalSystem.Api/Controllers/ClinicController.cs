@@ -1,4 +1,5 @@
-﻿using MedicalSystem.BusinessLayer;
+﻿using MedicalSystem.Api.Services.UploadImage;
+using MedicalSystem.BusinessLayer;
 using MedicalSystem.CoreLayer;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,10 +10,12 @@ namespace MedicalSystem.Api.Controllers
     public class ClinicController : ControllerBase
     {
         private readonly IClinicManager _ClinicManager;
+        private readonly IUploadImg uploadImg;
 
-        public ClinicController(IClinicManager ClinicManager)
+        public ClinicController(IClinicManager ClinicManager, IUploadImg _uploadImg)
         {
             _ClinicManager = ClinicManager;
+            uploadImg = _uploadImg;
         }
 
         [HttpGet]
@@ -39,8 +42,14 @@ namespace MedicalSystem.Api.Controllers
         }
 
         [HttpPost]
-        public ActionResult<int> Add(ClinicWithoutIdDto ClinicDto)
+        public ActionResult<int> Add([FromForm] ClinicWithoutIdDto ClinicDto)
         {
+            if (ClinicDto.File == null || ClinicDto.File.Length == 0)
+            {
+                return BadRequest("No file was uploaded.");
+            }
+
+            ClinicDto.Image = uploadImg.uploadImg(ClinicDto.File.FileName, ClinicDto.File.OpenReadStream());
             var newId = _ClinicManager.Add(ClinicDto);
             return Ok(newId);
             /*return CreatedAtAction("GetById", new { id = newId }, new { m = "Clinic has been added successfully" });*/

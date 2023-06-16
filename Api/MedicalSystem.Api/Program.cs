@@ -1,3 +1,4 @@
+using MedicalSystem.Api.Services.UploadImage;
 using MedicalSystem.BusinessLayer;
 using MedicalSystem.DataAccessLayer;
 using Microsoft.EntityFrameworkCore;
@@ -32,6 +33,7 @@ namespace MedicalSystem.Api
             builder.Services.AddScoped<IAvaliableAppointmentManager, AvaliableAppointmentManager>();
 
 
+            builder.Services.AddScoped<IUploadImg, UploadImg>();
             #region Middlewarees
             var app = builder.Build();
 

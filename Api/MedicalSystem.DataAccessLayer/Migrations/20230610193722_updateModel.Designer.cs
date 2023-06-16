@@ -4,6 +4,7 @@ using MedicalSystem.DataAccessLayer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MedicalSystem.DataAccessLayer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230610193722_updateModel")]
+    partial class updateModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -101,27 +103,6 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             DoctorId = 5,
                             PatientId = 1
                         });
-                });
-
-            modelBuilder.Entity("MedicalSystem.CoreLayer.AvaliableAppointment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("DoctorId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DoctorId");
-
-                    b.ToTable("AvaliableAppointment");
                 });
 
             modelBuilder.Entity("MedicalSystem.CoreLayer.Branch", b =>
@@ -646,12 +627,6 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<decimal>("OfflineCost")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal?>("OnlineCost")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
@@ -678,8 +653,6 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             Gender = "Male",
                             Image = "",
                             Name = "Dr. Ahmed Ali",
-                            OfflineCost = 200m,
-                            OnlineCost = 100m,
                             PhoneNumber = "+971 123-456-7890",
                             Street = "123 Main St"
                         },
@@ -694,8 +667,6 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             Gender = "Female",
                             Image = "",
                             Name = "Dr. Fatima Hassan",
-                            OfflineCost = 300m,
-                            OnlineCost = 200m,
                             PhoneNumber = "+971 987-654-3210",
                             Street = "456 Elm St"
                         },
@@ -710,8 +681,6 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             Gender = "Male",
                             Image = "",
                             Name = "Dr. Ali Mahmoud",
-                            OfflineCost = 400m,
-                            OnlineCost = 300m,
                             PhoneNumber = "+971 555-123-4567",
                             Street = "789 Oak St"
                         },
@@ -726,8 +695,6 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             Gender = "Female",
                             Image = "",
                             Name = "Dr. Aisha Khan",
-                            OfflineCost = 500m,
-                            OnlineCost = 400m,
                             PhoneNumber = "+971 555-987-6543",
                             Street = "321 Pine St"
                         },
@@ -742,8 +709,6 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             Gender = "Male",
                             Image = "",
                             Name = "Dr. Omar Ahmed",
-                            OfflineCost = 600m,
-                            OnlineCost = 500m,
                             PhoneNumber = "+971 555-567-8901",
                             Street = "987 Maple St"
                         },
@@ -758,8 +723,6 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             Gender = "Female",
                             Image = "",
                             Name = "Dr. Layla Hassan",
-                            OfflineCost = 700m,
-                            OnlineCost = 600m,
                             PhoneNumber = "+971 555-210-9876",
                             Street = "654 Walnut St"
                         },
@@ -774,8 +737,6 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             Gender = "Male",
                             Image = "",
                             Name = "Dr. Ibrahim Khalid",
-                            OfflineCost = 800m,
-                            OnlineCost = 700m,
                             PhoneNumber = "+971 555-876-5432",
                             Street = "210 Cedar St"
                         },
@@ -790,8 +751,6 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             Gender = "Female",
                             Image = "",
                             Name = "Dr. Sarah Ahmed",
-                            OfflineCost = 900m,
-                            OnlineCost = 800m,
                             PhoneNumber = "+971 555-432-1098",
                             Street = "876 Birch St"
                         });
@@ -1393,17 +1352,6 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                     b.Navigation("Doctor");
 
                     b.Navigation("Patient");
-                });
-
-            modelBuilder.Entity("MedicalSystem.CoreLayer.AvaliableAppointment", b =>
-                {
-                    b.HasOne("MedicalSystem.CoreLayer.Doctor", "Doctor")
-                        .WithMany()
-                        .HasForeignKey("DoctorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Doctor");
                 });
 
             modelBuilder.Entity("MedicalSystem.CoreLayer.Branch", b =>

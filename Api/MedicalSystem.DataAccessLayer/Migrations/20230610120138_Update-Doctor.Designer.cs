@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MedicalSystem.DataAccessLayer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230607144242_AddingDummyData")]
-    partial class AddingDummyData
+    [Migration("20230610120138_Update-Doctor")]
+    partial class UpdateDoctor
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -595,6 +595,10 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                     b.Property<string>("Gender")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -624,6 +628,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             DepartmentId = 1,
                             Email = "ahmed.ali@example.com",
                             Gender = "Male",
+                            Image = "",
                             Name = "Dr. Ahmed Ali",
                             PhoneNumber = "+971 123-456-7890",
                             Street = "123 Main St"
@@ -637,6 +642,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             DepartmentId = 2,
                             Email = "fatima.hassan@example.com",
                             Gender = "Female",
+                            Image = "",
                             Name = "Dr. Fatima Hassan",
                             PhoneNumber = "+971 987-654-3210",
                             Street = "456 Elm St"
@@ -650,6 +656,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             DepartmentId = 3,
                             Email = "ali.mahmoud@example.com",
                             Gender = "Male",
+                            Image = "",
                             Name = "Dr. Ali Mahmoud",
                             PhoneNumber = "+971 555-123-4567",
                             Street = "789 Oak St"
@@ -663,6 +670,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             DepartmentId = 4,
                             Email = "aisha.khan@example.com",
                             Gender = "Female",
+                            Image = "",
                             Name = "Dr. Aisha Khan",
                             PhoneNumber = "+971 555-987-6543",
                             Street = "321 Pine St"
@@ -676,6 +684,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             DepartmentId = 5,
                             Email = "omar.ahmed@example.com",
                             Gender = "Male",
+                            Image = "",
                             Name = "Dr. Omar Ahmed",
                             PhoneNumber = "+971 555-567-8901",
                             Street = "987 Maple St"
@@ -689,6 +698,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             DepartmentId = 6,
                             Email = "layla.hassan@example.com",
                             Gender = "Female",
+                            Image = "",
                             Name = "Dr. Layla Hassan",
                             PhoneNumber = "+971 555-210-9876",
                             Street = "654 Walnut St"
@@ -702,6 +712,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             DepartmentId = 7,
                             Email = "ibrahim.khalid@example.com",
                             Gender = "Male",
+                            Image = "",
                             Name = "Dr. Ibrahim Khalid",
                             PhoneNumber = "+971 555-876-5432",
                             Street = "210 Cedar St"
@@ -715,6 +726,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             DepartmentId = 8,
                             Email = "sarah.ahmed@example.com",
                             Gender = "Female",
+                            Image = "",
                             Name = "Dr. Sarah Ahmed",
                             PhoneNumber = "+971 555-432-1098",
                             Street = "876 Birch St"

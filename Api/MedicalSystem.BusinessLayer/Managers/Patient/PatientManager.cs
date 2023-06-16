@@ -23,6 +23,7 @@ public class PatientManager : IPatientManager
             Email = patientAddDto.Email,
             Gender = patientAddDto.Gender,
             PhoneNumber = patientAddDto.PhoneNumber,
+            
         };
         _unitOfWork._PatientRepo.AddAsync(patient);
         _unitOfWork.SaveChanges();
@@ -37,6 +38,7 @@ public class PatientManager : IPatientManager
             return;
         }
         _unitOfWork._PatientRepo.Delete(patient);
+        _unitOfWork.SaveChanges();
 
     }
 

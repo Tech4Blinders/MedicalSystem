@@ -137,6 +137,8 @@ public static class FakeData
                     Street = "123 Main St",
                     DepartmentId=1,
                     ClinicId=1,
+                    OfflineCost=200,
+                    OnlineCost=100
                 },
                 new Doctor
                 {   Id = 2,
@@ -149,6 +151,8 @@ public static class FakeData
                     Street = "456 Elm St",
                     DepartmentId=2,
                     ClinicId=2,
+                    OfflineCost=300,
+                    OnlineCost=200
                 },
                 new Doctor
                 {Id = 3,
@@ -161,6 +165,8 @@ public static class FakeData
                     Street = "789 Oak St",
                     DepartmentId=3,
                     ClinicId=3,
+                    OfflineCost=400,
+                    OnlineCost=300
                 },
                 new Doctor
                 {Id = 4,
@@ -173,6 +179,8 @@ public static class FakeData
                     Street = "321 Pine St",
                     DepartmentId=4,
                     ClinicId=4,
+                    OfflineCost=500,
+                    OnlineCost=400
                 },
                 new Doctor
                 {Id = 5,
@@ -185,6 +193,8 @@ public static class FakeData
                     Street = "987 Maple St",
                     DepartmentId=5,
                     ClinicId=5,
+                    OfflineCost=600,
+                    OnlineCost=500
                 },
                 new Doctor
                 { Id=6,
@@ -197,6 +207,8 @@ public static class FakeData
                     Street = "654 Walnut St",
                     DepartmentId=6,
                     ClinicId=6,
+                    OfflineCost=700,
+                    OnlineCost=600
                 },
                 new Doctor
                 {Id=7,
@@ -209,6 +221,8 @@ public static class FakeData
                     Street = "210 Cedar St",
                     DepartmentId=7,
                     ClinicId=1,
+                    OfflineCost=800,
+                    OnlineCost=700
                 },
                 new Doctor
                 {
@@ -222,6 +236,8 @@ public static class FakeData
                     Street = "876 Birch St",
                     DepartmentId=8,
                     ClinicId=2,
+                    OfflineCost=900,
+                    OnlineCost=800
                 }
             };
         return doctors;

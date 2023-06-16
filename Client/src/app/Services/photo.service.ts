@@ -7,6 +7,7 @@ export class PhotoService {
   images: any[];
   doctorImgs: any[];
   responsiveOptions: any[];
+  clinicImgs: any[];
   constructor() {}
   getPhotos(): any[] {
     this.images = [
@@ -104,5 +105,24 @@ export class PhotoService {
       },
     ];
     return this.doctorImgs;
+  }
+  getClinicImgs(){
+    return this.clinicImgs=[
+      {
+        description:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate nequequas!",
+        title:"dentist clinic",
+        imgSrc:"https://medicare.bold-themes.com/general-hospital/wp-content/uploads/sites/14/2018/03/img-general-hospital-06-320x213.jpg"
+      },
+      {
+        description:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate nequequas!",
+        title:"emergency clinic",
+        imgSrc:"https://tse3.mm.bing.net/th?id=OIP.4wTImW5Lr2A4qUXHzCZVwwHaEw&pid=Api&P=0&h=180"
+      },
+      {
+        description:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate nequequas!",
+        title:"diagnostic clinic",
+        imgSrc:"https://tse3.mm.bing.net/th?id=OIP.imfHcb3S1KGtEkeCXJrV2gHaEK&pid=Api&P=0&h=180"
+      },
+    ]
   }
 }

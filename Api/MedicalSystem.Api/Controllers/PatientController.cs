@@ -1,4 +1,5 @@
-﻿using MedicalSystem.BusinessLayer;
+﻿using MedicalSystem.Api.Services.UploadImage;
+using MedicalSystem.BusinessLayer;
 using MedicalSystem.CoreLayer;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,10 +11,11 @@ namespace MedicalSystem.Api
     public class PatientController : ControllerBase
     {
         private readonly IPatientManager _patientManager;
-
-        public PatientController(IPatientManager patientManager)
+        private readonly IUploadImg uploadImg;
+        public PatientController(IPatientManager patientManager,IUploadImg _uploadImg)
         {
             _patientManager = patientManager;
+            uploadImg = _uploadImg;
         }
 
         [HttpGet]
@@ -40,8 +42,14 @@ namespace MedicalSystem.Api
         }
 
         [HttpPost]
-        public ActionResult Add(PatientAddDto patientDto)
+        public ActionResult Add([FromForm] PatientAddDto patientDto)
         {
+            if (patientDto.File == null || patientDto.File.Length == 0)
+            {
+                return BadRequest("No file was uploaded.");
+            }
+
+            patientDto.Image = uploadImg.uploadImg(patientDto.File.FileName, patientDto.File.OpenReadStream());
             var newId = _patientManager.Add(patientDto);
             return CreatedAtAction("GetById", new { id = newId }, new { m = "patient has been added successfully" });
 

@@ -23,6 +23,7 @@ namespace MedicalSystem.CoreLayer
         [Required]
         [EmailAddress]
         public string Email { get; set; } = string.Empty;
+        public string Image { get; set; } = string.Empty;
         public ICollection<Review> Reviews { get; set; } = new HashSet<Review>();
         public ICollection<Appointment> Appointments { get; set; } = new HashSet<Appointment>();
 

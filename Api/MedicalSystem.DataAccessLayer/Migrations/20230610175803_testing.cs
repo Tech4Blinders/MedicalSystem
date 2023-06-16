@@ -4,7 +4,7 @@
 
 namespace MedicalSystem.DataAccessLayer.Migrations
 {
-    public partial class initial : Migration
+    public partial class testing : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

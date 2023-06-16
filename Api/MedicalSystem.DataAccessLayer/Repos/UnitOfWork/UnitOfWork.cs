@@ -18,6 +18,9 @@ public class UnitOfWork : IUnitOfWork
     public ApplicationDbContext _context;
     public IBranchRepo _BranchRepo { get; }
     public IBranchAddressRepo _BranchAddressRepo { get; }
+
+    public IAvaliableAppointmentRepo _AvaliableAppointmentRepo { get; }
+
     public UnitOfWork(ApplicationDbContext context)
     {
         _context = context;
@@ -29,7 +32,7 @@ public class UnitOfWork : IUnitOfWork
         _ReportRepo = new ReportRepo(_context);
         _ClinicRepo = new ClinicRepo(_context);
         _ReviewRepo = new ReviewRepo(_context);
-
+        _AvaliableAppointmentRepo=new AvaliableAppointmentRepo(_context);
         _BranchRepo = new BranchRepo(_context);
         _BranchAddressRepo = new BranchAddressRepo(_context);
     }

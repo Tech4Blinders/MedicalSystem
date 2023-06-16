@@ -20,6 +20,7 @@ namespace MedicalSystem.BusinessLayer
 				Specilization=clinicWithoutIdDto.Specilization,
 				Description=clinicWithoutIdDto.Description,
 				RoomNumber=clinicWithoutIdDto.RoomNumber,
+				Image = clinicWithoutIdDto.Image 
 			};
 			_unitOfWork._ClinicRepo.AddAsync(clinic);
 			_unitOfWork.SaveChanges();

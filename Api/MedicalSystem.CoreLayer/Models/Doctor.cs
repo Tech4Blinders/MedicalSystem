@@ -21,6 +21,9 @@ namespace MedicalSystem.CoreLayer
         public ICollection<DoctorQualification> DoctorQualifications { get; set; } = new HashSet<DoctorQualification>();
         public ICollection<Appointment> Appointments { get; set; }= new HashSet<Appointment>();
         public ICollection<BranchDoctor> BranchDoctors { get; set; } = new HashSet<BranchDoctor>();
+        
+        public decimal OfflineCost { get; set; }
+        public decimal? OnlineCost { get; set; }
 
     }
 }

@@ -37,6 +37,7 @@ public class PatientManager : IPatientManager
             return;
         }
         _unitOfWork._PatientRepo.Delete(patient);
+        _unitOfWork.SaveChanges();
 
     }
 

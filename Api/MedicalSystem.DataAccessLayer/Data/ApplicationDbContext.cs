@@ -82,6 +82,8 @@ namespace MedicalSystem.DataAccessLayer
         public DbSet<BranchDoctor> BranchDoctor => Set<BranchDoctor>();
         public DbSet<Patient> Patient => Set<Patient>();
         public DbSet<Department> Department => Set<Department>();
+        public DbSet<AvaliableAppointment> AvaliableAppointment => Set<AvaliableAppointment>();
+
 
         #endregion
 

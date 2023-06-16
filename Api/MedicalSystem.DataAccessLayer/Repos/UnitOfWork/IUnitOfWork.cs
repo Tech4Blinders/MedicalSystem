@@ -14,5 +14,6 @@ public interface IUnitOfWork
     public IClinicRepo _ClinicRepo { get; }
     public IReviewRepo _ReviewRepo { get; }
     public IBranchAddressRepo _BranchAddressRepo { get; }
+    public IAvaliableAppointmentRepo _AvaliableAppointmentRepo { get; }
     int SaveChanges();
 }

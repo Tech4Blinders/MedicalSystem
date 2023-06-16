@@ -29,6 +29,8 @@ namespace MedicalSystem.Api
             builder.Services.AddScoped<IReviewManager, ReviewManager>();
             builder.Services.AddScoped<IBranchManager, BranchManager>();
             builder.Services.AddScoped<IBranchAddManager,BranchAddManager>();
+            builder.Services.AddScoped<IAvaliableAppointmentManager, AvaliableAppointmentManager>();
+
 
             #region Middlewarees
             var app = builder.Build();

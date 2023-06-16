@@ -11,5 +11,6 @@
         public int HospitalId { get; set; }
 
         public int BranchAddressId { get; set; }
+
     }
 }

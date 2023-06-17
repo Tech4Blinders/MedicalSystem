@@ -64,6 +64,25 @@ namespace MedicalSystem.BusinessLayer
             };
         }
 
+        public List<AvaliableAppointmentReadDto> GetByDoctorId(int doctorId)
+        {
+            var avaliableAppointments = _unitOfWork._AvaliableAppointmentRepo
+                                                                            .GetAllAsyn()
+                                                                            .Result
+                                                                            .Where(available => available.DoctorId == doctorId);
+            
+            if(avaliableAppointments is null)
+            {
+                return new List<AvaliableAppointmentReadDto>();
+            }
+
+            return avaliableAppointments.Select(available => new AvaliableAppointmentReadDto
+            {
+                DoctorId = available.DoctorId,
+                Date = available.Date
+            }).ToList();
+        }
+
         public bool Update(AvaliableAppointmentUpdateDto entity)
         {
             var appointment = _unitOfWork._AvaliableAppointmentRepo.GetById(entity.Id);
@@ -77,6 +96,65 @@ namespace MedicalSystem.BusinessLayer
             _unitOfWork.SaveChanges();
             return true;
 
+        }
+
+        public bool MakeReservation(ReservationDto reservation)
+        {
+            bool isReserved = false;
+            bool isAdded = false;
+            bool isDeleted = false;
+            
+            Appointment appointment = new Appointment
+            {
+                PatientId = reservation.PatientId,
+                DoctorId = reservation.DoctorId,
+                BranchId = reservation.BranchId,
+                AppointmentDate = reservation.Date,
+                Cost = reservation.Cost,
+            };
+
+            AvaliableAppointment? avaliableAppointment = _unitOfWork._AvaliableAppointmentRepo
+                                                                    .GetAllAsyn()
+                                                                    .Result
+                                                                    .FirstOrDefault(available =>
+                                                                                    available.DoctorId == reservation.DoctorId
+                                                                                    &&
+                                                                                    available.Date == reservation.Date);
+            if (avaliableAppointment == null)
+            {
+                return false;
+            }
+
+            try
+            {
+                _unitOfWork._AppointmentRepo.AddAsync(appointment);
+                isAdded = true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+            if (isAdded)
+            {
+                try
+                {
+                    _unitOfWork._AvaliableAppointmentRepo.Delete(avaliableAppointment);
+                    isDeleted = true;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+            }
+
+            if (isDeleted && isAdded)
+            {
+                _unitOfWork.SaveChanges();
+                isReserved = true;
+            }
+
+            return isReserved;
         }
     }
 }

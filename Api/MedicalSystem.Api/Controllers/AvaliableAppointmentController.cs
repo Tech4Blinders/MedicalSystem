@@ -37,6 +37,18 @@ namespace MedicalSystem.Api.Controllers
             return Ok(patient);
         }
 
+        [HttpGet]
+        [Route("DoctorAvailableAppointments/{id}")]
+        public ActionResult<List<AvaliableAppointmentReadDto>> GetAllByDoctorId(int id)
+        {
+            List<AvaliableAppointmentReadDto> availableAppointments = _avaliableAppointmentManager.GetByDoctorId(id);
+            if (availableAppointments is null)
+            {
+                return NoContent();
+            }
+            return Ok(availableAppointments);
+        }
+
         [HttpPost]
         public ActionResult Add(AvaliableAppointmentAddDto patientDto)
         {
@@ -64,6 +76,18 @@ namespace MedicalSystem.Api.Controllers
         {
             _avaliableAppointmentManager.Delete(id);
             return NoContent();
+        }
+
+        [HttpPost]
+        [Route("MakeReservation")]
+        public ActionResult<bool> MakeReservation(ReservationDto reservation)
+        {
+            bool isReserved = _avaliableAppointmentManager.MakeReservation(reservation);
+            if (!isReserved)
+            {
+                return BadRequest();
+            }
+            return Ok(isReserved);
         }
     }
 }

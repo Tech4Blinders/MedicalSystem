@@ -23,7 +23,10 @@ namespace MedicalSystem.Api.Controllers
           
         }
         [HttpGet]
-        public  ActionResult<IEnumerable<ReadDoctorDto>> GetAll() =>  Ok(_doctorManager.GetAll());
+        public ActionResult<IEnumerable<ReadDoctorDto>> GetAll()
+        {
+           return Ok(_doctorManager.GetAll());
+        }
 
         [HttpGet("{id}")]
         public  ActionResult<ReadDoctorDto> GetById(int id)

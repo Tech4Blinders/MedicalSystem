@@ -7,10 +7,9 @@ namespace MedicalSystem.CoreLayer
         public int Id { get; set; }
         [ForeignKey("Doctor")]
         public int DoctorId {get;set;}
-
         public DateTime Date { get; set; }
+        public Doctor? Doctor { get; set; } 
 
-        public Doctor? Doctor { get; set; }
 
     }
 }

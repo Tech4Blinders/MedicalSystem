@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MedicalSystem.DataAccessLayer.Migrations
 {
-    public partial class init : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -73,7 +73,8 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Specilization = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false),
-                    RoomNumber = table.Column<int>(type: "int", nullable: false)
+                    RoomNumber = table.Column<int>(type: "int", nullable: false),
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -104,7 +105,8 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                     PhoneNumber = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: false),
                     Gender = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Age = table.Column<int>(type: "int", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -225,6 +227,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     HospitalId = table.Column<int>(type: "int", nullable: false),
                     BranchAddressId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -278,6 +281,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                     Country = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     City = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Street = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DepartmentId = table.Column<int>(type: "int", nullable: false),
                     ClinicId = table.Column<int>(type: "int", nullable: false),
                     OfflineCost = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
@@ -331,6 +335,26 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         name: "FK_Appointment_Patient_PatientId",
                         column: x => x.PatientId,
                         principalTable: "Patient",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AvaliableAppointment",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DoctorId = table.Column<int>(type: "int", nullable: false),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AvaliableAppointment", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AvaliableAppointment_Doctor_DoctorId",
+                        column: x => x.DoctorId,
+                        principalTable: "Doctor",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -445,15 +469,15 @@ namespace MedicalSystem.DataAccessLayer.Migrations
 
             migrationBuilder.InsertData(
                 table: "Clinic",
-                columns: new[] { "Id", "Description", "RoomNumber", "Specilization" },
+                columns: new[] { "Id", "Description", "Image", "RoomNumber", "Specilization" },
                 values: new object[,]
                 {
-                    { 1, "Description for Family Medicine Clinic", 1001, "Family Medicine" },
-                    { 2, "Description for Dental Clinic", 1002, "Dentistry" },
-                    { 3, "Description for Internal Medicine Clinic", 1003, "Internal Medicine" },
-                    { 4, "Description for Orthopedic Clinic", 1004, "Orthopedics" },
-                    { 5, "Description for Cardiology Clinic", 1005, "Cardiology" },
-                    { 6, "Description for Pediatric Clinic", 1006, "Pediatrics" }
+                    { 1, "Description for Family Medicine Clinic", "", 1001, "Family Medicine" },
+                    { 2, "Description for Dental Clinic", "", 1002, "Dentistry" },
+                    { 3, "Description for Internal Medicine Clinic", "", 1003, "Internal Medicine" },
+                    { 4, "Description for Orthopedic Clinic", "", 1004, "Orthopedics" },
+                    { 5, "Description for Cardiology Clinic", "", 1005, "Cardiology" },
+                    { 6, "Description for Pediatric Clinic", "", 1006, "Pediatrics" }
                 });
 
             migrationBuilder.InsertData(
@@ -472,29 +496,29 @@ namespace MedicalSystem.DataAccessLayer.Migrations
 
             migrationBuilder.InsertData(
                 table: "Patient",
-                columns: new[] { "Id", "Age", "Email", "Gender", "Name", "PhoneNumber" },
+                columns: new[] { "Id", "Age", "Email", "Gender", "Image", "Name", "PhoneNumber" },
                 values: new object[,]
                 {
-                    { 1, 25, "john@example.com", "M", "John Smith", "1234567890" },
-                    { 2, 30, "jane@example.com", "F", "Jane Doe", "9876543210" },
-                    { 3, 40, "alex@example.com", "M", "Alex Johnson", "5555555555" },
-                    { 4, 22, "emily@example.com", "F", "Emily Williams", "1112223333" }
+                    { 1, 25, "john@example.com", "M", "", "John Smith", "1234567890" },
+                    { 2, 30, "jane@example.com", "F", "", "Jane Doe", "9876543210" },
+                    { 3, 40, "alex@example.com", "M", "", "Alex Johnson", "5555555555" },
+                    { 4, 22, "emily@example.com", "F", "", "Emily Williams", "1112223333" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Branch",
-                columns: new[] { "Id", "BranchAddressId", "HospitalId", "Name", "PhoneNumber" },
+                columns: new[] { "Id", "BranchAddressId", "HospitalId", "Image", "Name", "PhoneNumber" },
                 values: new object[,]
                 {
-                    { 1, 1, 1, "Branch A", "1234567890" },
-                    { 2, 2, 2, "Branch B", "9876543210" },
-                    { 3, 3, 3, "Branch C", "5555555555" },
-                    { 4, 4, 4, "Branch D", "1112223333" },
-                    { 5, 5, 1, "Branch E", "5646546546" },
-                    { 6, 6, 2, "Branch F", "1555154654" },
-                    { 7, 7, 3, "Branch J", "7797988521" },
-                    { 8, 8, 4, "Branch H", "6597451215" },
-                    { 9, 9, 1, "Branch I", "1564989848" }
+                    { 1, 1, 1, "", "Branch A", "1234567890" },
+                    { 2, 2, 2, "", "Branch B", "9876543210" },
+                    { 3, 3, 3, "", "Branch C", "5555555555" },
+                    { 4, 4, 4, "", "Branch D", "1112223333" },
+                    { 5, 5, 1, "", "Branch E", "5646546546" },
+                    { 6, 6, 2, "", "Branch F", "1555154654" },
+                    { 7, 7, 3, "", "Branch J", "7797988521" },
+                    { 8, 8, 4, "", "Branch H", "6597451215" },
+                    { 9, 9, 1, "", "Branch I", "1564989848" }
                 });
 
             migrationBuilder.InsertData(
@@ -514,17 +538,17 @@ namespace MedicalSystem.DataAccessLayer.Migrations
 
             migrationBuilder.InsertData(
                 table: "Doctor",
-                columns: new[] { "Id", "City", "ClinicId", "Country", "DepartmentId", "Email", "Gender", "Name", "OfflineCost", "OnlineCost", "PhoneNumber", "Street" },
+                columns: new[] { "Id", "City", "ClinicId", "Country", "DepartmentId", "Email", "Gender", "Image", "Name", "OfflineCost", "OnlineCost", "PhoneNumber", "Street" },
                 values: new object[,]
                 {
-                    { 1, "Dubai", 1, "United Arab Emirates", 1, "ahmed.ali@example.com", "Male", "Dr. Ahmed Ali", 200m, 100m, "+971 123-456-7890", "123 Main St" },
-                    { 2, "Abu Dhabi", 2, "United Arab Emirates", 2, "fatima.hassan@example.com", "Female", "Dr. Fatima Hassan", 300m, 200m, "+971 987-654-3210", "456 Elm St" },
-                    { 3, "Sharjah", 3, "United Arab Emirates", 3, "ali.mahmoud@example.com", "Male", "Dr. Ali Mahmoud", 400m, 300m, "+971 555-123-4567", "789 Oak St" },
-                    { 4, "Ajman", 4, "United Arab Emirates", 4, "aisha.khan@example.com", "Female", "Dr. Aisha Khan", 500m, 400m, "+971 555-987-6543", "321 Pine St" },
-                    { 5, "Ras Al Khaimah", 5, "United Arab Emirates", 5, "omar.ahmed@example.com", "Male", "Dr. Omar Ahmed", 600m, 500m, "+971 555-567-8901", "987 Maple St" },
-                    { 6, "Fujairah", 6, "United Arab Emirates", 6, "layla.hassan@example.com", "Female", "Dr. Layla Hassan", 700m, 600m, "+971 555-210-9876", "654 Walnut St" },
-                    { 7, "Umm Al Quwain", 1, "United Arab Emirates", 7, "ibrahim.khalid@example.com", "Male", "Dr. Ibrahim Khalid", 800m, 700m, "+971 555-876-5432", "210 Cedar St" },
-                    { 8, "Al Ain", 2, "United Arab Emirates", 8, "sarah.ahmed@example.com", "Female", "Dr. Sarah Ahmed", 900m, 800m, "+971 555-432-1098", "876 Birch St" }
+                    { 1, "Dubai", 1, "United Arab Emirates", 1, "ahmed.ali@example.com", "Male", "", "Dr. Ahmed Ali", 200m, 100m, "+971 123-456-7890", "123 Main St" },
+                    { 2, "Abu Dhabi", 2, "United Arab Emirates", 2, "fatima.hassan@example.com", "Female", "", "Dr. Fatima Hassan", 300m, 200m, "+971 987-654-3210", "456 Elm St" },
+                    { 3, "Sharjah", 3, "United Arab Emirates", 3, "ali.mahmoud@example.com", "Male", "", "Dr. Ali Mahmoud", 400m, 300m, "+971 555-123-4567", "789 Oak St" },
+                    { 4, "Ajman", 4, "United Arab Emirates", 4, "aisha.khan@example.com", "Female", "", "Dr. Aisha Khan", 500m, 400m, "+971 555-987-6543", "321 Pine St" },
+                    { 5, "Ras Al Khaimah", 5, "United Arab Emirates", 5, "omar.ahmed@example.com", "Male", "", "Dr. Omar Ahmed", 600m, 500m, "+971 555-567-8901", "987 Maple St" },
+                    { 6, "Fujairah", 6, "United Arab Emirates", 6, "layla.hassan@example.com", "Female", "", "Dr. Layla Hassan", 700m, 600m, "+971 555-210-9876", "654 Walnut St" },
+                    { 7, "Umm Al Quwain", 1, "United Arab Emirates", 7, "ibrahim.khalid@example.com", "Male", "", "Dr. Ibrahim Khalid", 800m, 700m, "+971 555-876-5432", "210 Cedar St" },
+                    { 8, "Al Ain", 2, "United Arab Emirates", 8, "sarah.ahmed@example.com", "Female", "", "Dr. Sarah Ahmed", 900m, 800m, "+971 555-432-1098", "876 Birch St" }
                 });
 
             migrationBuilder.InsertData(
@@ -654,6 +678,11 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_AvaliableAppointment_DoctorId",
+                table: "AvaliableAppointment",
+                column: "DoctorId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Branch_BranchAddressId",
                 table: "Branch",
                 column: "BranchAddressId",
@@ -717,6 +746,9 @@ namespace MedicalSystem.DataAccessLayer.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "AvaliableAppointment");
 
             migrationBuilder.DropTable(
                 name: "BranchDoctor");

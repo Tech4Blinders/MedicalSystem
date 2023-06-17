@@ -65,7 +65,7 @@ public class DoctorManager : IDoctorManager
 
     public IEnumerable<ReadDoctorDto> GetAll(string[]? includes = null)
     {
-        var doctorsfromdb = _unitOfWork._DoctorRepo.GetWith(null, new string[] { "Department", "Clinic" }).Result;
+        var doctorsfromdb = _unitOfWork._DoctorRepo.GetWith(null, new string[] { "Department", "Clinic" , "DoctorQualifications" }).Result;
         return doctorsfromdb.Select(a => new ReadDoctorDto
         {
             Name = a.Name,
@@ -81,8 +81,11 @@ public class DoctorManager : IDoctorManager
             ClinicId = a.ClinicId,
             DepartmentName = a.Department?.Name ?? "",
             ClinicName = a.Clinic?.Description ?? "",
+            Certification = a.DoctorQualifications.Select(a => a.Certification).ToArray(),
+            CertificationFrom = a.DoctorQualifications.Select(a => a.CertificationFrom).ToArray(),
             Gender = a.Gender
-        }).ToList();
+        }) ;
+           
 
     }
 

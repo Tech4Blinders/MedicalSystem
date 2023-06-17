@@ -4,7 +4,7 @@ using MedicalSystem.DataAccessLayer;
 
 namespace MedicalSystem.BusinessLayer;
 
-public class DoctorManager:IDoctorManager
+public class DoctorManager : IDoctorManager
 {// Auto.Mapper
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
@@ -15,21 +15,41 @@ public class DoctorManager:IDoctorManager
         _mapper = mapper;
     }
 
-    public async Task<ReadDoctorDto>  Add(AddDoctorDto doctorDto)
+    public async Task<ReadDoctorDto> Add(AddDoctorDto doctorDto)
     {
-        var doctordb = _mapper.Map<Doctor>(doctorDto);
-        doctordb.Name = doctorDto.Name;
-        doctordb.Gender = doctorDto.Gender;
-        doctordb.Email = doctorDto.Email;
-        doctordb.PhoneNumber = doctorDto.PhoneNumber;
-        doctordb.City = doctorDto.City;
-        doctordb.Country = doctorDto.Country;
-        doctordb.Street = doctorDto.Street;
-        // doctordb.Clinic - _unitOfWork._ClinicRepo.GetById(doctorDto.ClinicId);
-        // doctordb.Department = _unitOfWork.DepartmentRepo.GetById(doctorDto.DepartmentId); 
-        await _unitOfWork._DoctorRepo.AddAsync(doctordb);
+        var newDoctor = new Doctor
+        {
+            Name = doctorDto.Name,
+            City = doctorDto.City,
+            Country = doctorDto.Country,
+            Street = doctorDto.Street,
+            Email = doctorDto.Email,
+            Image = doctorDto.Image ?? "",
+            PhoneNumber = doctorDto.PhoneNumber,
+            OfflineCost = doctorDto.OfflineCost,
+            OnlineCost = doctorDto.OnlineCost,
+            ClinicId = doctorDto.ClinicId,
+            DepartmentId = doctorDto.DepartmentId,
+            Gender = doctorDto.Gender
+
+        };
+        await _unitOfWork._DoctorRepo.AddAsync(newDoctor);
         _unitOfWork.SaveChanges();
-        return _mapper.Map<ReadDoctorDto>(doctordb);
+        return new ReadDoctorDto
+        {
+            Name = newDoctor.Name,
+            City = newDoctor.City,
+            Country = newDoctor.Country,
+            Street = newDoctor.Street,
+            Email = newDoctor.Email,
+            Image = newDoctor.Image,
+            PhoneNumber = newDoctor.PhoneNumber,
+            OfflineCost = newDoctor.OfflineCost,
+            OnlineCost = newDoctor.OnlineCost,
+            DepartmentId = newDoctor.DepartmentId,
+            ClinicId = newDoctor.ClinicId,
+            Gender = newDoctor.Gender
+        };
     }
 
     public bool Delete(int id)
@@ -45,17 +65,47 @@ public class DoctorManager:IDoctorManager
 
     public IEnumerable<ReadDoctorDto> GetAll(string[]? includes = null)
     {
-        var doctorsfromdb = _unitOfWork._DoctorRepo.GetWith(null,includes);
-        return _mapper.Map<IEnumerable<ReadDoctorDto>>(doctorsfromdb);
+        var doctorsfromdb = _unitOfWork._DoctorRepo.GetWith(null, new string[] { "Department", "Clinic" }).Result;
+        return doctorsfromdb.Select(a => new ReadDoctorDto
+        {
+            Name = a.Name,
+            City = a.City,
+            Country = a.Country,
+            Street = a.Street,
+            Email = a.Email,
+            Image = a.Image,
+            PhoneNumber = a.PhoneNumber,
+            OfflineCost = a.OfflineCost,
+            OnlineCost = a.OnlineCost,
+            DepartmentId = a.DepartmentId,
+            ClinicId = a.ClinicId,
+            DepartmentName = a.Department?.Name ?? "",
+            ClinicName = a.Clinic?.Description ?? "",
+            Gender = a.Gender
+        }).ToList();
 
     }
 
     public ReadDoctorDto? GetById(int id)
     {
-        var doctorfromdb = _unitOfWork._DoctorRepo.GetByIdAsync(id);
+        var doctorfromdb = _unitOfWork._DoctorRepo.GetByIdAsync(id).Result;
         if (doctorfromdb == null)
             return null;
-        return _mapper.Map<ReadDoctorDto>(doctorfromdb);
+        return new ReadDoctorDto
+        {
+            Name = doctorfromdb.Name,
+            City = doctorfromdb.City,
+            Country = doctorfromdb.Country,
+            Street = doctorfromdb.Street,
+            Email = doctorfromdb.Email,
+            Image = doctorfromdb.Image,
+            PhoneNumber = doctorfromdb.PhoneNumber,
+            OfflineCost = doctorfromdb.OfflineCost,
+            OnlineCost = doctorfromdb.OnlineCost,
+            DepartmentId = doctorfromdb.DepartmentId,
+            ClinicId = doctorfromdb.ClinicId,
+            Gender = doctorfromdb.Gender
+        };
 
     }
 
@@ -63,8 +113,17 @@ public class DoctorManager:IDoctorManager
     {
         var doctorfromdb = _unitOfWork._DoctorRepo.GetByIdAsync(doctorDto.Id).Result;
         if (doctorfromdb == null) return false;
-        doctorfromdb.Email = doctorDto.Email;
-        _mapper.Map(doctorDto, doctorfromdb);
+        doctorfromdb.Name = doctorDto.Name;
+        doctorfromdb.Street = doctorDto.Street;
+        doctorfromdb.Country = doctorDto.Country;
+        doctorfromdb.PhoneNumber = doctorDto.PhoneNumber;
+        doctorfromdb.City = doctorfromdb.City;
+        doctorfromdb.Email = doctorfromdb.Email;
+        doctorfromdb.ClinicId = doctorfromdb.ClinicId;
+        doctorfromdb.DepartmentId = doctorfromdb.DepartmentId;
+        doctorfromdb.OfflineCost = doctorfromdb.OfflineCost;
+        doctorfromdb.OnlineCost = doctorfromdb.OnlineCost;
+        doctorfromdb.Gender = doctorfromdb.Gender;
         _unitOfWork._DoctorRepo.Update(doctorfromdb);
         _unitOfWork.SaveChanges();
         return true;

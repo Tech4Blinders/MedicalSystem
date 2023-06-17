@@ -2,8 +2,8 @@
 
 public class UnitOfWork : IUnitOfWork
 {
-    public IDoctorRepo? _DoctorRepo { get; }
-    public IDoctorQualificationRepo? _DoctorQualificationRepo { get; }
+    public IDoctorRepo _DoctorRepo { get; }
+    public IDoctorQualificationRepo _DoctorQualificationRepo { get; }
     public IPatientRepo _PatientRepo { get; }
 
     public IBranchDoctorRepo _BranchDoctorRepo { get; }

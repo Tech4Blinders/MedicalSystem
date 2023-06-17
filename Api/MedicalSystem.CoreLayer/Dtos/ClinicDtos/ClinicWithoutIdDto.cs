@@ -13,6 +13,6 @@ namespace MedicalSystem.CoreLayer
 		public string Description { get; set; } = string.Empty;
 		public int RoomNumber { get; set; }
         public string Image { get; set; } = string.Empty;
-        public IFormFile File { get; set; }
+        public IFormFile? File { get; set; }
     }
 }

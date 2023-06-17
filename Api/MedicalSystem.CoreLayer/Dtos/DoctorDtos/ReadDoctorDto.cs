@@ -14,4 +14,8 @@ public class ReadDoctorDto
     public string ClinicName { get; set; } = string.Empty;
     public int DepartmentId { get; set; }
     public string DepartmentName { get; set; } = string.Empty;
+    public string Image { get; set; } = string.Empty;
+    public decimal OfflineCost { get; set; }
+    public decimal? OnlineCost { get; set; }
+
 }

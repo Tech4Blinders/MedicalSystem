@@ -6,7 +6,7 @@ using MedicalSystem.DataAccessLayer;
 
 namespace MedicalSystem.BusinessLayer;
 
-    public class DoctorQualificationManager
+    public class DoctorQualificationManager :IDoctorQualificationManager
 {    
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
@@ -18,14 +18,22 @@ namespace MedicalSystem.BusinessLayer;
     }
     public ReadDoctorQualificationDto Add(AddDoctorQualificationDto dto)
     {
-        var doctorqualificationfromdb = _mapper.Map<DoctorQualification>(dto);
-        doctorqualificationfromdb.DoctorId = dto.DoctorId;
-        doctorqualificationfromdb.Certification = dto.Certification;
-        doctorqualificationfromdb.CertificationFrom = dto.CertificationFrom;
+        var doctorqualificationfromdb = new DoctorQualification
+        {
+        DoctorId = dto.DoctorId,
+        Certification = dto.Certification,
+        CertificationFrom = dto.CertificationFrom
+        };
+       
 
         _unitOfWork._DoctorQualificationRepo.AddAsync(doctorqualificationfromdb);
         _unitOfWork.SaveChanges();
-        return _mapper.Map<ReadDoctorQualificationDto>(doctorqualificationfromdb);
+        return new ReadDoctorQualificationDto
+        {
+            DoctorId = doctorqualificationfromdb.DoctorId,
+            Certification = doctorqualificationfromdb.Certification,
+            CertificationFrom = doctorqualificationfromdb.CertificationFrom
+        };
     }
 
     public bool Delete(int id)
@@ -41,8 +49,13 @@ namespace MedicalSystem.BusinessLayer;
 
     public IEnumerable<ReadDoctorQualificationDto> GetAll()
     {
-        var Alldoctorqualification = _unitOfWork._DoctorQualificationRepo.GetWith();
-        return _mapper.Map<IEnumerable<ReadDoctorQualificationDto>>(Alldoctorqualification);
+        var Alldoctorqualification = _unitOfWork._DoctorQualificationRepo.GetWith().Result;
+        return Alldoctorqualification.Select(a=> new ReadDoctorQualificationDto
+        {
+            DoctorId=a.DoctorId,
+            Certification = a.Certification,
+            CertificationFrom = a.CertificationFrom,
+        });
     }
 
 
@@ -50,7 +63,12 @@ namespace MedicalSystem.BusinessLayer;
     {
         var docqualification = _unitOfWork._DoctorQualificationRepo.GetByIdAsync(id).Result;
         if (docqualification == null) return new ReadDoctorQualificationDto();
-        return _mapper.Map<ReadDoctorQualificationDto>(docqualification);
+        return new ReadDoctorQualificationDto
+        {
+            DoctorId=docqualification.DoctorId,
+            Certification=docqualification.Certification,
+            CertificationFrom=docqualification.CertificationFrom
+        };
     }
 
     public bool Update(UpdateDoctorQualificationDto dto)

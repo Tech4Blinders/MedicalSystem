@@ -10,6 +10,6 @@ namespace MedicalSystem.CoreLayer
         public int Age { get; set; }
         public string Email { get; set; } = string.Empty;
         public string Image { get; set; } = string.Empty;
-        public IFormFile File { get; set; }
+        public IFormFile? File { get; set; }
     }
 }

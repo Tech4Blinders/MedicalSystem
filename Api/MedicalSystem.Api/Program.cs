@@ -31,6 +31,7 @@ namespace MedicalSystem.Api
             builder.Services.AddScoped<IBranchManager, BranchManager>();
             builder.Services.AddScoped<IBranchAddManager,BranchAddManager>();
             builder.Services.AddScoped<IAvaliableAppointmentManager, AvaliableAppointmentManager>();
+            builder.Services.AddScoped<IDoctorQualificationManager, DoctorQualificationManager>();
 
 
             builder.Services.AddScoped<IUploadImg, UploadImg>();

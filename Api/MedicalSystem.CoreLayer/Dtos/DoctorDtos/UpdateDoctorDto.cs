@@ -12,4 +12,6 @@ public class UpdateDoctorDto
     public string? Street { get; set; } = string.Empty;
     public int ClinicId { get; set; }
     public int DepartmentId { get; set; }
+    public decimal OfflineCost { get; set; }
+    public decimal? OnlineCost { get; set; }
 }

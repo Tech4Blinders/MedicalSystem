@@ -4,6 +4,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { Route, RouterModule, Routes } from '@angular/router';
 import { CoreRoutingModule } from './core-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import {  HttpClientModule } from '@angular/common/http';
 
 
 const routes:Routes =[]
@@ -14,11 +16,13 @@ const routes:Routes =[]
     
   ],
   imports: [
-    CommonModule,RouterModule, CoreRoutingModule
+    CommonModule,RouterModule, CoreRoutingModule , ReactiveFormsModule
   ],
   exports:[
     NavbarComponent,
-    FooterComponent,
+    FooterComponent, 
+    HttpClientModule ,
+    RouterModule 
     
   ]
 })

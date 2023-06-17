@@ -20,11 +20,11 @@
   </div>
 
   <div class="video-wrap">
-      <video autoplay="" loop="" muted="" class="custom-video" poster="">
+      <!-- <video autoplay="" loop="" muted="" class="custom-video" poster="">
           <source src="../../../assets/videos/backgroundvideo.mp4" type="video/mp4">
 
           Your browser does not support the video tag.
-      </video> -->
+      </video> --> 
       <p-galleria [(value)]="images" [responsiveOptions]="responsiveOptions" [autoPlay]="true" [containerStyle]="{ 'max-width': '100%' }" [numVisible]="4">
         <ng-template pTemplate="item" let-item>
             <img [src]="item.itemImageSrc" style="width: 100%; display: block;" />

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PhotoService } from 'src/app/auth/Services/Services/photo.service';
+import { PhotoService } from 'src/app/Services/photo.service';
 
 @Component({
   selector: 'app-card-section',

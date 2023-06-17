@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PhotoService } from 'src/app/auth/Services/Services/photo.service';
+import { PhotoService } from 'src/app/Services/photo.service';
 
 @Component({
   selector: 'app-hosection2',

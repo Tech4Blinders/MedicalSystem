@@ -11,7 +11,8 @@ import { CardSectionComponent } from './card-section/card-section.component';
 import { AppointmentComponent } from './appointment/appointment.component';
 
 @NgModule({
-  declarations: [HospitalComponent, HoSection2Component, Hosection1Component, Section6Component, CardSectionComponent, AppointmentComponent,],
+  declarations: [HospitalComponent, HoSection2Component, Hosection1Component, Section6Component, CardSectionComponent, AppointmentComponent,
+  ],
   imports: [CommonModule, HospitalRoutingModule,CardModule],
   exports: [HoSection2Component, Hosection1Component, Section6Component,AppointmentComponent],
 })

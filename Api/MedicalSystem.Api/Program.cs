@@ -35,6 +35,18 @@ namespace MedicalSystem.Api
 
 
             builder.Services.AddScoped<IUploadImg, UploadImg>();
+
+            builder.Services.AddCors(option =>
+            {
+                option.AddDefaultPolicy(policy =>
+                {
+                    policy.AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowAnyOrigin();
+                });
+            });
+
+            builder.Services.AddStripeInfrastructure(builder.Configuration);
             #region Middlewarees
             var app = builder.Build();
 
@@ -47,7 +59,7 @@ namespace MedicalSystem.Api
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
+            app.UseCors();
 
             app.MapControllers();
 

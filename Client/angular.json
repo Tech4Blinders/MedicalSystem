@@ -75,7 +75,7 @@
           "options": {
             "sslKey": "./ssl/localhost.key",
             "sslCert": "./ssl/localhost.crt",
-            "ssl": true
+            "ssl": false
           }
         },
         "extract-i18n": {

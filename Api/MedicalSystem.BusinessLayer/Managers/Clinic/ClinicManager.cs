@@ -62,7 +62,8 @@ namespace MedicalSystem.BusinessLayer
 				Id = a.Id,
 				Specilization = a.Specilization,
 				Description=a.Description,
-				RoomNumber=a.RoomNumber
+				RoomNumber=a.RoomNumber,
+				Image=a.Image
 
 			}).ToList();
 

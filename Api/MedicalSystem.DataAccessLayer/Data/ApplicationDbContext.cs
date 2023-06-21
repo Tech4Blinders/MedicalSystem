@@ -48,6 +48,11 @@ namespace MedicalSystem.DataAccessLayer
             builder.Entity<Appointment>().HasOne(a => a.Doctor).WithMany(b => b.Appointments)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            builder.Entity<Clinic>()
+               .HasOne(a => a.Branch).WithMany(b => b.Clinics)
+               .HasForeignKey(a => a.BranchId)
+               .OnDelete(DeleteBehavior.ClientSetNull);
+
             builder.Entity<Hospital>().HasData(FakeData.HospitalData());
             builder.Entity<Patient>().HasData(FakeData.PatientData());
             builder.Entity<BranchAddress>().HasData(FakeData.AddressData());

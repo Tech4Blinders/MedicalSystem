@@ -466,6 +466,9 @@ namespace MedicalSystem.DataAccessLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<int>("BranchId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(40)
@@ -485,12 +488,15 @@ namespace MedicalSystem.DataAccessLayer.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("BranchId");
+
                     b.ToTable("Clinic");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
+                            BranchId = 1,
                             Description = "Description for Family Medicine Clinic",
                             Image = "",
                             RoomNumber = 1001,
@@ -499,6 +505,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         new
                         {
                             Id = 2,
+                            BranchId = 1,
                             Description = "Description for Dental Clinic",
                             Image = "",
                             RoomNumber = 1002,
@@ -507,6 +514,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         new
                         {
                             Id = 3,
+                            BranchId = 2,
                             Description = "Description for Internal Medicine Clinic",
                             Image = "",
                             RoomNumber = 1003,
@@ -515,6 +523,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         new
                         {
                             Id = 4,
+                            BranchId = 2,
                             Description = "Description for Orthopedic Clinic",
                             Image = "",
                             RoomNumber = 1004,
@@ -523,6 +532,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         new
                         {
                             Id = 5,
+                            BranchId = 3,
                             Description = "Description for Cardiology Clinic",
                             Image = "",
                             RoomNumber = 1005,
@@ -531,6 +541,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         new
                         {
                             Id = 6,
+                            BranchId = 3,
                             Description = "Description for Pediatric Clinic",
                             Image = "",
                             RoomNumber = 1006,
@@ -1442,6 +1453,16 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                     b.Navigation("Doctor");
                 });
 
+            modelBuilder.Entity("MedicalSystem.CoreLayer.Clinic", b =>
+                {
+                    b.HasOne("MedicalSystem.CoreLayer.Branch", "Branch")
+                        .WithMany("Clinics")
+                        .HasForeignKey("BranchId")
+                        .IsRequired();
+
+                    b.Navigation("Branch");
+                });
+
             modelBuilder.Entity("MedicalSystem.CoreLayer.Department", b =>
                 {
                     b.HasOne("MedicalSystem.CoreLayer.Branch", "Branch")
@@ -1572,6 +1593,8 @@ namespace MedicalSystem.DataAccessLayer.Migrations
             modelBuilder.Entity("MedicalSystem.CoreLayer.Branch", b =>
                 {
                     b.Navigation("BranchDoctors");
+
+                    b.Navigation("Clinics");
                 });
 
             modelBuilder.Entity("MedicalSystem.CoreLayer.BranchAddress", b =>

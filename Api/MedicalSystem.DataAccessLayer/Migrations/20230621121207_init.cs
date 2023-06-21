@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MedicalSystem.DataAccessLayer.Migrations
 {
-    public partial class Init : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -63,22 +63,6 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_BranchAddress", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Clinic",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Specilization = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false),
-                    RoomNumber = table.Column<int>(type: "int", nullable: false),
-                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Clinic", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -246,6 +230,28 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         principalTable: "Hospital",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Clinic",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Specilization = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false),
+                    RoomNumber = table.Column<int>(type: "int", nullable: false),
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    BranchId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Clinic", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Clinic_Branch_BranchId",
+                        column: x => x.BranchId,
+                        principalTable: "Branch",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -468,19 +474,6 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Clinic",
-                columns: new[] { "Id", "Description", "Image", "RoomNumber", "Specilization" },
-                values: new object[,]
-                {
-                    { 1, "Description for Family Medicine Clinic", "", 1001, "Family Medicine" },
-                    { 2, "Description for Dental Clinic", "", 1002, "Dentistry" },
-                    { 3, "Description for Internal Medicine Clinic", "", 1003, "Internal Medicine" },
-                    { 4, "Description for Orthopedic Clinic", "", 1004, "Orthopedics" },
-                    { 5, "Description for Cardiology Clinic", "", 1005, "Cardiology" },
-                    { 6, "Description for Pediatric Clinic", "", 1006, "Pediatrics" }
-                });
-
-            migrationBuilder.InsertData(
                 table: "Hospital",
                 columns: new[] { "Id", "Email", "Name" },
                 values: new object[,]
@@ -519,6 +512,19 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                     { 7, 7, 3, "", "Branch J", "7797988521" },
                     { 8, 8, 4, "", "Branch H", "6597451215" },
                     { 9, 9, 1, "", "Branch I", "1564989848" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Clinic",
+                columns: new[] { "Id", "BranchId", "Description", "Image", "RoomNumber", "Specilization" },
+                values: new object[,]
+                {
+                    { 1, 1, "Description for Family Medicine Clinic", "", 1001, "Family Medicine" },
+                    { 2, 1, "Description for Dental Clinic", "", 1002, "Dentistry" },
+                    { 3, 2, "Description for Internal Medicine Clinic", "", 1003, "Internal Medicine" },
+                    { 4, 2, "Description for Orthopedic Clinic", "", 1004, "Orthopedics" },
+                    { 5, 3, "Description for Cardiology Clinic", "", 1005, "Cardiology" },
+                    { 6, 3, "Description for Pediatric Clinic", "", 1006, "Pediatrics" }
                 });
 
             migrationBuilder.InsertData(
@@ -696,6 +702,11 @@ namespace MedicalSystem.DataAccessLayer.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_BranchDoctor_BranchId",
                 table: "BranchDoctor",
+                column: "BranchId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Clinic_BranchId",
+                table: "Clinic",
                 column: "BranchId");
 
             migrationBuilder.CreateIndex(

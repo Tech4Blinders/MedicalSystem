@@ -86,37 +86,48 @@ public static class FakeData
             {   Id=1,
                 Specilization = "Family Medicine",
                 Description = "Description for Family Medicine Clinic",
-                RoomNumber = 1001
+                RoomNumber = 1001,
+                BranchId=1
             },
             new Clinic
             {   Id=2,
                 Specilization = "Dentistry",
                 Description = "Description for Dental Clinic",
-                RoomNumber = 1002
+                RoomNumber = 1002,
+                BranchId=1
+
             },
             new Clinic
             {   Id = 3,
                 Specilization = "Internal Medicine",
                 Description = "Description for Internal Medicine Clinic",
-                RoomNumber = 1003
+                RoomNumber = 1003,
+                BranchId=2
+
             },
             new Clinic
             {   Id = 4,
                 Specilization = "Orthopedics",
                 Description = "Description for Orthopedic Clinic",
-                RoomNumber = 1004
+                RoomNumber = 1004,
+                BranchId=2
+
             },
             new Clinic
             {   Id = 5,
                 Specilization = "Cardiology",
                 Description = "Description for Cardiology Clinic",
-                RoomNumber = 1005
+                RoomNumber = 1005,
+                BranchId=3
+
             },
             new Clinic
             {   Id = 6,
                 Specilization = "Pediatrics",
                 Description = "Description for Pediatric Clinic",
-                RoomNumber = 1006
+                RoomNumber = 1006,
+                BranchId=3
+
             }
             };
         return clinics;

@@ -26,6 +26,8 @@ namespace MedicalSystem.CoreLayer
         public BranchAddress BranchAddress { get; set; } = null!;
 
         public ICollection<BranchDoctor> BranchDoctors { get; set;}=new HashSet<BranchDoctor>();
-    
+        public ICollection<Clinic> Clinics { get; set; } = new HashSet<Clinic>();
+
+
     }
 }

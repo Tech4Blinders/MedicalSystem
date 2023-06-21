@@ -16,6 +16,9 @@ namespace MedicalSystem.CoreLayer
         [Required, Range(0, 9999)]
         public int RoomNumber { get; set; }
         public string Image { get; set; } = string.Empty;
+        [ForeignKey("Branch")]
+        public int BranchId { get; set; }
+        public Branch? Branch { get; set; }
 
         public ICollection<Doctor> Doctors = new HashSet<Doctor>();
     }

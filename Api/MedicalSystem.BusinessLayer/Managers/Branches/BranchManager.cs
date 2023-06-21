@@ -88,6 +88,30 @@ namespace MedicalSystem.BusinessLayer
             unitOfWork.SaveChanges();
             return true;
         }
+        public async Task<IEnumerable<BranchWithAddressReadDto?>> GetByIdWithAddress()
+        {
+            var branch = await unitOfWork._BranchRepo.GetWith( null,new string[] { "BranchAddress","Hospital" });
+            if (branch == null)
+            {
+                return new List<BranchWithAddressReadDto>().DefaultIfEmpty();
+            }
+            return branch.Select(a => new BranchWithAddressReadDto
+            {
+                Id = a.Id,
+                Name = a.Name,
+                PhoneNumber = a.PhoneNumber,
+                City = a.BranchAddress.City,
+                Country = a.BranchAddress.Country,
+                HospitalId = a.HospitalId,
+                HospitalName=a.Hospital.Name,
+                Image = a.Image
+            });;
+            
+
+
+        }
+
+
 
     }
 }

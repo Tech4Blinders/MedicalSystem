@@ -18,6 +18,10 @@ export class ClinicService {
   {
     return this.http.get<Clinic[]>(this.apiUrl);
   }
+  getClinicsByBranchId(id:number)
+  {
+    return this.http.get<Clinic[]>(this.apiUrl)
+  }
   
   setClinic(clinic) {
     this.clinic$.next(clinic);

@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { Branch } from '../_Models/dtos/branch';
 
 @Injectable({
   providedIn: 'root'
 })
-export class HospitalService {
+export class BranchService {
 
   baseUrl="https://localhost:7025/api/";
   
@@ -13,7 +14,7 @@ export class HospitalService {
   currentHospital = new BehaviorSubject<any>([]);
 
   getAllHospitals(){
-    return this.http.get(this.baseUrl+"branch");
+    return this.http.get<Branch[]>(this.baseUrl+"branch/address");
   }
 
   setHospital(hospital){

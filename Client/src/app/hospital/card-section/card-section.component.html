@@ -4,10 +4,10 @@
             <div class="col-lg-12 col-12">
                 <h2 class="mb-5">Our <u class="text-info">Clinics</u></h2>
             </div>
-            <div class="col-lg-4 cardItem" *ngFor="let item of images">
-                <p-card header={{item.title}} subheader="Card Subheader" [style]="{ width: '360px' }">
+            <div class="col-lg-4 cardItem mb-5" *ngFor="let item of clinicsInfo">
+                <p-card header={{item.specilization}} subheader="roomNumber: {{item.roomNumber}}" [style]="{ width: '360px' }">
                     <ng-template pTemplate="header">
-                        <img class="cardImg" alt="Card" src={{item.imgSrc}} />
+                        <img class="cardImg" alt="Card" src={{item.image}} />
                         <div class="middle">
                             <div class="text">see more</div>
                           </div>
@@ -19,7 +19,7 @@
                         <!-- <p-button label="Save" icon="pi pi-check"></p-button>
                         <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{ 'margin-left': '.5em' }"></p-button> -->
                         <!-- HTML !-->
-                         <button class="button-18" role="button">Button 18</button>
+                         <a class="button-18" role="button" routerLink="/clinic">Button 18</a>
 
                     </ng-template>
                 </p-card>

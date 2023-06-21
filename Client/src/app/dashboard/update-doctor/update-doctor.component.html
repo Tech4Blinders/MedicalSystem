@@ -1,0 +1,59 @@
+<div class="container my-5 mx-auto update"> 
+    <h1>Update "{{"doctorName"}}"</h1>
+    <form [formGroup]="doctForm" (ngSubmit)="onSubmit()">
+<div class="row">
+    <div class="col-lg-6">
+        <label for="first-name">Name: </label>
+        <input  id="first-name" class="form-control mb-4" type="text" formControlName="Name">
+        <div *ngIf="doctForm.get('Name')?.errors && doctForm.get('Name')?.touched" class="alert alert-danger">
+            <p *ngIf="doctForm.get('Name')?.getError('minlength')" class="m-0">Name minLength is 3</p>
+            <p *ngIf="doctForm.get('Name')?.getError('required')">Name is Required</p>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <label for="phone">Phone: </label>
+        <input  id="phone" class="form-control mb-4" type="text" formControlName="PhoneNumber">
+    </div>
+    <div class="col-lg-6">
+        <label for="gender">Gender: </label>
+        <input  id="gender" class="form-control mb-4" type="text" formControlName="Gender">
+    </div>
+    <div class="col-lg-6">
+        <label for="country">Country: </label>
+        <input  id="country" class="form-control mb-4" type="text" formControlName="Country">
+    </div>
+    <div class="col-lg-6">
+        <label for="city">City: </label>
+        <input  id="city" class="form-control mb-4" type="text" formControlName="City">
+    </div>
+    <div class="col-lg-6">
+        <label for="street">Street: </label>
+        <input  id="street" class="form-control mb-4" type="text" formControlName="Street">
+    </div>
+    <div class="col-lg-6">
+        <label for="email">Email: </label>
+        <input  id="email" class="form-control mb-4" type="email" formControlName="Email">
+        <div *ngIf="doctForm.get('Email')?.errors && doctForm.get('Email')?.touched" class="alert alert-danger">
+            <p *ngIf="doctForm.get('Email')?.getError('required')" class="m-0">Email is Required</p>
+            <p *ngIf="doctForm.get('Email')?.getError('email')" class="m-0">Invalid Email</p>
+         </div>
+    </div>
+    <div class="col-lg-6">
+        <label for="file">File: </label>
+        <input  id="file" class="form-control mb-4" type="file" formControlName="File">
+    </div>
+    <div class="col-lg-6">
+        <label for="offlineCost">Offline Cost: </label>
+        <input  id="offlineCost" class="form-control mb-4" type="number" formControlName="OfflineCost">
+    </div>
+    <div class="col-lg-6">
+        <label for="onlineCost">Online Cost: </label>
+        <input  id="onlineCost" class="form-control mb-4" type="number" formControlName="OnlineCost">
+    </div>
+</div>   
+    
+        <button type="submit" class="btn d-block ms-auto btn-info" [disabled]="doctForm.invalid" >Submit</button>
+    </form>
+</div>
+
+

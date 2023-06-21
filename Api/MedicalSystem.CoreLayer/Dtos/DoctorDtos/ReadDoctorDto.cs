@@ -17,5 +17,7 @@ public class ReadDoctorDto
     public string Image { get; set; } = string.Empty;
     public decimal OfflineCost { get; set; }
     public decimal? OnlineCost { get; set; }
+    //public string Certification { get; set; } = string.Empty;
+    //public string CertificationFrom { get; set; } = string.Empty;
 
 }

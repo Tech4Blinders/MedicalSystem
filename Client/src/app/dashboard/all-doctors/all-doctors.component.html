@@ -1,0 +1,24 @@
+<div class="table-responsive">
+    <table class="table table-primary">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Qualification</th>
+                <th>Country</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="" *ngFor="let item of doctorData">
+                <td >{{item.name}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.name}}</td>
+                <td>
+                    <a class="btn btn-primary me-5" routerLink="editDoctor/:1">Edit</a>
+                    <button class="btn btn-primary ">Delete</button>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>

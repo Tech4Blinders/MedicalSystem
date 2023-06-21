@@ -9,6 +9,7 @@ import { HomeModule } from './home/home.module';
 import { ButtonModule } from "primeng/button";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthenticationModule } from './authentication/authentication.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,9 @@ import { AuthenticationModule } from './authentication/authentication.module';
     BrowserAnimationsModule,
     CoreModule,
     HomeModule,ButtonModule , 
-    AuthenticationModule 
+    AuthenticationModule ,
+    DashboardModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

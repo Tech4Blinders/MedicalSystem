@@ -10,5 +10,8 @@ public class DoctorRepo : GenericRepo<Doctor>, IDoctorRepo
         _context = context;
     }
 
-    
+    public IEnumerable<Doctor> getDocByClinicId(int clinicId)
+    {
+        return _context.Set<Doctor>().Where(a => a.ClinicId == clinicId);
+    }
 }

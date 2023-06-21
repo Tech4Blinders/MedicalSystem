@@ -63,9 +63,9 @@ public class DoctorManager : IDoctorManager
 
     }
 
-    public IEnumerable<ReadDoctorDto> GetAll(string[]? includes = null)
+    public IEnumerable<ReadDoctorDto> GetAll(string[]? includes=null )
     {
-        var doctorsfromdb = _unitOfWork._DoctorRepo.GetWith(null, new string[] { "Department", "Clinic" }).Result;
+        var doctorsfromdb = _unitOfWork._DoctorRepo.GetWith(null, new string[] {"Department","Clinic"/*, "DoctorQualification"*/ }).Result;
         return doctorsfromdb.Select(a => new ReadDoctorDto
         {
             Name = a.Name,
@@ -81,7 +81,9 @@ public class DoctorManager : IDoctorManager
             ClinicId = a.ClinicId,
             DepartmentName = a.Department?.Name ?? "",
             ClinicName = a.Clinic?.Description ?? "",
-            Gender = a.Gender
+            Gender = a.Gender,
+            //Certification = a.DoctorQualifications.Select(a => a.Certification)?.ToString(),
+            //CertificationFrom = a.DoctorQualifications.Select(a => a.CertificationFrom)?.ToString()
         }).ToList();
 
     }
@@ -107,6 +109,29 @@ public class DoctorManager : IDoctorManager
             Gender = doctorfromdb.Gender
         };
 
+    }
+
+    public IEnumerable<ReadDoctorDto> GetDocByClinicId(int clinicId)
+    {
+        var doctors = _unitOfWork._DoctorRepo.getDocByClinicId(clinicId);
+        return doctors.Select(a => new ReadDoctorDto
+        {
+            Id=a.Id,
+            Name = a.Name,
+            City = a.City,
+            Country = a.Country,
+            Street = a.Street,
+            Email = a.Email,
+            Image = a.Image,
+            PhoneNumber = a.PhoneNumber,
+            OfflineCost = a.OfflineCost,
+            OnlineCost = a.OnlineCost,
+            DepartmentId = a.DepartmentId,
+            ClinicId = a.ClinicId,
+            DepartmentName = a.Department?.Name ?? "",
+            ClinicName = a.Clinic?.Description ?? "",
+            Gender = a.Gender,
+        }).ToList();
     }
 
     public bool Update(UpdateDoctorDto doctorDto)

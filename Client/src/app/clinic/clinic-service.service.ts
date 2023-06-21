@@ -3,55 +3,23 @@ import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ClinicServiceService {
+  baseUrl = 'https://localhost:7025/api/';
+  doctorsOfClinic: any[] = [];
+  constructor(private http: HttpClient) {}
 
-  baseUrl="https://localhost:7025/api/"
-  doctorsOfClinic: any[]=[];
-  constructor(private http: HttpClient) { }
+  getAllClinics() {
+    return this.http.get(this.baseUrl + 'Clinic').pipe(
+      catchError((err) => {
+        console.log(err);
+        throw 'something went wrong ' + err;
+      })
+    );
+  }
 
-getAllClinics(){
-  return this.http.get(this.baseUrl+"Clinic").pipe(
-    catchError(err => {
-      console.log(err);
-      throw "something went wrong "+err
-    })
-  )
-}
-
-  getDoctors(id:Number){
-    return this.http.get(this.baseUrl+"Doctor/clinic/"+id);
-    // return this.doctorsOfClinic=[
-    //   {
-    //     name:"ibrahim",
-    //     imgSrc:"../../assets/images/doctor.png",
-    //     qualifications:["master","doctor"],
-    //     rating:5,
-    //     country:"Alexandria"
-    //   },
-    //   {
-    //     name:"ibrahim",
-    //     imgSrc:"../../assets/images/doctor.png",
-    //     qualifications:["master","doctor"],
-    //     rating:5,
-    //     country:"Alexandria"
-    //   },
-    //   {
-    //     name:"ibrahim",
-    //     imgSrc:"../../assets/images/doctor.png",
-    //     qualifications:["master","doctor"],
-    //     rating:5,
-    //     country:"Alexandria"
-    //   },
-    //   {
-    //     name:"ibrahim",
-    //     imgSrc:"../../assets/images/doctor.png",
-    //     qualifications:["master","doctor"],
-    //     rating:5,
-    //     country:"Alexandria"
-    //   }
-
-    // ]
+  getDoctors(id: Number) {
+    return this.http.get(this.baseUrl + 'Doctor/clinic/' + id);
   }
 }

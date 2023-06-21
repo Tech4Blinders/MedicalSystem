@@ -1,4 +1,4 @@
-<section class="clinic-card section-padding" >
+<section class="clinic-card section-padding" id="hamada" >
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-12">
@@ -19,7 +19,7 @@
                     </p>
                     <ng-template pTemplate="footer">
                       
-                         <a class="button-18" role="button" routerLink="/clinic">Reserve</a>
+                         <a class="button-18" role="button" (click)="SelectDoctor(item)">Reserve</a>
 
                     </ng-template>
                 </p-card>

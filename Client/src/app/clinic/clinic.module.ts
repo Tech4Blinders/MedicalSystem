@@ -8,17 +8,22 @@ import { GalleriaModule } from 'primeng/galleria';
 import { DoctorCardComponent } from './doctor-card/doctor-card.component';
 import { CardModule } from 'primeng/card';
 import { RatingModule } from 'primeng/rating';
+import { AppointmentComponent } from './appointment/appointment.component';
+import { FormsModule } from '@angular/forms';
+import { MeetingComponent } from './meeting/meeting.component';
 
 
 @NgModule({
   declarations: [
     ClinicHomeComponent,
     SlideClincComponent,
-    DoctorCardComponent
+    DoctorCardComponent,
+    AppointmentComponent,
+    MeetingComponent
   ],
   imports: [
     CommonModule,
-    ClinicRoutingModule,GalleriaModule,CardModule ,RatingModule
+    ClinicRoutingModule,GalleriaModule,CardModule ,RatingModule,FormsModule
   ]
 })
 export class ClinicModule { }

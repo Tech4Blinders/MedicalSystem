@@ -25,9 +25,9 @@
 
           Your browser does not support the video tag.
       </video> -->
-      <p-galleria [(value)]="images" [responsiveOptions]="responsiveOptions" [autoPlay]="true" [containerStyle]="{ 'max-width': '100%' }" [numVisible]="4">
+      <p-galleria [(value)]="hospitals" [responsiveOptions]="hospitals" [autoPlay]="true" [containerStyle]="{ 'max-width': '100%' }" [numVisible]="4">
         <ng-template pTemplate="item" let-item>
-            <img [src]="item.itemImageSrc" style="width: 100%; display: block;" />
+            <img [src]="item.image" style="width: 100%; display: block;" />
         </ng-template>
         <!-- <ng-template pTemplate="thumbnail" let-item>
             <div class="grid grid-nogutter justify-content-between">
@@ -36,8 +36,8 @@
         </ng-template> -->
         <ng-template pTemplate="caption" let-item id="test">
             <div class="hero-text">
-                <h4 class="" style="margin-bottom: .5rem; color: #300000; ">{{ item.title }}</h4>
-                <a class="" [routerLink]="'visit'">{{ item.alt }}</a>
+                <h4 class="" style="margin-bottom: .5rem; color: #300000; ">{{ item.name }}</h4>
+                <a class="" (click)="setHospital(item)" [routerLink]="'visit'">{{ item.name }}</a>
             </div>
 
         </ng-template>

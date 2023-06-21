@@ -19,19 +19,15 @@ export class CardSectionComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.clinicService.getAllClinics().subscribe((data) => {
-      this.clinics = data;
-      console.log(data);
-      
+      this.clinics = data;      
     });
   }
   SelectClinic(item){
     this.clinicService.setClinic(item);
     this.router.navigate(["appointment"],{relativeTo:this.route})
     this.clinicService.getCurrentClinic().subscribe(a=>{
-      console.log(a);
+     
     })
   }
-  
-
   images: any[] = this.cardImg.getClinicImgs();
 }

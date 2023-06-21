@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="card text-left w-10">
+      <img class="card-img-top" [src]="doctor?.image" alt="" >
+    <div class="card-body">
+      <h4 class="card-title">{{doctor?.name}}</h4>
+      <p class="card-text">{{doctor?.email}}</p>
+    </div>
+  </div>
+  <div *ngFor="let item of appointments" class="item" (click)="SelectAppointment(item)" >
+    {{ item.date | date : "EEEE  MMMM, y, h:mm a" }}
+  </div>
+</div>

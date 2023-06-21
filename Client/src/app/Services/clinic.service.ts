@@ -10,15 +10,19 @@ export class ClinicService {
   constructor(private http: HttpClient) {}
 
   private clinic$ = new BehaviorSubject<any>({});
-  private apiUrl = 'https://localhost:7025/api/Clinic';
+  private apiUrl = 'https://localhost:7025/api/';
   getClinic(clinicId: number): Observable<Clinic> {
     return this.http.get<Clinic>(`${this.apiUrl}/${clinicId}`);
   }
   getAllClinics():Observable<Clinic[]>
   {
-    return this.http.get<Clinic[]>(this.apiUrl);
+    return this.http.get<Clinic[]>(this.apiUrl+"Clinic");
   }
   
+  getClinicsByHosId(id:Number)
+  {
+    return this.http.get(this.apiUrl+"Clinic/HospitalClinics/"+id);
+  }
   setClinic(clinic) {
     this.clinic$.next(clinic);
   }

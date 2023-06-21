@@ -40,6 +40,17 @@ namespace MedicalSystem.Api.Controllers
             }
             return Ok(Clinic);
         }
+        // clinics in specific hospital
+        [HttpGet("HospitalClinics/{id}")]
+        public ActionResult<ClinicWithIdDto> GetClinicsInHospital(int id)
+        {
+            var Clinic = _ClinicManager.GetClinicsByHosId(id);
+            if (Clinic == null)
+            {
+                return NotFound();
+            }
+            return Ok(Clinic);
+        }
 
         [HttpPost]
         public ActionResult<int> Add([FromForm] ClinicWithoutIdDto ClinicDto)

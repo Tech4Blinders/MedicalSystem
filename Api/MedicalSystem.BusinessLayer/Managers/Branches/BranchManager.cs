@@ -52,7 +52,8 @@ namespace MedicalSystem.BusinessLayer
                 Name = a.Name,
                 PhoneNumber = a.PhoneNumber,
                 HospitalId = a.HospitalId,
-                BranchAddressId = a.BranchAddressId
+                BranchAddressId = a.BranchAddressId,
+                Image = a.Image 
             }).ToList();
         }
 

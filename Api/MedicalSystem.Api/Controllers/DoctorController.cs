@@ -23,7 +23,11 @@ namespace MedicalSystem.Api.Controllers
           
         }
         [HttpGet]
-        public  ActionResult<IEnumerable<ReadDoctorDto>> GetAll() =>  Ok(_doctorManager.GetAll());
+        public ActionResult<IEnumerable<ReadDoctorDto>> GetAll()
+        {
+            string[] includedModel = { "DoctorQualification" };
+           return Ok(_doctorManager.GetAll()); 
+        }
 
         [HttpGet("{id}")]
         public  ActionResult<ReadDoctorDto> GetById(int id)
@@ -31,6 +35,13 @@ namespace MedicalSystem.Api.Controllers
             var doctor =  _doctorManager.GetById(id);
             if (doctor == null) return NotFound("Doctor Is Not Found");
             return Ok(doctor);
+        }
+        [HttpGet("clinic/{id}")]
+        public ActionResult<IEnumerable<ReadDoctorDto>> GetByClinicId(int id)
+        {
+            var doctors = _doctorManager.GetDocByClinicId(id);
+            
+            return Ok(doctors);
         }
         [HttpPost]
         public async Task<ActionResult<ReadDoctorDto>>  Add([FromForm] AddDoctorDto doctorDto)

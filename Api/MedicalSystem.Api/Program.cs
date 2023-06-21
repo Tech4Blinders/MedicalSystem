@@ -57,6 +57,10 @@ namespace MedicalSystem.Api
             }
 
             app.UseHttpsRedirection();
+            app.UseCors(options =>
+            {
+                options.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+            });
 
             app.UseAuthorization();
             app.UseCors();

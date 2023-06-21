@@ -63,7 +63,7 @@ namespace MedicalSystem.BusinessLayer
 				Specilization = a.Specilization,
 				Description=a.Description,
 				RoomNumber=a.RoomNumber,
-				Image=a.Image
+				Image= a.Image
 
 			}).ToList();
 

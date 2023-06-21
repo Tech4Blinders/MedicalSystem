@@ -1,0 +1,21 @@
+
+<div class="dashboard">
+    <div class="container">
+        <h1 class="">Doctors</h1>
+
+        <button class="btn btn-primary my-5" (click)="addDoc()">Add Doctor</button>
+        <div *ngIf="!addFlag; else elseBlock">
+            <app-all-doctors></app-all-doctors>
+
+        </div>
+        <ng-template #elseBlock>
+           <app-add-doctor [addFlag]="addFlag" (hideForm)="changeFlag($event)"></app-add-doctor>
+
+        </ng-template>
+        
+
+      
+    </div>
+</div>
+
+

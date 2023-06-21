@@ -18,7 +18,7 @@ export class ClinicService {
   {
     return this.http.get<Clinic[]>(this.apiUrl);
   }
-
+  
   setClinic(clinic) {
     this.clinic$.next(clinic);
   }

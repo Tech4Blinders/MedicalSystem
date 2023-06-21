@@ -15,4 +15,9 @@ public class ClinicRepo:GenericRepo<Clinic>,IClinicRepo
         {
 		_context = context;
         }
+
+    public IEnumerable<Clinic> getClinicsByHosId(int branchId)
+    {
+        return _context.Set<Clinic>().Where(a => a.BranchId == branchId);
     }
+}

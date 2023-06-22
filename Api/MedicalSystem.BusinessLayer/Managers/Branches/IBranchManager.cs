@@ -15,6 +15,7 @@ namespace MedicalSystem.BusinessLayer
         public bool Update(UpdateBranchDto entity);
 
         public void Delete(int id);
+        public Task<IEnumerable<BranchWithAddressReadDto?>> GetByIdWithAddress();
 
 
 

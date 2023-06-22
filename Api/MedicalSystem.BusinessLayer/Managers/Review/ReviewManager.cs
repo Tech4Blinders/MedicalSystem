@@ -60,9 +60,9 @@ namespace MedicalSystem.BusinessLayer
 
 		}
 
-		public Review? GetById(int id)
+		public IEnumerable<Review?> GetById(int id)
 		{
-			var Review = _unitOfWork._ReviewRepo.GetByIdAsync(id).Result;
+			var Review = _unitOfWork._ReviewRepo.GetWith(a=>a.DoctorId==id).Result;
 			if (Review is null)
 				return null;
 			return Review;

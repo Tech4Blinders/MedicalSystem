@@ -18,16 +18,15 @@
         
         <div class="row">
             <div class="col-lg-4 cardItem mb-5 text-center" *ngFor="let item of filteredHospitals">
-                <p-card header={{item.name}} subheader="roomNumber: {{item.phoneNumber}}" [style]="{ width: '360px' }">
+                <p-card header={{item.name}} subheader="Phone Number: {{item.phoneNumber}}" [style]="{ width: '360px' }">
                     <ng-template pTemplate="header">
                         <img class="cardImg" alt="Card" src={{item.image}} />
                         <div class="middle">
-                            <div class="text">see more</div>
+                            <div class="text">{{item.hospitalName}}</div>
                           </div>
                     </ng-template>
                     <p>
-                       <!-- {{item.description}} -->
-                       Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores, earum aliquid! Quaerat distinctio sit perspiciatis
+                       {{item.city}},{{item.country}}
                     </p>
                     <ng-template pTemplate="footer">
                         <!-- <p-button label="Save" icon="pi pi-check"></p-button>

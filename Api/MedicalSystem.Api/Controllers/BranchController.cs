@@ -68,6 +68,12 @@ namespace MedicalSystem.Api.Controllers
             }
             return NoContent();
         }
+        [HttpGet("Address")]
+        public ActionResult GetAllWithAddress()
+        {
+            var branches = branchManager.GetByIdWithAddress().Result;
+            return Ok(branches);
+        }
     }
 
 

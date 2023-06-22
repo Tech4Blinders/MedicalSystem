@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Clinic } from '../_Models/dtos/clinic';
+import { Doctor } from '../_Models/dtos/doctor';
 
 @Injectable({
   providedIn: 'root',
@@ -18,6 +19,10 @@ export class ClinicService {
   {
     return this.http.get<Clinic[]>(this.apiUrl+"Clinic");
   }
+  getClinicsByBranchId(id:number)
+  {
+    return this.http.get<Clinic[]>(this.apiUrl)
+  }
   
   getClinicsByHosId(id:Number)
   {
@@ -28,5 +33,8 @@ export class ClinicService {
   }
   getCurrentClinic() {
     return this.clinic$;
+  } 
+  getDoctors(id: Number) {
+    return this.http.get<Doctor[]>(this.apiUrl + 'Doctor/clinic/' + id);
   }
 }

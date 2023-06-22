@@ -8,12 +8,11 @@ import { HospitalRoutingModule } from './hospital-routing.module';
 import { Hosection1Component } from './hosection1/hosection1.component';
 import { Section6Component } from './section6/section6.component';
 import { CardSectionComponent } from './card-section/card-section.component';
-import { AppointmentComponent } from './appointment/appointment.component';
 
 @NgModule({
-  declarations: [HospitalComponent, HoSection2Component, Hosection1Component, Section6Component, CardSectionComponent, AppointmentComponent,
+  declarations: [HospitalComponent, HoSection2Component, Hosection1Component, Section6Component, CardSectionComponent,
   ],
   imports: [CommonModule, HospitalRoutingModule,CardModule],
-  exports: [HoSection2Component, Hosection1Component, Section6Component,AppointmentComponent],
+  exports: [HoSection2Component, Hosection1Component, Section6Component],
 })
 export class HospitalModule {}

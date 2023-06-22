@@ -29,7 +29,7 @@ namespace MedicalSystem.Api.Controllers
 
 		// GET api/<ReviewController>/5
 		[HttpGet("{id}")]
-		public ActionResult<ReviewWithIdDto> Get(int id)
+		public ActionResult<IEnumerable<ReviewWithIdDto>> Get(int id)
 		{
 			var Review = _ReviewManager.GetById(id);
 			if (Review == null)

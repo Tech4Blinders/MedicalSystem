@@ -7,11 +7,11 @@
 
                   <h1 class="text-white mb-4"><u class="text-info">ALAlamiya</u> Center 2023</h1>
 
-                  <div class="d-flex justify-content-center align-items-center">
+                  <!-- <div class="d-flex justify-content-center align-items-center">
                       <span class="date-text">We Offer Online Courses</span>
 
                       <span class="location-text">Tahrir Square, Al Riyadh</span>
-                  </div>
+                  </div> -->
 
                   <a href="#section_2" class="custom-link bi-arrow-down arrow-icon"></a>
               </div>
@@ -19,30 +19,36 @@
       </div>
   </div>
 
-  <div class="video-wrap">
-      <!-- <video autoplay="" loop="" muted="" class="custom-video" poster="">
+   <div class="video-wrap">
+       <!-- /////<video autoplay="" loop="" muted="" class="custom-video" poster="">
           <source src="../../../assets/videos/backgroundvideo.mp4" type="video/mp4">
 
           Your browser does not support the video tag.
-      </video> -->
+      </video> ///// -->
       <p-galleria [(value)]="hospitals" [responsiveOptions]="hospitals" [autoPlay]="true" [containerStyle]="{ 'max-width': '100%' }" [numVisible]="4">
         <ng-template pTemplate="item" let-item>
             <img [src]="item.image" style="width: 100%; display: block;" />
         </ng-template>
-        <!-- <ng-template pTemplate="thumbnail" let-item>
+
+        <!-- ///// <ng-template pTemplate="thumbnail" let-item>
             <div class="grid grid-nogutter justify-content-between">
                 <img [src]="item.thumbnailImageSrc" style="display: block; width: 20vh; height: 20vh;" />
             </div>
-        </ng-template> -->
+        </ng-template> ///// -->
         <ng-template pTemplate="caption" let-item id="test">
             <div class="hero-text">
-                <h4 class="" style="margin-bottom: .5rem; color: #300000; ">{{ item.name }}</h4>
-                <a class="" (click)="setHospital(item)" [routerLink]="'visit'">{{ item.name }}</a>
+              <p (click)="setHospital(item)">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                 Magnam nulla mollitia facilis enim accusamus alias molestias dolorem.
+                
+                </p>
+                <h4 class="" style="margin-bottom: .5rem; color: #fff; ">{{item.name}}</h4>
+                <a class="" (click)="setHospital(item)" [routerLink]="'visit'">visit</a>
             </div>
 
         </ng-template>
-</p-galleria>
-  </div>
+     </p-galleria>
+  </div> 
 </section>
 
 

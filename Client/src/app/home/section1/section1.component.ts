@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { HospitalService } from 'src/app/Services/hospital.service';
+import { BranchService } from 'src/app/Services/branch.service';
 import { PhotoService } from 'src/app/Services/photo.service';
 
 @Component({
@@ -12,7 +12,7 @@ export class Section1Component implements OnInit{
   id: string = '1';
   hospitals:any[];
   route:ActivatedRoute;
-  constructor(private Photo: PhotoService, private hospitalService: HospitalService,private router:Router) {}
+  constructor(private Photo: PhotoService, private hospitalService: BranchService,private router:Router) {}
 
   ngOnInit(): void {
     this.getHospitals();

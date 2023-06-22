@@ -7,10 +7,12 @@ import { RegisterationComponent } from './authentication/registeration/registera
 const routes: Routes = [
 {path: '', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
 {path:'register',component:RegisterationComponent },
-{path:'login' , component:LoginComponent} , 
-{path:'visit',loadChildren: ()=>import('./hospital/hospital.module').then(m=>m.HospitalModule)} , 
-{path:'clinic',loadChildren: ()=>import('./clinic/clinic.module').then(m=>m.ClinicModule)} , 
+{path:'login' , component:LoginComponent} ,
+{path:'visit',loadChildren: ()=>import('./hospital/hospital.module').then(m=>m.HospitalModule)} ,
+{path:'clinic',loadChildren: ()=>import('./clinic/clinic.module').then(m=>m.ClinicModule)} ,
 {path:'dashboard',loadChildren: ()=>import('./dashboard/dashboard.module').then(m=>m.DashboardModule)} ,
+{path:'meeting',loadChildren: ()=>import('./zoom-meeting/zoom-meeting.module').then(m=>m.ZoomMeetingModule)} ,
+
 ];
 
 @NgModule({

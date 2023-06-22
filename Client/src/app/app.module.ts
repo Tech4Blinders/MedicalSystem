@@ -10,6 +10,7 @@ import { ButtonModule } from "primeng/button";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { ZoomMeetingModule } from './zoom-meeting/zoom-meeting.module';
 
 @NgModule({
   declarations: [
@@ -20,10 +21,12 @@ import { DashboardModule } from './dashboard/dashboard.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     CoreModule,
-    HomeModule,ButtonModule , 
-    AuthenticationModule ,
+    HomeModule,
+    ButtonModule,
+    AuthenticationModule,
     DashboardModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ZoomMeetingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

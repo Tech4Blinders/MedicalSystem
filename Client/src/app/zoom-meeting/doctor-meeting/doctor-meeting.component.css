@@ -1,0 +1,37 @@
+/*
+body {
+    overflow: auto !important;
+}
+
+body>#zmmtg-root {
+    display: block !important;
+}
+
+#zmmtg-root,
+.meeting-client,
+.meeting-client-inner {
+    width: 100% !important;
+    height: 100% !important;
+    position: relative !important;
+}
+
+#wc-footer {
+    bottom: auto !important;
+    width: 100% !important;
+}
+
+#dialog-join {
+    width: 100% !important;
+}
+
+#sv-active-video,
+.active-main,
+#sv-active-speaker-view,
+.main-layout {
+    height: 100% !important;
+    width: 100% !important;
+}
+
+.suspension-window {
+    transform: translate(-444px, 10px) !important;
+} */

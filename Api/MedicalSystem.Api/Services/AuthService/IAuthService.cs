@@ -1,8 +1,11 @@
-﻿namespace MedicalSystem.Api.Services.AuthService
+﻿using MedicalSystem.BusinessLayer;
+using MedicalSystem.BusinessLayer.Managers.IdentityDtos;
+
+namespace MedicalSystem.Api.Services.AuthService
 {
     public interface IAuthService
     {
-        public string Login(string username, string password);
-        public string Register(string username, string password);
+        Task<AuthDto> RegisterAsync(RegisterDto dto);
+
     }
 }

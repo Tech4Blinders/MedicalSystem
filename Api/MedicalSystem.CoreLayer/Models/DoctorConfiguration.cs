@@ -7,9 +7,9 @@ namespace MedicalSystem.CoreLayer
     {
         public void Configure(EntityTypeBuilder<Doctor> builder)
         {
-            builder.Property(d => d.Name)
-                .HasMaxLength(50)
-                .IsRequired();
+            //builder.Property(d => d.Name)
+            //    .HasMaxLength(50)
+            //    .IsRequired();
         }
     }
 }

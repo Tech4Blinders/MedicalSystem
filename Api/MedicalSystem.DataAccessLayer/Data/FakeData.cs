@@ -4,17 +4,18 @@ namespace MedicalSystem.DataAccessLayer;
 
 public static class FakeData
 {
+    /*
     public static List<Hospital> HospitalData()
     {
         List<Hospital> hospitals = new List<Hospital>()
             {
-                new Hospital {Id=1, Name = "St. Jude Children's Research Hospital", Email = "stjude@example.com" },
-                new Hospital {Id=2, Name = "Mount Sinai Hospital", Email = "mountsinai@example.com" },
-                new Hospital {Id=3, Name = "Children's Hospital of Philadelphia", Email = "chop@example.com" },
-                new Hospital {Id=4, Name = "Toronto General Hospital", Email = "torontogeneral@example.com" },
-                new Hospital {Id=5, Name = "Texas Medical Center", Email = "tmc@example.com" },
-                new Hospital {Id=6, Name = "Moffitt Cancer Center", Email = "moffitt@example.com" },
-                new Hospital {Id=7, Name = "Barnes-Jewish Hospital", Email = "barnesjewish@example.com" },
+                new Hospital { Name = "St. Jude Children's Research Hospital", Email = "stjude@example.com" },
+                new Hospital { Name = "Mount Sinai Hospital", Email = "mountsinai@example.com" },
+                new Hospital { Name = "Children's Hospital of Philadelphia", Email = "chop@example.com" },
+                new Hospital { Name = "Toronto General Hospital", Email = "torontogeneral@example.com" },
+                new Hospital { Name = "Texas Medical Center", Email = "tmc@example.com" },
+                new Hospital { Name = "Moffitt Cancer Center", Email = "moffitt@example.com" },
+                new Hospital { Name = "Barnes-Jewish Hospital", Email = "barnesjewish@example.com" },
             };
         return hospitals;
     }
@@ -22,10 +23,10 @@ public static class FakeData
     {
         List<Patient> patients = new List<Patient>()
             {
-                new Patient {Id=1, Name = "John Smith", PhoneNumber = "1234567890", Gender = "M", Age = 25, Email = "john@example.com" },
-                new Patient {Id=2,Name = "Jane Doe", PhoneNumber = "9876543210", Gender = "F", Age = 30, Email = "jane@example.com" },
-                new Patient {Id=3, Name = "Alex Johnson", PhoneNumber = "5555555555", Gender = "M", Age = 40, Email = "alex@example.com" },
-                new Patient {Id=4, Name = "Emily Williams", PhoneNumber = "1112223333", Gender = "F", Age = 22, Email = "emily@example.com" }
+                new Patient { Name = "John Smith", PhoneNumber = "1234567890", Gender = "M", Age = 25, Email = "john@example.com" },
+                new Patient {Name = "Jane Doe", PhoneNumber = "9876543210", Gender = "F", Age = 30, Email = "jane@example.com" },
+                new Patient { Name = "Alex Johnson", PhoneNumber = "5555555555", Gender = "M", Age = 40, Email = "alex@example.com" },
+                new Patient { Name = "Emily Williams", PhoneNumber = "1112223333", Gender = "F", Age = 22, Email = "emily@example.com" }
             };
 
 
@@ -138,7 +139,7 @@ public static class FakeData
             {
                     new Doctor
                 {
-                    Id=1,
+                  
                     Name = "Dr. Ahmed Ali",
                     PhoneNumber = "+971 123-456-7890",
                     Gender = "Male",
@@ -152,7 +153,7 @@ public static class FakeData
                     OnlineCost=100
                 },
                 new Doctor
-                {   Id = 2,
+                {   
                     Name = "Dr. Fatima Hassan",
                     PhoneNumber = "+971 987-654-3210",
                     Gender = "Female",
@@ -166,7 +167,7 @@ public static class FakeData
                     OnlineCost=200
                 },
                 new Doctor
-                {Id = 3,
+                {
                     Name = "Dr. Ali Mahmoud",
                     PhoneNumber = "+971 555-123-4567",
                     Gender = "Male",
@@ -180,7 +181,7 @@ public static class FakeData
                     OnlineCost=300
                 },
                 new Doctor
-                {Id = 4,
+                {
                     Name = "Dr. Aisha Khan",
                     PhoneNumber = "+971 555-987-6543",
                     Gender = "Female",
@@ -194,7 +195,7 @@ public static class FakeData
                     OnlineCost=400
                 },
                 new Doctor
-                {Id = 5,
+                {
                     Name = "Dr. Omar Ahmed",
                     PhoneNumber = "+971 555-567-8901",
                     Gender = "Male",
@@ -208,7 +209,7 @@ public static class FakeData
                     OnlineCost=500
                 },
                 new Doctor
-                { Id=6,
+                { 
                     Name = "Dr. Layla Hassan",
                     PhoneNumber = "+971 555-210-9876",
                     Gender = "Female",
@@ -222,7 +223,7 @@ public static class FakeData
                     OnlineCost=600
                 },
                 new Doctor
-                {Id=7,
+                {
                     Name = "Dr. Ibrahim Khalid",
                     PhoneNumber = "+971 555-876-5432",
                     Gender = "Male",
@@ -237,7 +238,7 @@ public static class FakeData
                 },
                 new Doctor
                 {
-                    Id=8,
+                    
                     Name = "Dr. Sarah Ahmed",
                     PhoneNumber = "+971 555-432-1098",
                     Gender = "Female",
@@ -537,4 +538,5 @@ public static class FakeData
         };
         return reviews;
     }
+    */
 }

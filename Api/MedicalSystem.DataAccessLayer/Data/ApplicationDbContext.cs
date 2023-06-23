@@ -67,18 +67,18 @@ namespace MedicalSystem.DataAccessLayer
                .HasForeignKey(a => a.BranchId)
                .OnDelete(DeleteBehavior.ClientSetNull);
 
-            //builder.Entity<Hospital>().HasData(FakeData.HospitalData());
-            //builder.Entity<Patient>().HasData(FakeData.PatientData());
-            //builder.Entity<BranchAddress>().HasData(FakeData.AddressData());
-            //builder.Entity<Branch>().HasData(FakeData.BranchData());
-            //builder.Entity<Department>().HasData(FakeData.DepartmentData());
-            //builder.Entity<Clinic>().HasData(FakeData.ClinicData());
-            //builder.Entity<Doctor>().HasData(FakeData.DoctorData());
-            //builder.Entity<DoctorQualification>().HasData(FakeData.DoctorQualificationData());
-            //builder.Entity<BranchDoctor>().HasData(FakeData.BranchDoctorData());
-            //builder.Entity<Appointment>().HasData(FakeData.AppointmentData());
-            //builder.Entity<Report>().HasData(FakeData.ReportData());
-            //builder.Entity<Review>().HasData(FakeData.ReviewData());
+            builder.Entity<Hospital>().HasData(FakeData.HospitalData());
+            builder.Entity<Patient>().HasData(FakeData.PatientData());
+            builder.Entity<BranchAddress>().HasData(FakeData.AddressData());
+            builder.Entity<Branch>().HasData(FakeData.BranchData());
+            builder.Entity<Department>().HasData(FakeData.DepartmentData());
+            builder.Entity<Clinic>().HasData(FakeData.ClinicData());
+            builder.Entity<Doctor>().HasData(FakeData.DoctorData());
+            builder.Entity<DoctorQualification>().HasData(FakeData.DoctorQualificationData());
+            builder.Entity<BranchDoctor>().HasData(FakeData.BranchDoctorData());
+            builder.Entity<Appointment>().HasData(FakeData.AppointmentData());
+            builder.Entity<Report>().HasData(FakeData.ReportData());
+            builder.Entity<Review>().HasData(FakeData.ReviewData());
 
 
 

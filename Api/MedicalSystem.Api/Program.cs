@@ -1,7 +1,12 @@
+using CloudinaryDotNet.Actions;
+using MedicalSystem.Api.Services.AuthService;
 using MedicalSystem.Api.Services.UploadImage;
 using MedicalSystem.BusinessLayer;
+using MedicalSystem.CoreLayer;
 using MedicalSystem.DataAccessLayer;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace MedicalSystem.Api
 {
@@ -10,6 +15,23 @@ namespace MedicalSystem.Api
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = "Tech6Blinders";
+                options.DefaultChallengeScheme = "Tech6Blinders";
+            })
+                .AddJwtBearer("Tech6Blinders", options =>
+                {
+                    string key = builder.Configuration.GetValue<string>("key") ?? string.Empty;
+                    var keyinbytes = Encoding.ASCII.GetBytes(key);
+                    var symmetricSecurityKey = new SymmetricSecurityKey(keyinbytes);
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        IssuerSigningKey = symmetricSecurityKey,
+                        ValidateIssuer = false,
+                        ValidateAudience = false,
+                    };
+                });
 
             #region Default
             builder.Services.AddControllers();
@@ -18,7 +40,7 @@ namespace MedicalSystem.Api
             #endregion
 
             builder.Services.AddDbContext<ApplicationDbContext>();
-            
+            builder.Services.AddIdentity<User, IdentityRole<int>>().AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
             builder.Services.AddScoped<IPatientManager, PatientManager>();
             builder.Services.AddScoped<IBranchDoctorManager, BranchDoctorManager>();
@@ -29,10 +51,10 @@ namespace MedicalSystem.Api
             builder.Services.AddScoped<IClinicManager, ClinicManager>();
             builder.Services.AddScoped<IReviewManager, ReviewManager>();
             builder.Services.AddScoped<IBranchManager, BranchManager>();
-            builder.Services.AddScoped<IBranchAddManager,BranchAddManager>();
+            builder.Services.AddScoped<IBranchAddManager, BranchAddManager>();
             builder.Services.AddScoped<IAvaliableAppointmentManager, AvaliableAppointmentManager>();
             builder.Services.AddScoped<IDoctorQualificationManager, DoctorQualificationManager>();
-
+            builder.Services.AddScoped<IAuthService, AuthSevice>();
 
             builder.Services.AddScoped<IUploadImg, UploadImg>();
 
@@ -62,6 +84,7 @@ namespace MedicalSystem.Api
                 options.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
             });
 
+            app.UseAuthentication();
             app.UseAuthorization();
             app.UseCors();
 

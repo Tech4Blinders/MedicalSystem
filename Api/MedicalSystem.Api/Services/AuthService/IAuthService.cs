@@ -6,6 +6,8 @@ namespace MedicalSystem.Api.Services.AuthService
     public interface IAuthService
     {
         Task<AuthDto> RegisterAsync(RegisterDto dto);
+        Task<AuthDto> LoginAsync(LoginDto dto);
+
 
     }
 }

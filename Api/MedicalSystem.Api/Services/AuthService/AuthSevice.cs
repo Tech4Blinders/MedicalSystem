@@ -1,4 +1,7 @@
-﻿using MedicalSystem.CoreLayer;
+﻿using MedicalSystem.Api.Services.AuthService;
+using MedicalSystem.BusinessLayer;
+using MedicalSystem.BusinessLayer.Managers.IdentityDtos;
+using MedicalSystem.CoreLayer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -7,41 +10,73 @@ using System.Text;
 
 namespace MedicalSystem.Api;
 
-public class AuthSevice 
+public class AuthSevice : IAuthService
 {
     private readonly UserManager<User> _userManager;
     private readonly IConfiguration _configuration;
 
-    public AuthSevice(UserManager<User> userManager  , IConfiguration configuration)
+    public AuthSevice(UserManager<User> userManager, IConfiguration configuration)
     {
         _userManager = userManager;
         _configuration = configuration;
     }
+
+    public async Task<AuthDto> LoginAsync(LoginDto dto)
+    {
+        var user = await _userManager.FindByNameAsync(dto.UserName);
+        AuthDto authDto = new AuthDto();
+        if (user == null)
+        {
+            authDto.Message = "User not found";
+        }
+        else
+        {
+            bool isAuth = await _userManager.CheckPasswordAsync(user, dto.Password);
+            if (!isAuth)
+            {
+                authDto.Message = "Password is wrong";
+            }
+            var token = await CreateJwtToken(user);
+            var tokenHandeler = new JwtSecurityTokenHandler();
+            authDto.Token = tokenHandeler.WriteToken(token);
+            authDto.IsAuthenticated = true;
+            authDto.Username = user.UserName;
+            authDto.Email = user.Email;
+        }
+        
+        return authDto;
+    }
+
+    public Task<AuthDto> RegisterAsync(RegisterDto dto)
+    {
+        throw new NotImplementedException();
+    }
+
     private async Task<JwtSecurityToken> CreateJwtToken(User user, string role)
     {
 
-     var claims = new List<Claim>()
+        var claims = new List<Claim>()
     {
-       new Claim(ClaimTypes.Role , role==String.Empty?"patient":role),
+       new Claim(ClaimTypes.Role , role == String.Empty ? "patient" : role),
        new Claim(ClaimTypes.Email , user.Email) ,
        new Claim(ClaimTypes.Name , user.Name),
        new Claim(ClaimTypes.NameIdentifier ,user.Id.ToString())
     };
-        await _userManager.AddClaimsAsync(user , claims);
+        await _userManager.AddClaimsAsync(user, claims);
 
 
         string key = _configuration.GetValue<string>("key") ?? string.Empty;
         var keyinbytes = Encoding.ASCII.GetBytes(key);
-        var symmetricSecurityKey = new SymmetricSecurityKey(keyinbytes); 
+        var symmetricSecurityKey = new SymmetricSecurityKey(keyinbytes);
         var siginingcredintials = new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha256);
 
         var jwtsecuritytoken = new JwtSecurityToken(
-            
-            claims:claims , 
-            signingCredentials:siginingcredintials,
-            expires:DateTime.Now.AddDays(20) 
+
+            claims: claims,
+            signingCredentials: siginingcredintials,
+            expires: DateTime.Now.AddDays(20)
             );
-        return jwtsecuritytoken; 
+        return jwtsecuritytoken;
     }
     private async Task<JwtSecurityToken> CreateJwtToken(User user)
     {

@@ -20,8 +20,10 @@ public class UnitOfWork : IUnitOfWork
     public IBranchAddressRepo _BranchAddressRepo { get; }
 
     public IAvaliableAppointmentRepo _AvaliableAppointmentRepo { get; }
+	public IZoomMeetingRepo _ZoomMeetingRepo { get; }
 
-    public UnitOfWork(ApplicationDbContext context)
+
+	public UnitOfWork(ApplicationDbContext context)
     {
         _context = context;
         _DoctorRepo = new DoctorRepo(_context);
@@ -35,7 +37,9 @@ public class UnitOfWork : IUnitOfWork
         _AvaliableAppointmentRepo=new AvaliableAppointmentRepo(_context);
         _BranchRepo = new BranchRepo(_context);
         _BranchAddressRepo = new BranchAddressRepo(_context);
-    }
+        _ZoomMeetingRepo = new ZoomMeetingRepo(_context);
+
+	}
 
 
     public int SaveChanges()

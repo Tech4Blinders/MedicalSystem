@@ -27,6 +27,9 @@ public class AppointmentRepo : GenericRepo<Appointment>, IAppointmentRepo
 
     public Appointment? GetAppointmentById(int id)
     {
-        return _context.Set<Appointment>().FirstOrDefault(appointment => appointment.Id == id);
+        return _context
+            .Set<Appointment>()
+            .Include(app=>app.ZoomMeeting)
+            .FirstOrDefault(appointment => appointment.Id == id);
     }
 }

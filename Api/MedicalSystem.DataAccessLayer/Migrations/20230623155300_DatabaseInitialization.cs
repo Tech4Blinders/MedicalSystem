@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MedicalSystem.DataAccessLayer.Migrations
 {
-    public partial class init : Migration
+    public partial class DatabaseInitialization : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -95,6 +95,22 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Patient", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "zoomMeetings",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    MeetingId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    StartTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Duration = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_zoomMeetings", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -320,7 +336,9 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                     Cost = table.Column<int>(type: "int", nullable: false),
                     DoctorId = table.Column<int>(type: "int", nullable: false),
                     PatientId = table.Column<int>(type: "int", nullable: false),
-                    BranchId = table.Column<int>(type: "int", nullable: false)
+                    BranchId = table.Column<int>(type: "int", nullable: false),
+                    isOnline = table.Column<bool>(type: "bit", nullable: false),
+                    ZoomMeetingId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -341,6 +359,12 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         name: "FK_Appointment_Patient_PatientId",
                         column: x => x.PatientId,
                         principalTable: "Patient",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Appointment_zoomMeetings_ZoomMeetingId",
+                        column: x => x.ZoomMeetingId,
+                        principalTable: "zoomMeetings",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -499,6 +523,11 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "zoomMeetings",
+                columns: new[] { "Id", "Duration", "MeetingId", "Password", "StartTime" },
+                values: new object[] { 1, 60, "89944185248", "123", new DateTime(2023, 6, 15, 10, 0, 0, 0, DateTimeKind.Unspecified) });
+
+            migrationBuilder.InsertData(
                 table: "Branch",
                 columns: new[] { "Id", "BranchAddressId", "HospitalId", "Image", "Name", "PhoneNumber" },
                 values: new object[,]
@@ -559,14 +588,14 @@ namespace MedicalSystem.DataAccessLayer.Migrations
 
             migrationBuilder.InsertData(
                 table: "Appointment",
-                columns: new[] { "Id", "AppointmentDate", "BranchId", "Cost", "DoctorId", "PatientId" },
+                columns: new[] { "Id", "AppointmentDate", "BranchId", "Cost", "DoctorId", "PatientId", "ZoomMeetingId", "isOnline" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 6, 15, 10, 0, 0, 0, DateTimeKind.Unspecified), 1, 100, 1, 1 },
-                    { 2, new DateTime(2023, 6, 16, 15, 30, 0, 0, DateTimeKind.Unspecified), 2, 75, 2, 2 },
-                    { 3, new DateTime(2023, 6, 17, 9, 0, 0, 0, DateTimeKind.Unspecified), 3, 120, 3, 3 },
-                    { 4, new DateTime(2023, 6, 18, 14, 15, 0, 0, DateTimeKind.Unspecified), 4, 90, 4, 4 },
-                    { 5, new DateTime(2023, 6, 19, 11, 30, 0, 0, DateTimeKind.Unspecified), 5, 80, 5, 1 }
+                    { 1, new DateTime(2023, 6, 15, 10, 0, 0, 0, DateTimeKind.Unspecified), 1, 100, 1, 1, 1, true },
+                    { 2, new DateTime(2023, 6, 16, 15, 30, 0, 0, DateTimeKind.Unspecified), 2, 75, 2, 2, 1, true },
+                    { 3, new DateTime(2023, 6, 17, 9, 0, 0, 0, DateTimeKind.Unspecified), 3, 120, 3, 3, 1, true },
+                    { 4, new DateTime(2023, 6, 18, 14, 15, 0, 0, DateTimeKind.Unspecified), 4, 90, 4, 4, 1, true },
+                    { 5, new DateTime(2023, 6, 19, 11, 30, 0, 0, DateTimeKind.Unspecified), 5, 80, 5, 1, 1, true }
                 });
 
             migrationBuilder.InsertData(
@@ -643,6 +672,11 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                 name: "IX_Appointment_PatientId",
                 table: "Appointment",
                 column: "PatientId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Appointment_ZoomMeetingId",
+                table: "Appointment",
+                column: "ZoomMeetingId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -787,6 +821,9 @@ namespace MedicalSystem.DataAccessLayer.Migrations
 
             migrationBuilder.DropTable(
                 name: "Patient");
+
+            migrationBuilder.DropTable(
+                name: "zoomMeetings");
 
             migrationBuilder.DropTable(
                 name: "Clinic");

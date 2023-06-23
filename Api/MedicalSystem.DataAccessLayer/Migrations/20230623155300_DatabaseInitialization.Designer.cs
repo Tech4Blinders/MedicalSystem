@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MedicalSystem.DataAccessLayer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230621121207_init")]
-    partial class init
+    [Migration("20230623155300_DatabaseInitialization")]
+    partial class DatabaseInitialization
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -47,6 +47,12 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                     b.Property<int>("PatientId")
                         .HasColumnType("int");
 
+                    b.Property<int>("ZoomMeetingId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("isOnline")
+                        .HasColumnType("bit");
+
                     b.HasKey("Id");
 
                     b.HasIndex("BranchId");
@@ -54,6 +60,8 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                     b.HasIndex("DoctorId");
 
                     b.HasIndex("PatientId");
+
+                    b.HasIndex("ZoomMeetingId");
 
                     b.ToTable("Appointment");
 
@@ -65,7 +73,9 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             BranchId = 1,
                             Cost = 100,
                             DoctorId = 1,
-                            PatientId = 1
+                            PatientId = 1,
+                            ZoomMeetingId = 1,
+                            isOnline = true
                         },
                         new
                         {
@@ -74,7 +84,9 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             BranchId = 2,
                             Cost = 75,
                             DoctorId = 2,
-                            PatientId = 2
+                            PatientId = 2,
+                            ZoomMeetingId = 1,
+                            isOnline = true
                         },
                         new
                         {
@@ -83,7 +95,9 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             BranchId = 3,
                             Cost = 120,
                             DoctorId = 3,
-                            PatientId = 3
+                            PatientId = 3,
+                            ZoomMeetingId = 1,
+                            isOnline = true
                         },
                         new
                         {
@@ -92,7 +106,9 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             BranchId = 4,
                             Cost = 90,
                             DoctorId = 4,
-                            PatientId = 4
+                            PatientId = 4,
+                            ZoomMeetingId = 1,
+                            isOnline = true
                         },
                         new
                         {
@@ -101,7 +117,9 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             BranchId = 5,
                             Cost = 80,
                             DoctorId = 5,
-                            PatientId = 1
+                            PatientId = 1,
+                            ZoomMeetingId = 1,
+                            isOnline = true
                         });
                 });
 
@@ -956,6 +974,43 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         });
                 });
 
+            modelBuilder.Entity("MedicalSystem.CoreLayer.Models.ZoomMeeting", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Duration")
+                        .HasColumnType("int");
+
+                    b.Property<string>("MeetingId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("StartTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("zoomMeetings");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Duration = 60,
+                            MeetingId = "89944185248",
+                            Password = "123",
+                            StartTime = new DateTime(2023, 6, 15, 10, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
+                });
+
             modelBuilder.Entity("MedicalSystem.CoreLayer.Patient", b =>
                 {
                     b.Property<int>("Id")
@@ -1401,11 +1456,19 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("MedicalSystem.CoreLayer.Models.ZoomMeeting", "ZoomMeeting")
+                        .WithMany()
+                        .HasForeignKey("ZoomMeetingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Branch");
 
                     b.Navigation("Doctor");
 
                     b.Navigation("Patient");
+
+                    b.Navigation("ZoomMeeting");
                 });
 
             modelBuilder.Entity("MedicalSystem.CoreLayer.AvaliableAppointment", b =>

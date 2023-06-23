@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Stripe;
 using System.Net.Http.Headers;
 using System.Text;
+using MedicalSystem.BusinessLayer;
+using MedicalSystem.CoreLayer;
 
 namespace MedicalSystem.Api.Controllers
 {
@@ -12,12 +13,17 @@ namespace MedicalSystem.Api.Controllers
     [ApiController]
     public class MeetingController : ControllerBase
     {
-        public MeetingController()
+        private IZoomMeetingManager _ZoomMeetingManager;
+        private IAppointmentManager _AppointmentManager;
+        private int appointmentId=1;
+        public MeetingController(IZoomMeetingManager zoomMeetingManager,IAppointmentManager appointmentManager)
         {
-                
+            
+            _ZoomMeetingManager = zoomMeetingManager;
+            _AppointmentManager = appointmentManager;
         }
         [HttpGet]
-        public  async Task<string> Get(string code)
+        public async Task<string> Get(string code)
         {
             var username = "75Vsq2TiT8WBkw3Axb7pJA";
             var password = "j8aLbYB18LnBibjKCzJJ7MKvXjMQ4maR";
@@ -46,10 +52,9 @@ namespace MedicalSystem.Api.Controllers
             var accessToken = responseObject["access_token"]?.Value<string>();
             //return  responseBody;
 
-             
+
             // Set the request URL and body
             var url = "https://api.zoom.us/v2/users/me/meetings";
-            //var body = "{\"key1\": \"value1\", \"key2\": \"value2\"}";
             var settings = new
             {
                 host_video = "true",
@@ -58,22 +63,22 @@ namespace MedicalSystem.Api.Controllers
                 mute_upon_entry = "true"
 
             };
-            var body = new 
+            var body = new
             {
-                topic= "first meeting",
-                type= "2",
-                start_time= "2023-6-11T12:02:33",
-                duration= "60",
-                timezone= "Africa/Cairo",
-                password= "123",
-                agenda= "testing",
-                settings=settings
+                topic = "first meeting",
+                type = "2",
+                start_time = "2023-6-11T12:02:33",
+                duration = "60",
+                timezone = "Africa/Cairo",
+                password = "123",
+                agenda = "testing",
+                settings = settings
             };
             var jsonBody = JsonConvert.SerializeObject(body);
 
 
-			// Set the request headers
-			client.DefaultRequestHeaders.Authorization =
+            // Set the request headers
+            client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue("Bearer", accessToken);
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             //client.DefaultRequestHeaders.Add("User-Agent", "MyHttpClient/1.0");
@@ -85,6 +90,24 @@ namespace MedicalSystem.Api.Controllers
 
             // Handle the response
             var responseContent = await response2.Content.ReadAsStringAsync();
+            var responseObject2 = JObject.Parse(responseContent);
+            var zoomMeetingAddDto = new ZoomMeetingAddDto
+            {
+                MeetingId = responseObject2["id"]?.Value<string>()!,
+                Password = responseObject2["password"]?.Value<string>()!,
+                Duration = responseObject2["duration"].Value<int>(),
+                StartTime = responseObject2["start_time"].Value<DateTime>(),
+            };
+
+            var newZoomMeetingId = await _ZoomMeetingManager.Add(zoomMeetingAddDto);
+
+            var appointmentUpdateDto = new AppointmentUpdateDto();
+
+            appointmentUpdateDto.appointmentId = appointmentId;
+            appointmentUpdateDto.meetingId = newZoomMeetingId;
+
+            var isUpdated = _AppointmentManager.UpdateAppointment(appointmentUpdateDto);
+           
             
             //var responseObject2 = JObject.Parse(responseContent);
             //var meetingId = responseObject2["id"].Value<long>();
@@ -92,8 +115,16 @@ namespace MedicalSystem.Api.Controllers
 
             return responseContent;
         }
-    }
+        // 
+		[HttpGet("join")]
+        public ActionResult<ZoomMeetingReadDto> JoinMeeting(int appointmentId)
+        {
+            var zoomData = _ZoomMeetingManager.GetMeetingByAppointmentID(appointmentId);
 
-    
-    
+            if (zoomData == null) return NotFound();
+
+			return Ok(zoomData);
+        }
+
+	}
 }

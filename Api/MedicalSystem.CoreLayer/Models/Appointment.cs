@@ -1,8 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MedicalSystem.CoreLayer
 {
+
     public class Appointment
     {
         [Key]
@@ -32,6 +34,12 @@ namespace MedicalSystem.CoreLayer
         public int BranchId { get; set; }
         public Branch? Branch { get; set; }
 
+        [Required]
+        public Boolean isOnline { get; set; }
 
+
+        [ForeignKey("ZoomMeeting")]
+        public int ZoomMeetingId { get; set; }
+        public ZoomMeeting? ZoomMeeting { get; set; }
     }
 }

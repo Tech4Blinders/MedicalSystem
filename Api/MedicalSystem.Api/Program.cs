@@ -2,6 +2,7 @@ using MedicalSystem.Api.Services.UploadImage;
 using MedicalSystem.BusinessLayer;
 using MedicalSystem.DataAccessLayer;
 using Microsoft.EntityFrameworkCore;
+using Stripe;
 
 namespace MedicalSystem.Api
 {
@@ -17,8 +18,13 @@ namespace MedicalSystem.Api
             builder.Services.AddSwaggerGen();
             #endregion
 
-            builder.Services.AddDbContext<ApplicationDbContext>();
-            
+            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+            {
+                var LocalConnectionString = builder.Configuration.GetConnectionString("LocalConnection");
+                options.UseSqlServer(LocalConnectionString);
+            });
+
+
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
             builder.Services.AddScoped<IPatientManager, PatientManager>();
             builder.Services.AddScoped<IBranchDoctorManager, BranchDoctorManager>();
@@ -33,6 +39,7 @@ namespace MedicalSystem.Api
             builder.Services.AddScoped<IAvaliableAppointmentManager, AvaliableAppointmentManager>();
             builder.Services.AddScoped<IDoctorQualificationManager, DoctorQualificationManager>();
 
+            builder.Services.AddScoped<IZoomMeetingManager,ZoomMeetingManager>();
 
             builder.Services.AddScoped<IUploadImg, UploadImg>();
 

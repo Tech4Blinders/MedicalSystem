@@ -1,5 +1,6 @@
 ﻿using MedicalSystem.CoreLayer;
 
+
 namespace MedicalSystem.DataAccessLayer;
 
 public static class FakeData
@@ -404,6 +405,21 @@ public static class FakeData
         };
         return branchDoctors;
     }
+    public static List<ZoomMeeting> ZoomMeetingData()
+    {
+        List<ZoomMeeting> zoomMeetings = new List<ZoomMeeting>
+        {
+            new ZoomMeeting
+            {
+                Id=1,
+                MeetingId = "89944185248",
+                Password="123",
+                StartTime= new DateTime(2023, 6, 15, 10, 0, 0),
+                Duration = 60,
+            }
+        };
+        return zoomMeetings;
+    }
     public static List<Appointment> AppointmentData()
     {
         List<Appointment> appointments = new List<Appointment>
@@ -415,7 +431,9 @@ public static class FakeData
                 Cost = 100,
                 DoctorId=1,
                 PatientId=1,
-                BranchId=1
+                BranchId=1,
+                isOnline = true,
+                ZoomMeetingId=1
             },
             new Appointment
             {Id = 2,
@@ -423,7 +441,9 @@ public static class FakeData
                 Cost = 75,
                  DoctorId=2,
                 PatientId=2,
-                BranchId=2
+                BranchId=2,
+                isOnline = true,
+                ZoomMeetingId=1
             },
             new Appointment
             {Id = 3,
@@ -431,7 +451,10 @@ public static class FakeData
                 Cost = 120,
                  DoctorId=3,
                 PatientId=3,
-                BranchId=3
+                BranchId=3,
+                isOnline=true,
+                ZoomMeetingId=1
+
             },
             new Appointment
             {Id = 4,
@@ -439,7 +462,9 @@ public static class FakeData
                 Cost = 90,
                  DoctorId=4,
                 PatientId=4,
-                BranchId=4
+                BranchId=4,
+                isOnline = true,
+                ZoomMeetingId=1
             },
             new Appointment
             {Id = 5,
@@ -447,7 +472,9 @@ public static class FakeData
                 Cost = 80,
                  DoctorId=5,
                 PatientId=1,
-                BranchId=5
+                BranchId=5,
+                isOnline = true,
+                ZoomMeetingId=1
             }
         };
         return appointments;

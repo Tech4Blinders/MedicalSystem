@@ -5,13 +5,15 @@ import { PatientMeetingComponent } from './patient-meeting/patient-meeting.compo
 import { ZoomMeetingRoutingModule } from './zoom-meeting-routing.module';
 import { MeetingComponent } from './meeting/meeting.component';
 import { StartMeetingComponent } from './start-meeting/start-meeting.component';
+import { JoinMeetingComponent } from './join-meeting/join-meeting.component';
 
 @NgModule({
   declarations: [
     DoctorMeetingComponent,
     PatientMeetingComponent,
     MeetingComponent,
-    StartMeetingComponent
+    StartMeetingComponent,
+    JoinMeetingComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +22,9 @@ import { StartMeetingComponent } from './start-meeting/start-meeting.component';
   exports:[
     DoctorMeetingComponent,
     PatientMeetingComponent,
-    MeetingComponent
+    MeetingComponent,
+    StartMeetingComponent,
+    JoinMeetingComponent
   ]
 })
 export class ZoomMeetingModule { }

@@ -1,4 +1,5 @@
 ﻿using MedicalSystem.CoreLayer;
+
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,13 +16,13 @@ namespace MedicalSystem.DataAccessLayer
         #endregion 
 
         #region OnConfiguring
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlServer("Server =. ; Database = ELMostshfa; Trusted_Connection = true; Encrypt = false;");
-            }
-        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    if (!optionsBuilder.IsConfigured)
+        //    {
+        //        optionsBuilder.UseSqlServer("Server =. ; Database = ELMostshfa; Trusted_Connection = true; Encrypt = false;");
+        //    }
+        //}
         #endregion
 
         #region OnModelCreate
@@ -62,6 +63,7 @@ namespace MedicalSystem.DataAccessLayer
             builder.Entity<Doctor>().HasData(FakeData.DoctorData());
             builder.Entity<DoctorQualification>().HasData(FakeData.DoctorQualificationData());
             builder.Entity<BranchDoctor>().HasData(FakeData.BranchDoctorData());
+            builder.Entity<ZoomMeeting>().HasData(FakeData.ZoomMeetingData());
             builder.Entity<Appointment>().HasData(FakeData.AppointmentData());
             builder.Entity<Report>().HasData(FakeData.ReportData());
             builder.Entity<Review>().HasData(FakeData.ReviewData());
@@ -88,7 +90,7 @@ namespace MedicalSystem.DataAccessLayer
         public DbSet<Patient> Patient => Set<Patient>();
         public DbSet<Department> Department => Set<Department>();
         public DbSet<AvaliableAppointment> AvaliableAppointment => Set<AvaliableAppointment>();
-
+        public DbSet<ZoomMeeting> zoomMeetings => Set<ZoomMeeting>();
 
         #endregion
 

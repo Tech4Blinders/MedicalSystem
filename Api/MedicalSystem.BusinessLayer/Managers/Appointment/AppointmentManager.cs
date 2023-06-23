@@ -120,8 +120,15 @@ public class AppointmentManager : IAppointmentManager
         };
     }
 
-    public bool UpdateAppointment(AppointmentUpdateDto patientUpdateDto)
+    public bool UpdateAppointment(AppointmentUpdateDto AppointmentUpdateDto)
     {
-        throw new NotImplementedException();
-    }
+		Appointment appointment = _unitOfWork._AppointmentRepo.GetAppointmentById(AppointmentUpdateDto.appointmentId);
+		if (appointment == null)
+		{
+            return false;
+		}
+        appointment.ZoomMeetingId= AppointmentUpdateDto.meetingId;
+        _unitOfWork.SaveChanges();
+        return true;
+	}
 }

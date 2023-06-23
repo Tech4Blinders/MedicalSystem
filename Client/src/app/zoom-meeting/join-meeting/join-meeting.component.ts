@@ -1,8 +1,10 @@
 
-import {  Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { ZoomMtg } from '@zoomus/websdk';
 import { ZoomMeetingService } from 'src/app/Services/zoom-meeting.service';
+import { MeetingJoinData } from 'src/app/_Models/dtos/MeetingJoinData';
 import { MeetingData } from 'src/app/_Models/dtos/meetingData';
+
 
 ZoomMtg.setZoomJSLib('https://source.zoom.us/2.13.0/lib', '/av');
 // Email : tech6blinders@gmail.com
@@ -13,32 +15,36 @@ ZoomMtg.prepareWebSDK();
 ZoomMtg.i18n.load('en-US');
 ZoomMtg.i18n.reload('en-US');
 
+
 @Component({
-  selector: 'app-start-meeting',
-  templateUrl: './start-meeting.component.html',
-  styleUrls: ['./start-meeting.component.css']
+  selector: 'app-join-meeting',
+  templateUrl: './join-meeting.component.html',
+  styleUrls: ['./join-meeting.component.css']
 })
-export class StartMeetingComponent {
-  private meeting : MeetingData;
+export class JoinMeetingComponent {
+
+  private meeting : MeetingJoinData;
   constructor(
     private zoomMeetingService : ZoomMeetingService
   ){}
   async ngAfterContentInit():Promise<any> {
-    this.zoomMeetingService.getMeeting().subscribe((meetingData:MeetingData) => {
-      this.meeting = meetingData;
+    debugger
+    this.zoomMeetingService.getJoinMeeting().subscribe((meetingJoinData:MeetingJoinData) => {
+      console.log(`====>${meetingJoinData}`)
+      this.meeting = meetingJoinData;
     })
+    console.log(`====>${this.meeting.meetingId}`)
     let payload = {
       meetingNumber:this.meeting.meetingId,
-      passWord:this.meeting.meetingPassword,
+      passWord:this.meeting.password,
       sdkKey:'75Vsq2TiT8WBkw3Axb7pJA',
       sdkSecret:'j8aLbYB18LnBibjKCzJJ7MKvXjMQ4maR',
-      userName:'mohamed',
+      userName:'karim',
       userEmail:'',
-      role:'1',
+      role:'0',
       // zak:'eyJ0eXAiOiJKV1QiLCJzdiI6IjAwMDAwMSIsInptX3NrbSI6InptX28ybSIsImFsZyI6IkhTMjU2In0.eyJhdWQiOiJjbGllbnRzbSIsInVpZCI6Ik1nQVhUTnc2U19HUUR4WDgxU211elEiLCJpc3MiOiJ3ZWIiLCJzayI6IjAiLCJzdHkiOjEsIndjZCI6InVzMDUiLCJjbHQiOjAsImV4cCI6MTY4NzAyODU1NCwiaWF0IjoxNjg3MDIxMzU0LCJhaWQiOiI5TTRzelBvWVR3S0xNallFM0QwbGtnIiwiY2lkIjoiIn0.X6ve48JA6RcGdjUfv0fEFztYllIBVUoL0Z9WAoclX4E',
-      leaveUrl:'https://localhost:4200/meeting/startmeeting'
+      leaveUrl:'https://localhost:4200/meeting/joinmeeting'
     }
-
     ZoomMtg.generateSDKSignature({
       meetingNumber : payload.meetingNumber.toString(),
       role : payload.role,

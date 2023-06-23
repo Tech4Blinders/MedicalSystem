@@ -18,12 +18,12 @@ namespace MedicalSystem.Api.Controllers
             uploadImg = _uploadImg;
         }
 
-        [HttpGet]
-        public ActionResult<IEnumerable<ReadBranchDto>> getAll()
-        {
-            var branches = branchManager.GetAll().Result;
-            return Ok(branches);
-        }
+        //[HttpGet]
+        //public ActionResult<IEnumerable<ReadBranchDto>> getAll()
+        //{
+        //    var branches = branchManager.GetAll().Result;
+        //    return Ok(branches);
+        //}
 
         [HttpGet]
         [Route("{id}")]

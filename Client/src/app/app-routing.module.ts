@@ -11,6 +11,7 @@ const routes: Routes = [
 {path:'visit',loadChildren: ()=>import('./hospital/hospital.module').then(m=>m.HospitalModule)} ,
 {path:'clinic',loadChildren: ()=>import('./clinic/clinic.module').then(m=>m.ClinicModule)} ,
 {path:'dashboard',loadChildren: ()=>import('./dashboard/dashboard.module').then(m=>m.DashboardModule)} ,
+{path:"meeting",loadChildren:()=>import('./meeting/meeting.module').then(m=>m.MeetingModule)}
 {path:'meeting',loadChildren: ()=>import('./zoom-meeting/zoom-meeting.module').then(m=>m.ZoomMeetingModule)} ,
 
 ];

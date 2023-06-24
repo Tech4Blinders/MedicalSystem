@@ -1,4 +1,5 @@
 ﻿using MedicalSystem.CoreLayer;
+using Microsoft.EntityFrameworkCore;
 
 namespace MedicalSystem.DataAccessLayer;
 
@@ -12,6 +13,6 @@ public class DoctorRepo : GenericRepo<Doctor>, IDoctorRepo
 
     public IEnumerable<Doctor> getDocByClinicId(int clinicId)
     {
-        return _context.Set<Doctor>().Where(a => a.ClinicId == clinicId);
+        return _context.Set<Doctor>().Where(a => a.ClinicId == clinicId).Include("Department").Include("Clinic");
     }
 }

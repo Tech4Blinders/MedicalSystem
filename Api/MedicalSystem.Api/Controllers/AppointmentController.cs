@@ -62,5 +62,26 @@ namespace MedicalSystem.Api.Controllers
         //    }
         //    return NoContent();
         //}
+        [HttpGet("DoctorId")]
+        public ActionResult<List<AppointmentReadDto>> GetAllAppointmentsByDoctorId(int id)
+        {
+            var appointments = _appointmentManager.GetAppointmentByDoctor(id);
+            if (appointments == null)
+            {
+                return NoContent();
+            }
+            return Ok(appointments);
+        }
+
+        [HttpGet("PatientId")]
+        public ActionResult<List<AppointmentReadDto>> GetAllAppointmentsByPatientId(int id)
+        {
+            var appointments = _appointmentManager.GetAppointmentByPatient(id);
+            if (appointments == null)
+            {
+                return NoContent();
+            }
+            return Ok(appointments);
+        }
     }
 }

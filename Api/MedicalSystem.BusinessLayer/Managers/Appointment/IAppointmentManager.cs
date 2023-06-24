@@ -9,4 +9,8 @@ public interface IAppointmentManager
     int AddAppointment(AppointmentAddDto appointmentToAdd);
     bool UpdateAppointment(AppointmentUpdateDto appointmentToUpdate);
     Task<bool> DeleteAppointment(int id);
+    public IEnumerable<AppointmentReadDto> GetAppointmentByDoctor(int id);
+    public IEnumerable<AppointmentReadDto> GetAppointmentByPatient(int id);
+
+
 }

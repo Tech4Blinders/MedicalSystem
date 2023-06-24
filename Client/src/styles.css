@@ -472,6 +472,24 @@ strong {
 .p-galleria .p-galleria-thumbnail-container {
   background-color: transparent !important;
 }
+.p-galleria-caption {
+ 
+  position: absolute;
+  /* bottom: -53px; */
+
+  width: 100%;
+  z-index: 5;
+  background-color: transparent !important;
+  color: #ffffff !important;
+  top: 60% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.p-galleria-caption p{
+  color: #ffffff;
+}
+}
 
 
 

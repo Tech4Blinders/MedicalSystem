@@ -1,0 +1,31 @@
+
+<div class="card m-3">
+    <p-table [value]="appointments" [tableStyle]="{'min-width': '50rem'}">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Doctor Name</th>
+                <th>Date</th>
+                <th>Phone Number</th>
+                <th>Gender</th>
+                <th>Email</th>
+                <th>Branch</th>
+                <th>Branch Phone</th>
+                <th>Payment</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-appointment >
+            <tr class="m-4">
+                <td>{{appointment.doctor.name}}</td>
+                <td>{{appointment.appointmentDate | date : "EEEE  MMMM, y, h:mm a"}}</td>
+                <td>{{appointment.doctor.phoneNumber}}</td>
+                <td>{{appointment.doctor.gender}}</td>
+                <td>{{appointment.doctor.email}}</td>
+                <td>{{appointment.branch.name}}</td>
+                <td>{{appointment.branch.phoneNumber}}</td>
+                <td>{{appointment.cost}} USD</td>
+ 
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+

@@ -9,5 +9,5 @@ namespace MedicalSystem.DataAccessLayer;
 
 public interface IClinicRepo:IGenericRepo<Clinic>
 {
-
+    public IEnumerable<Clinic> getClinicsByHosId(int hospitalId);
 }

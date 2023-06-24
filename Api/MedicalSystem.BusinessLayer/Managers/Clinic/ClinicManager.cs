@@ -77,7 +77,26 @@ namespace MedicalSystem.BusinessLayer
 			return clinic;
 		}
 
-		public bool Update(ClinicWithIdDto clinicWithIdDto)
+        public List<ClinicWithIdDto> GetClinicsByHosId(int branchId)
+        {
+            IEnumerable<Clinic> clinics = _unitOfWork._ClinicRepo.getClinicsByHosId(branchId);
+            if (clinics is null)
+            {
+                return new List<ClinicWithIdDto>();
+            }
+
+            return clinics.Select(a => new ClinicWithIdDto
+            {
+                Id = a.Id,
+                Specilization = a.Specilization,
+                Description = a.Description,
+                RoomNumber = a.RoomNumber,
+                Image = a.Image
+
+            }).ToList();
+        }
+
+        public bool Update(ClinicWithIdDto clinicWithIdDto)
 		{
 			var clinicfromdb = _unitOfWork._ClinicRepo.GetByIdAsync(clinicWithIdDto.Id).Result;
 			if (clinicfromdb is null) return false;
@@ -90,5 +109,7 @@ namespace MedicalSystem.BusinessLayer
 			return true;
 
 		}
-	}
+
+       
+    }
 }

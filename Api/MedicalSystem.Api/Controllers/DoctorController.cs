@@ -6,11 +6,14 @@ using System;
 using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
 using MedicalSystem.Api.Services.UploadImage;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace MedicalSystem.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Policy ="Doctor")]
     public class DoctorController : ControllerBase
     {
         private readonly IDoctorManager _doctorManager;

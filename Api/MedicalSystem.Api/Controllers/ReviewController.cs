@@ -1,5 +1,6 @@
 ﻿using MedicalSystem.BusinessLayer;
 using MedicalSystem.CoreLayer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,6 +18,7 @@ namespace MedicalSystem.Api.Controllers
 		}
 
 		[HttpGet]
+		[Authorize]
 		public ActionResult<List<ReviewWithIdDto>> GetAll()
 		{
 			var Reviews = _ReviewManager.GetAll();

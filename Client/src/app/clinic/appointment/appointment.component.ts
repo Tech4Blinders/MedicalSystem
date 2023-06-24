@@ -1,9 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import {  ActivatedRoute, Router } from '@angular/router';
+import { AppointmentService } from 'src/app/Services/appointment.service';
 import { AvaliableAppointmentService } from 'src/app/Services/avaliable-appointment.service';
+import { BranchService } from 'src/app/Services/branch.service';
 import { DoctorService } from 'src/app/Services/doctor.service';
+import { PatientService } from 'src/app/Services/patient.service';
+import { Appointment } from 'src/app/_Models/dtos/appointment';
 import { AvaliableAppointment } from 'src/app/_Models/dtos/avaliableappointment';
+import { Branch } from 'src/app/_Models/dtos/branch';
 import { Doctor } from 'src/app/_Models/dtos/doctor';
+import { Patient } from 'src/app/_Models/dtos/patient';
 import { Review } from 'src/app/_Models/dtos/review';
 
 @Component({
@@ -13,14 +19,21 @@ import { Review } from 'src/app/_Models/dtos/review';
 })
 export class AppointmentComponent implements OnInit {
   public appointments: AvaliableAppointment[];
+  public actualAppointment:Appointment=new Appointment();
   public selectedAppointment: Date[];
   public doctor: Doctor;
   public reviews:Review[];
+  public checked:boolean=false;
+  private patient:Patient;
+  private branch:Branch;
   constructor(
-    private appointmentservice: AvaliableAppointmentService,
+    private avaliableAppointmentservice: AvaliableAppointmentService,
+    private route:ActivatedRoute,
     private doctorService: DoctorService,
     private router:Router,
-    private route:ActivatedRoute
+    private patientService:PatientService,
+    private branchService:BranchService,
+    private appointmentService:AppointmentService
   ) {}
   ngOnInit(): void {
     this.doctorService.getCurrentDoctor().subscribe(data=>{
@@ -30,7 +43,7 @@ export class AppointmentComponent implements OnInit {
     this.doctorService.getDoctor(this.doctor.id ?? 1).subscribe((data) => {
       this.doctor = data;      
     });
-    this.appointmentservice
+    this.avaliableAppointmentservice
       .getAvaliableAppointments(this.doctor.id ?? 1)
       .subscribe((data) => {
         this.appointments = data;
@@ -38,13 +51,27 @@ export class AppointmentComponent implements OnInit {
       this.doctorService.getDoctorReviews(this.doctor.id  ?? 1).subscribe(data=>{
         this.reviews=data;
         console.log(data);
-        
       });
+      // this.patientService.getCurrentPatient().subscribe(data=>{
+      //   this.patient=data;
+      // })
+      this.patientService.getPatient(1).subscribe(data=>{
+        this.patient=data;
+      })
+      this.patientService.setPatient(this.patient);
+      this.branchService.getCurrentHospital().subscribe(data=>{
+        this.branch=data;
+      })
   }
   SelectAppointment(appointment: AvaliableAppointment) {
-    console.log(appointment)
-    this.appointmentservice.setAppointment(appointment);
-    this.router.navigate(["clinic/meeting"],{replaceUrl:true})
+    
+    this.actualAppointment.date=appointment.date;
+    this.actualAppointment.doctorId=appointment.doctorId;
+    this.actualAppointment.cost=this.checked ? this.doctor.offlineCost: this.doctor.onlineCost;
+    this.actualAppointment.patientId=this.patient.id;
+    this.actualAppointment.branchId=this.branch.id;
+    this.appointmentService.setAppointment(this.actualAppointment);
+    this.router.navigate(["payment"],{relativeTo:this.route})
 
   }
 }

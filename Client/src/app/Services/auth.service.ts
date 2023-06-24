@@ -11,7 +11,7 @@ export class AuthService {
         
        register(data:object):Observable<any>
        {
-     return this._httpclient.post('register endpoint' ,data )
+      return this._httpclient.post('register endpoint' ,data )
        }
        login(data:object):Observable<any>
        {

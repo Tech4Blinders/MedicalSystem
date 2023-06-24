@@ -1,0 +1,156 @@
+<div class="trial">
+  <form (ngSubmit)="handlepayment(paymentform)" [formGroup]="paymentform">
+    <!-- <label for="name"> Customer Name : </label> -->
+    <span class="d-flex justify-content-between">
+      <h2>Payment</h2>
+      <img src="../../../assets/images/visa-mastercard-logos.jpg" />
+    </span>
+
+    <input
+      formControlName="name"
+      type="text"
+      class="form-control mb-2"
+      id="name"
+      placeholder="Full Name"
+    />
+    <div
+      *ngIf="
+        paymentform.get('name')?.errors && paymentform.get('name')?.touched
+      "
+      class="alert alert-danger"
+    >
+      <p *ngIf="paymentform.get('name')?.getError('minlength')" class="m-0">
+        Name minLength is 3
+      </p>
+      <p *ngIf="paymentform.get('name')?.getError('required')">
+        Name is Required
+      </p>
+    </div>
+
+    <!-- <label for="email">Email :</label> -->
+    <input
+      formControlName="email"
+      type="email"
+      class="form-control mb-2"
+      id="email"
+      placeholder="Email Address"
+      readonly
+    />
+    <div
+      *ngIf="
+        paymentform.get('email')?.errors && paymentform.get('email')?.touched
+      "
+      class="alert alert-danger"
+    >
+      <p *ngIf="paymentform.get('email')?.getError('required')" class="m-0">
+        Email is Required
+      </p>
+      <p *ngIf="paymentform.get('email')?.getError('email')" class="m-0">
+        Invalid Email
+      </p>
+    </div>
+
+    <div formGroupName="creditCard">
+      <!-- <label for="name">CardName :</label> -->
+      <input
+        formControlName="name"
+        type="text"
+        class="form-control mb-2"
+        id="name"
+        placeholder="Card Holder"
+      />
+      <div class="d-flex">
+        <!-- <label for="cardNumber">cardexpiredate :</label> -->
+        <input
+          formControlName="cardNumber"
+          type="text"
+          class="form-control me-4 mb-2 w-75"
+          id="cardNumber"
+          placeholder="Card Number"
+          maxlength="16"
+        />
+        <input
+          formControlName="cvc"
+          type="text"
+          maxlength="3"
+          class="form-control mb-2 w-25"
+          id="cvc"
+          placeholder="CVC"
+        />
+      </div>
+
+      <!-- <label for="expirationYear">expirationYear :</label> -->
+      <div class="d-flex">
+        <input
+          formControlName="expirationYear"
+          type="text"
+          maxlength="2"
+          class="form-control me-4 mb-2 w-50"
+          id="expirationYear"
+          placeholder="Expiry Year"
+        />
+
+        <!-- <label for="expirationMonth">expirationMonth :</label> -->
+        <input
+          formControlName="expirationMonth"
+          type="text"
+          maxlength="2"
+          class="form-control mb-2 w-50"
+          id="expirationMonth"
+          placeholder="Expiry Month"
+        />
+      </div>
+
+      <!-- <label for="cvc">cvc :</label> -->
+
+      <!-- <label for="cvc">Cost :</label> -->
+      <input
+        type="text"
+        class="form-control mb-2"
+        id="cost"
+        disabled
+        [value]="appointment.cost"
+      />
+    </div>
+    <p-button
+      (click)="ShowDialog()"
+      type="submit"
+      label="Pay"
+      styleClass="p-button-info p-button-lg"
+    >
+    </p-button>
+  </form>
+</div>
+<div class="card flex justify-content-center test">
+  <p-dialog
+    styleClass="p-dialog-alert"
+    header="Payment"
+    [(visible)]="visible"
+    [modal]="true"
+    [style]="{ width: '40vw', height: 'auto' }"
+    [draggable]="false"
+    [resizable]="false"
+  >
+    <ng-container *ngIf="validPayment">
+      <p [ngClass]="messageClass ?? 'alert alert-warning text-center p-5 h4'">
+        {{ paymentMessage }}
+        <ng-container #response *ngIf="sucessfulPayment">
+          <span class="d-flex justify-content-center">
+            <p-button
+              label="Meeting"
+              class="m-3 w-25"
+              styleClass="p-button-success p-button-lg"
+              (click)="navigateToMeeting()"
+            ></p-button>
+            <p-button
+              label="Home"
+              class="m-3 w-25"
+              styleClass="p-button-success p-button-lg"
+              routerLink=""
+            ></p-button>
+          </span>
+        </ng-container>
+      </p>
+    </ng-container>
+  </p-dialog>
+</div>

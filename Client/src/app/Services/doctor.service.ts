@@ -18,11 +18,13 @@ export class DoctorService {
     return this.http.get<Doctor>(`${this.apiUrl}/${doctorId}`)
   }
 
-  setDoctor(doctor) {
+  setDoctor(doctor) 
+  {
     this.doctor$.next(doctor);
   }
-  getCurrentDoctor() {
-    return this.doctor$;
+  getCurrentDoctor()
+  {
+    return this.doctor$.asObservable();
   }
   getDoctorReviews(id:number){
     return this.http.get<Review[]>(this.apiReview+`/${id}`).pipe(tap(e=>e.forEach(a=>a.rate=a.rate/20)))

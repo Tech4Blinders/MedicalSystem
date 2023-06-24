@@ -124,4 +124,69 @@ public class AppointmentManager : IAppointmentManager
     {
         throw new NotImplementedException();
     }
+    public IEnumerable<AppointmentReadDto> GetAppointmentByDoctor(int id)
+    {
+        var appointment = _unitOfWork._AppointmentRepo.GetWith(a => a.DoctorId == id, new string[] {"Branch","Patient"}).Result;
+        if(appointment is null)
+        {
+            return new List<AppointmentReadDto>();
+        }
+        return appointment.Select(appointment => new AppointmentReadDto
+        {
+            Id = appointment.Id,
+            AppointmentDate=appointment.AppointmentDate,
+            Cost = appointment.Cost,
+            Branch = new AppointmentBranchReadDto
+            {
+                Id = appointment.Branch!.Id,
+                Name = appointment.Branch!.Name,
+                PhoneNumber = appointment.Branch!.PhoneNumber,
+            },
+            Patient = new PatientReadDto
+            {
+                Name = appointment.Patient.Name,
+                PhoneNumber = appointment.Patient.PhoneNumber,
+                Gender = appointment.Patient.Gender,
+                Age = appointment.Patient.Age,
+                Email = appointment.Patient.Email,
+                Id = appointment.Patient.Id,
+            }
+
+        }).ToList();
+
+    }
+
+     public IEnumerable<AppointmentReadDto> GetAppointmentByPatient(int id)
+    {
+        var appointment = _unitOfWork._AppointmentRepo.GetWith(a => a.PatientId == id, new string[] {"Branch","Doctor"}).Result;
+        if(appointment is null)
+        {
+            return new List<AppointmentReadDto>();
+        }
+        return appointment.Select(appointment => new AppointmentReadDto
+        {
+            Id = appointment.Id,
+            AppointmentDate=appointment.AppointmentDate,
+            Cost = appointment.Cost,
+            Doctor = new AppointmentDoctorReadDto
+            {
+                Id = appointment.Doctor!.Id,
+                Name = appointment.Doctor!.Name,
+                PhoneNumber = appointment.Doctor!.PhoneNumber,
+                Gender = appointment.Doctor!.Gender,
+                Email = appointment.Doctor!.Email,
+                Country = appointment.Doctor!.Country,
+                City = appointment.Doctor!.City,
+                Street = appointment.Doctor!.Street,
+            },
+            Branch = new AppointmentBranchReadDto
+            {
+                Id = appointment.Branch!.Id,
+                Name = appointment.Branch!.Name,
+                PhoneNumber = appointment.Branch!.PhoneNumber,
+            },
+
+        }).ToList();
+
+    }
 }

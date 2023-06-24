@@ -6,17 +6,18 @@ namespace MedicalSystem.DataAccessLayer;
 
 public static class FakeData
 {
+    
     public static List<Hospital> HospitalData()
     {
         List<Hospital> hospitals = new List<Hospital>()
             {
-                new Hospital {Id=1, Name = "St. Jude Children's Research Hospital", Email = "stjude@example.com" },
-                new Hospital {Id=2, Name = "Mount Sinai Hospital", Email = "mountsinai@example.com" },
-                new Hospital {Id=3, Name = "Children's Hospital of Philadelphia", Email = "chop@example.com" },
-                new Hospital {Id=4, Name = "Toronto General Hospital", Email = "torontogeneral@example.com" },
-                new Hospital {Id=5, Name = "Texas Medical Center", Email = "tmc@example.com" },
-                new Hospital {Id=6, Name = "Moffitt Cancer Center", Email = "moffitt@example.com" },
-                new Hospital {Id=7, Name = "Barnes-Jewish Hospital", Email = "barnesjewish@example.com" },
+                new Hospital { Id = 10, Name = "St. Jude Children's Research Hospital", Email = "stjude@example.com" },
+                new Hospital { Id = 20, Name = "Mount Sinai Hospital", Email = "mountsinai@example.com" },
+                new Hospital { Id = 30, Name = "Children's Hospital of Philadelphia", Email = "chop@example.com" },
+                new Hospital { Id = 40, Name = "Toronto General Hospital", Email = "torontogeneral@example.com" },
+                new Hospital { Id = 50, Name = "Texas Medical Center", Email = "tmc@example.com" },
+                new Hospital { Id = 60, Name = "Moffitt Cancer Center", Email = "moffitt@example.com" },
+                new Hospital { Id = 70, Name = "Barnes-Jewish Hospital", Email = "barnesjewish@example.com" },
             };
         return hospitals;
     }
@@ -24,10 +25,10 @@ public static class FakeData
     {
         List<Patient> patients = new List<Patient>()
             {
-                new Patient {Id=1, Name = "John Smith", PhoneNumber = "1234567890", Gender = "M", Age = 25, Email = "john@example.com" },
-                new Patient {Id=2,Name = "Jane Doe", PhoneNumber = "9876543210", Gender = "F", Age = 30, Email = "jane@example.com" },
-                new Patient {Id=3, Name = "Alex Johnson", PhoneNumber = "5555555555", Gender = "M", Age = 40, Email = "alex@example.com" },
-                new Patient {Id=4, Name = "Emily Williams", PhoneNumber = "1112223333", Gender = "F", Age = 22, Email = "emily@example.com" }
+                new Patient { Id = 100, Name = "John Smith", PhoneNumber = "1234567890", Gender = "M", Age = 25, Email = "john@example.com" },
+                new Patient { Id = 200, Name = "Jane Doe", PhoneNumber = "9876543210", Gender = "F", Age = 30, Email = "jane@example.com" },
+                new Patient { Id = 300, Name = "Alex Johnson", PhoneNumber = "5555555555", Gender = "M", Age = 40, Email = "alex@example.com" },
+                new Patient { Id = 400, Name = "Emily Williams", PhoneNumber = "1112223333", Gender = "F", Age = 22, Email = "emily@example.com" }
             };
 
 
@@ -53,15 +54,15 @@ public static class FakeData
     {
         List<Branch> branches = new List<Branch>()
         {
-            new Branch {Id=1, Name = "Branch A", PhoneNumber = "1234567890", HospitalId = 1, BranchAddressId = 1,Image="https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg" },
-            new Branch {Id=2, Name = "Branch B", PhoneNumber = "9876543210", HospitalId = 2, BranchAddressId = 2,Image="https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg"  },
-            new Branch {Id=3, Name = "Branch C", PhoneNumber = "5555555555", HospitalId = 3, BranchAddressId = 3,Image="https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg"  },
-            new Branch {Id=4, Name = "Branch D", PhoneNumber = "1112223333", HospitalId = 4, BranchAddressId = 4,Image="https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg"  },
-            new Branch {Id=5, Name = "Branch E", PhoneNumber = "5646546546", HospitalId = 1, BranchAddressId = 5,Image="https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg"  },
-            new Branch {Id=6, Name = "Branch F", PhoneNumber = "1555154654", HospitalId = 2, BranchAddressId = 6,Image="https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg"  },
-            new Branch {Id=7, Name = "Branch J", PhoneNumber = "7797988521", HospitalId = 3, BranchAddressId = 7,Image="https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg"  },
-            new Branch {Id=8, Name = "Branch H", PhoneNumber = "6597451215", HospitalId = 4, BranchAddressId = 8,Image="https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg"  },
-            new Branch {Id=9, Name = "Branch I", PhoneNumber = "1564989848", HospitalId = 1, BranchAddressId = 9,Image="https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg"  },
+            new Branch {Id=1, Name = "Branch A", PhoneNumber = "1234567890", HospitalId = 10, BranchAddressId = 1 },
+            new Branch {Id=2, Name = "Branch B", PhoneNumber = "9876543210", HospitalId = 20, BranchAddressId = 2 },
+            new Branch {Id=3, Name = "Branch C", PhoneNumber = "5555555555", HospitalId = 30, BranchAddressId = 3 },
+            new Branch {Id=4, Name = "Branch D", PhoneNumber = "1112223333", HospitalId = 40, BranchAddressId = 4 },
+            new Branch {Id=5, Name = "Branch E", PhoneNumber = "5646546546", HospitalId = 10, BranchAddressId = 5 },
+            new Branch {Id=6, Name = "Branch F", PhoneNumber = "1555154654", HospitalId = 20, BranchAddressId = 6 },
+            new Branch {Id=7, Name = "Branch J", PhoneNumber = "7797988521", HospitalId = 30, BranchAddressId = 7 },
+            new Branch {Id=8, Name = "Branch H", PhoneNumber = "6597451215", HospitalId = 40, BranchAddressId = 8 },
+            new Branch {Id=9, Name = "Branch I", PhoneNumber = "1564989848", HospitalId = 10, BranchAddressId = 9 },
         };
         return branches;
     }
@@ -146,7 +147,7 @@ public static class FakeData
             {
                     new Doctor
                 {
-                    Id=1,
+                    Id = 1,
                     Name = "Dr. Ahmed Ali",
                     PhoneNumber = "+971 123-456-7890",
                     Gender = "Male",
@@ -161,7 +162,8 @@ public static class FakeData
                     Image="https://res.cloudinary.com/dhksv3uz9/image/upload/v1687384280/Medical%20System/doctor.png"
                 },
                 new Doctor
-                {   Id = 2,
+                {   
+                    Id = 2,
                     Name = "Dr. Fatima Hassan",
                     PhoneNumber = "+971 987-654-3210",
                     Gender = "Female",
@@ -176,7 +178,8 @@ public static class FakeData
                     Image="https://res.cloudinary.com/dhksv3uz9/image/upload/v1687384280/Medical%20System/doctor.png"
                 },
                 new Doctor
-                {Id = 3,
+                {
+                    Id = 3,
                     Name = "Dr. Ali Mahmoud",
                     PhoneNumber = "+971 555-123-4567",
                     Gender = "Male",
@@ -191,7 +194,8 @@ public static class FakeData
                     Image="https://res.cloudinary.com/dhksv3uz9/image/upload/v1687384280/Medical%20System/doctor.png"
                 },
                 new Doctor
-                {Id = 4,
+                {
+                    Id = 4,
                     Name = "Dr. Aisha Khan",
                     PhoneNumber = "+971 555-987-6543",
                     Gender = "Female",
@@ -206,7 +210,8 @@ public static class FakeData
                     Image="https://res.cloudinary.com/dhksv3uz9/image/upload/v1687384280/Medical%20System/doctor.png"
                 },
                 new Doctor
-                {Id = 5,
+                {
+                    Id = 5,
                     Name = "Dr. Omar Ahmed",
                     PhoneNumber = "+971 555-567-8901",
                     Gender = "Male",
@@ -221,7 +226,8 @@ public static class FakeData
                     Image="https://res.cloudinary.com/dhksv3uz9/image/upload/v1687384280/Medical%20System/doctor.png"
                 },
                 new Doctor
-                { Id=6,
+                { 
+                    Id = 6,
                     Name = "Dr. Layla Hassan",
                     PhoneNumber = "+971 555-210-9876",
                     Gender = "Female",
@@ -236,7 +242,8 @@ public static class FakeData
                     Image="https://res.cloudinary.com/dhksv3uz9/image/upload/v1687384280/Medical%20System/doctor.png"
                 },
                 new Doctor
-                {Id=7,
+                {
+                    Id = 7,
                     Name = "Dr. Ibrahim Khalid",
                     PhoneNumber = "+971 555-876-5432",
                     Gender = "Male",
@@ -252,7 +259,7 @@ public static class FakeData
                 },
                 new Doctor
                 {
-                    Id=8,
+                    Id = 8,
                     Name = "Dr. Sarah Ahmed",
                     PhoneNumber = "+971 555-432-1098",
                     Gender = "Female",

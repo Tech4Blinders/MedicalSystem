@@ -12,8 +12,13 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MedicalSystem.DataAccessLayer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
+<<<<<<<< HEAD:Api/MedicalSystem.DataAccessLayer/Migrations/20230624070038_init.Designer.cs
     [Migration("20230624070038_init")]
     partial class init
+========
+    [Migration("20230623210617_SeedingDatabase")]
+    partial class SeedingDatabase
+>>>>>>>> authentication:Api/MedicalSystem.DataAccessLayer/Migrations/20230623210617_SeedingDatabase.Designer.cs
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -186,8 +191,13 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         {
                             Id = 1,
                             BranchAddressId = 1,
+<<<<<<<< HEAD:Api/MedicalSystem.DataAccessLayer/Migrations/20230624070038_init.Designer.cs
                             HospitalId = 1,
                             Image = "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg",
+========
+                            HospitalId = 10,
+                            Image = "",
+>>>>>>>> authentication:Api/MedicalSystem.DataAccessLayer/Migrations/20230623210617_SeedingDatabase.Designer.cs
                             Name = "Branch A",
                             PhoneNumber = "1234567890"
                         },
@@ -195,8 +205,13 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         {
                             Id = 2,
                             BranchAddressId = 2,
+<<<<<<<< HEAD:Api/MedicalSystem.DataAccessLayer/Migrations/20230624070038_init.Designer.cs
                             HospitalId = 2,
                             Image = "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg",
+========
+                            HospitalId = 20,
+                            Image = "",
+>>>>>>>> authentication:Api/MedicalSystem.DataAccessLayer/Migrations/20230623210617_SeedingDatabase.Designer.cs
                             Name = "Branch B",
                             PhoneNumber = "9876543210"
                         },
@@ -204,8 +219,13 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         {
                             Id = 3,
                             BranchAddressId = 3,
+<<<<<<<< HEAD:Api/MedicalSystem.DataAccessLayer/Migrations/20230624070038_init.Designer.cs
                             HospitalId = 3,
                             Image = "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg",
+========
+                            HospitalId = 30,
+                            Image = "",
+>>>>>>>> authentication:Api/MedicalSystem.DataAccessLayer/Migrations/20230623210617_SeedingDatabase.Designer.cs
                             Name = "Branch C",
                             PhoneNumber = "5555555555"
                         },
@@ -213,8 +233,13 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         {
                             Id = 4,
                             BranchAddressId = 4,
+<<<<<<<< HEAD:Api/MedicalSystem.DataAccessLayer/Migrations/20230624070038_init.Designer.cs
                             HospitalId = 4,
                             Image = "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg",
+========
+                            HospitalId = 40,
+                            Image = "",
+>>>>>>>> authentication:Api/MedicalSystem.DataAccessLayer/Migrations/20230623210617_SeedingDatabase.Designer.cs
                             Name = "Branch D",
                             PhoneNumber = "1112223333"
                         },
@@ -222,8 +247,13 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         {
                             Id = 5,
                             BranchAddressId = 5,
+<<<<<<<< HEAD:Api/MedicalSystem.DataAccessLayer/Migrations/20230624070038_init.Designer.cs
                             HospitalId = 1,
                             Image = "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg",
+========
+                            HospitalId = 10,
+                            Image = "",
+>>>>>>>> authentication:Api/MedicalSystem.DataAccessLayer/Migrations/20230623210617_SeedingDatabase.Designer.cs
                             Name = "Branch E",
                             PhoneNumber = "5646546546"
                         },
@@ -231,8 +261,13 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         {
                             Id = 6,
                             BranchAddressId = 6,
+<<<<<<<< HEAD:Api/MedicalSystem.DataAccessLayer/Migrations/20230624070038_init.Designer.cs
                             HospitalId = 2,
                             Image = "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg",
+========
+                            HospitalId = 20,
+                            Image = "",
+>>>>>>>> authentication:Api/MedicalSystem.DataAccessLayer/Migrations/20230623210617_SeedingDatabase.Designer.cs
                             Name = "Branch F",
                             PhoneNumber = "1555154654"
                         },
@@ -240,8 +275,13 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         {
                             Id = 7,
                             BranchAddressId = 7,
+<<<<<<<< HEAD:Api/MedicalSystem.DataAccessLayer/Migrations/20230624070038_init.Designer.cs
                             HospitalId = 3,
                             Image = "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg",
+========
+                            HospitalId = 30,
+                            Image = "",
+>>>>>>>> authentication:Api/MedicalSystem.DataAccessLayer/Migrations/20230623210617_SeedingDatabase.Designer.cs
                             Name = "Branch J",
                             PhoneNumber = "7797988521"
                         },
@@ -249,8 +289,13 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         {
                             Id = 8,
                             BranchAddressId = 8,
+<<<<<<<< HEAD:Api/MedicalSystem.DataAccessLayer/Migrations/20230624070038_init.Designer.cs
                             HospitalId = 4,
                             Image = "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg",
+========
+                            HospitalId = 40,
+                            Image = "",
+>>>>>>>> authentication:Api/MedicalSystem.DataAccessLayer/Migrations/20230623210617_SeedingDatabase.Designer.cs
                             Name = "Branch H",
                             PhoneNumber = "6597451215"
                         },
@@ -258,8 +303,13 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         {
                             Id = 9,
                             BranchAddressId = 9,
+<<<<<<<< HEAD:Api/MedicalSystem.DataAccessLayer/Migrations/20230624070038_init.Designer.cs
                             HospitalId = 1,
                             Image = "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg",
+========
+                            HospitalId = 10,
+                            Image = "",
+>>>>>>>> authentication:Api/MedicalSystem.DataAccessLayer/Migrations/20230623210617_SeedingDatabase.Designer.cs
                             Name = "Branch I",
                             PhoneNumber = "1564989848"
                         });
@@ -642,6 +692,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         });
                 });
 
+<<<<<<<< HEAD:Api/MedicalSystem.DataAccessLayer/Migrations/20230624070038_init.Designer.cs
             modelBuilder.Entity("MedicalSystem.CoreLayer.Doctor", b =>
                 {
                     b.Property<int>("Id")
@@ -828,6 +879,8 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         });
                 });
 
+========
+>>>>>>>> authentication:Api/MedicalSystem.DataAccessLayer/Migrations/20230623210617_SeedingDatabase.Designer.cs
             modelBuilder.Entity("MedicalSystem.CoreLayer.DoctorQualification", b =>
                 {
                     b.Property<int>("DoctorId")
@@ -905,152 +958,6 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             DoctorId = 2,
                             Certification = "PhD",
                             CertificationFrom = "Research Institute"
-                        });
-                });
-
-            modelBuilder.Entity("MedicalSystem.CoreLayer.Hospital", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Hospital");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Email = "stjude@example.com",
-                            Name = "St. Jude Children's Research Hospital"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Email = "mountsinai@example.com",
-                            Name = "Mount Sinai Hospital"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Email = "chop@example.com",
-                            Name = "Children's Hospital of Philadelphia"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Email = "torontogeneral@example.com",
-                            Name = "Toronto General Hospital"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Email = "tmc@example.com",
-                            Name = "Texas Medical Center"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Email = "moffitt@example.com",
-                            Name = "Moffitt Cancer Center"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Email = "barnesjewish@example.com",
-                            Name = "Barnes-Jewish Hospital"
-                        });
-                });
-
-            modelBuilder.Entity("MedicalSystem.CoreLayer.Patient", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("Age")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Gender")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Image")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasMaxLength(11)
-                        .HasColumnType("nvarchar(11)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Patient");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Age = 25,
-                            Email = "john@example.com",
-                            Gender = "M",
-                            Image = "",
-                            Name = "John Smith",
-                            PhoneNumber = "1234567890"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Age = 30,
-                            Email = "jane@example.com",
-                            Gender = "F",
-                            Image = "",
-                            Name = "Jane Doe",
-                            PhoneNumber = "9876543210"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Age = 40,
-                            Email = "alex@example.com",
-                            Gender = "M",
-                            Image = "",
-                            Name = "Alex Johnson",
-                            PhoneNumber = "5555555555"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Age = 22,
-                            Email = "emily@example.com",
-                            Gender = "F",
-                            Image = "",
-                            Name = "Emily Williams",
-                            PhoneNumber = "1112223333"
                         });
                 });
 
@@ -1203,14 +1110,21 @@ namespace MedicalSystem.DataAccessLayer.Migrations
 
             modelBuilder.Entity("MedicalSystem.CoreLayer.User", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
@@ -1220,11 +1134,19 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -1264,8 +1186,11 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("User");
                 });
 
+<<<<<<<< HEAD:Api/MedicalSystem.DataAccessLayer/Migrations/20230624070038_init.Designer.cs
             modelBuilder.Entity("MedicalSystem.CoreLayer.ZoomMeeting", b =>
                 {
                     b.Property<int>("Id")
@@ -1304,9 +1229,15 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
+========
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<int>", b =>
+>>>>>>>> authentication:Api/MedicalSystem.DataAccessLayer/Migrations/20230623210617_SeedingDatabase.Designer.cs
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -1330,7 +1261,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                     b.ToTable("AspNetRoles", (string)null);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -1344,9 +1275,8 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                     b.Property<string>("ClaimValue")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("RoleId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -1355,7 +1285,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                     b.ToTable("AspNetRoleClaims", (string)null);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<int>", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -1369,9 +1299,8 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                     b.Property<string>("ClaimValue")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -1380,7 +1309,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                     b.ToTable("AspNetUserClaims", (string)null);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
                 {
                     b.Property<string>("LoginProvider")
                         .HasColumnType("nvarchar(450)");
@@ -1391,9 +1320,8 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("LoginProvider", "ProviderKey");
 
@@ -1402,13 +1330,13 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                     b.ToTable("AspNetUserLogins", (string)null);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<int>", b =>
                 {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("RoleId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
 
                     b.HasKey("UserId", "RoleId");
 
@@ -1417,10 +1345,10 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                     b.ToTable("AspNetUserRoles", (string)null);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>
                 {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("LoginProvider")
                         .HasColumnType("nvarchar(450)");
@@ -1436,12 +1364,405 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("MedicalSystem.CoreLayer.Doctor", b =>
+                {
+                    b.HasBaseType("MedicalSystem.CoreLayer.User");
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ClinicId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Country")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DepartmentId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Gender")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Doctor_Gender");
+
+                    b.Property<decimal>("OfflineCost")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal?>("OnlineCost")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Street")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasIndex("ClinicId");
+
+                    b.HasIndex("DepartmentId");
+
+                    b.HasDiscriminator().HasValue("Doctor");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "90a642eb-6041-4c06-834b-56f06681ea45",
+                            Email = "ahmed.ali@example.com",
+                            EmailConfirmed = false,
+                            Image = "",
+                            LockoutEnabled = false,
+                            Name = "Dr. Ahmed Ali",
+                            PhoneNumber = "+971 123-456-7890",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            City = "Dubai",
+                            ClinicId = 1,
+                            Country = "United Arab Emirates",
+                            DepartmentId = 1,
+                            Gender = "Male",
+                            OfflineCost = 200m,
+                            OnlineCost = 100m,
+                            Street = "123 Main St"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "44ca18c8-424e-4b4b-92b2-c226c47a0c0b",
+                            Email = "fatima.hassan@example.com",
+                            EmailConfirmed = false,
+                            Image = "",
+                            LockoutEnabled = false,
+                            Name = "Dr. Fatima Hassan",
+                            PhoneNumber = "+971 987-654-3210",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            City = "Abu Dhabi",
+                            ClinicId = 2,
+                            Country = "United Arab Emirates",
+                            DepartmentId = 2,
+                            Gender = "Female",
+                            OfflineCost = 300m,
+                            OnlineCost = 200m,
+                            Street = "456 Elm St"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "bdd5b8e9-9413-4a31-8ed8-a82050cb07e1",
+                            Email = "ali.mahmoud@example.com",
+                            EmailConfirmed = false,
+                            Image = "",
+                            LockoutEnabled = false,
+                            Name = "Dr. Ali Mahmoud",
+                            PhoneNumber = "+971 555-123-4567",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            City = "Sharjah",
+                            ClinicId = 3,
+                            Country = "United Arab Emirates",
+                            DepartmentId = 3,
+                            Gender = "Male",
+                            OfflineCost = 400m,
+                            OnlineCost = 300m,
+                            Street = "789 Oak St"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "4f089c85-99b7-4a87-b2a1-ec8df18a5afc",
+                            Email = "aisha.khan@example.com",
+                            EmailConfirmed = false,
+                            Image = "",
+                            LockoutEnabled = false,
+                            Name = "Dr. Aisha Khan",
+                            PhoneNumber = "+971 555-987-6543",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            City = "Ajman",
+                            ClinicId = 4,
+                            Country = "United Arab Emirates",
+                            DepartmentId = 4,
+                            Gender = "Female",
+                            OfflineCost = 500m,
+                            OnlineCost = 400m,
+                            Street = "321 Pine St"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "f23edd18-e0fe-4450-9ab2-97bcf1c594bb",
+                            Email = "omar.ahmed@example.com",
+                            EmailConfirmed = false,
+                            Image = "",
+                            LockoutEnabled = false,
+                            Name = "Dr. Omar Ahmed",
+                            PhoneNumber = "+971 555-567-8901",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            City = "Ras Al Khaimah",
+                            ClinicId = 5,
+                            Country = "United Arab Emirates",
+                            DepartmentId = 5,
+                            Gender = "Male",
+                            OfflineCost = 600m,
+                            OnlineCost = 500m,
+                            Street = "987 Maple St"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "16611eb1-322c-40cc-b798-d2266ec872e6",
+                            Email = "layla.hassan@example.com",
+                            EmailConfirmed = false,
+                            Image = "",
+                            LockoutEnabled = false,
+                            Name = "Dr. Layla Hassan",
+                            PhoneNumber = "+971 555-210-9876",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            City = "Fujairah",
+                            ClinicId = 6,
+                            Country = "United Arab Emirates",
+                            DepartmentId = 6,
+                            Gender = "Female",
+                            OfflineCost = 700m,
+                            OnlineCost = 600m,
+                            Street = "654 Walnut St"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "6650de46-cd05-4563-934b-3f6fc39f6fa7",
+                            Email = "ibrahim.khalid@example.com",
+                            EmailConfirmed = false,
+                            Image = "",
+                            LockoutEnabled = false,
+                            Name = "Dr. Ibrahim Khalid",
+                            PhoneNumber = "+971 555-876-5432",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            City = "Umm Al Quwain",
+                            ClinicId = 1,
+                            Country = "United Arab Emirates",
+                            DepartmentId = 7,
+                            Gender = "Male",
+                            OfflineCost = 800m,
+                            OnlineCost = 700m,
+                            Street = "210 Cedar St"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "11c60080-19b9-41e2-a46f-4f79c343ffb2",
+                            Email = "sarah.ahmed@example.com",
+                            EmailConfirmed = false,
+                            Image = "",
+                            LockoutEnabled = false,
+                            Name = "Dr. Sarah Ahmed",
+                            PhoneNumber = "+971 555-432-1098",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            City = "Al Ain",
+                            ClinicId = 2,
+                            Country = "United Arab Emirates",
+                            DepartmentId = 8,
+                            Gender = "Female",
+                            OfflineCost = 900m,
+                            OnlineCost = 800m,
+                            Street = "876 Birch St"
+                        });
+                });
+
+            modelBuilder.Entity("MedicalSystem.CoreLayer.Hospital", b =>
+                {
+                    b.HasBaseType("MedicalSystem.CoreLayer.User");
+
+                    b.HasDiscriminator().HasValue("Hospital");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 10,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "e9b15875-c2cb-4801-86b1-9c3cf5078b0e",
+                            Email = "stjude@example.com",
+                            EmailConfirmed = false,
+                            Image = "",
+                            LockoutEnabled = false,
+                            Name = "St. Jude Children's Research Hospital",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
+                        },
+                        new
+                        {
+                            Id = 20,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "85f0e798-e385-470a-8dc4-b830aa48c03f",
+                            Email = "mountsinai@example.com",
+                            EmailConfirmed = false,
+                            Image = "",
+                            LockoutEnabled = false,
+                            Name = "Mount Sinai Hospital",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
+                        },
+                        new
+                        {
+                            Id = 30,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "889b1d18-fe89-4155-8577-42e9ddcd6516",
+                            Email = "chop@example.com",
+                            EmailConfirmed = false,
+                            Image = "",
+                            LockoutEnabled = false,
+                            Name = "Children's Hospital of Philadelphia",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
+                        },
+                        new
+                        {
+                            Id = 40,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "7c628e42-6697-453f-82cd-aecd7e2621a5",
+                            Email = "torontogeneral@example.com",
+                            EmailConfirmed = false,
+                            Image = "",
+                            LockoutEnabled = false,
+                            Name = "Toronto General Hospital",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
+                        },
+                        new
+                        {
+                            Id = 50,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "2038ef2f-71b4-4184-a1ae-a06a942161fe",
+                            Email = "tmc@example.com",
+                            EmailConfirmed = false,
+                            Image = "",
+                            LockoutEnabled = false,
+                            Name = "Texas Medical Center",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
+                        },
+                        new
+                        {
+                            Id = 60,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "9f49fd9f-ea81-4085-98b7-153520791b52",
+                            Email = "moffitt@example.com",
+                            EmailConfirmed = false,
+                            Image = "",
+                            LockoutEnabled = false,
+                            Name = "Moffitt Cancer Center",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
+                        },
+                        new
+                        {
+                            Id = 70,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "b23a2980-5dc5-498e-82ed-588796f36cf5",
+                            Email = "barnesjewish@example.com",
+                            EmailConfirmed = false,
+                            Image = "",
+                            LockoutEnabled = false,
+                            Name = "Barnes-Jewish Hospital",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false
+                        });
+                });
+
+            modelBuilder.Entity("MedicalSystem.CoreLayer.Patient", b =>
+                {
+                    b.HasBaseType("MedicalSystem.CoreLayer.User");
+
+                    b.Property<int>("Age")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Gender")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasDiscriminator().HasValue("Patient");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 100,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "c669f66a-5b13-4cc7-b878-7a958f830214",
+                            Email = "john@example.com",
+                            EmailConfirmed = false,
+                            Image = "",
+                            LockoutEnabled = false,
+                            Name = "John Smith",
+                            PhoneNumber = "1234567890",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            Age = 25,
+                            Gender = "M"
+                        },
+                        new
+                        {
+                            Id = 200,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "efa1fbc3-883a-4d08-99b8-e08ebb6cca01",
+                            Email = "jane@example.com",
+                            EmailConfirmed = false,
+                            Image = "",
+                            LockoutEnabled = false,
+                            Name = "Jane Doe",
+                            PhoneNumber = "9876543210",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            Age = 30,
+                            Gender = "F"
+                        },
+                        new
+                        {
+                            Id = 300,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "3e0abf8b-12fd-41a8-b5e7-83095a95fbe8",
+                            Email = "alex@example.com",
+                            EmailConfirmed = false,
+                            Image = "",
+                            LockoutEnabled = false,
+                            Name = "Alex Johnson",
+                            PhoneNumber = "5555555555",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            Age = 40,
+                            Gender = "M"
+                        },
+                        new
+                        {
+                            Id = 400,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "21715648-dcc7-443e-abc4-2f5d75cdce12",
+                            Email = "emily@example.com",
+                            EmailConfirmed = false,
+                            Image = "",
+                            LockoutEnabled = false,
+                            Name = "Emily Williams",
+                            PhoneNumber = "1112223333",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            Age = 22,
+                            Gender = "F"
+                        });
+                });
+
             modelBuilder.Entity("MedicalSystem.CoreLayer.Appointment", b =>
                 {
                     b.HasOne("MedicalSystem.CoreLayer.Branch", "Branch")
-                        .WithMany()
+                        .WithMany("Appoitments")
                         .HasForeignKey("BranchId")
-                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("MedicalSystem.CoreLayer.Doctor", "Doctor")
@@ -1537,25 +1858,6 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                     b.Navigation("Branch");
                 });
 
-            modelBuilder.Entity("MedicalSystem.CoreLayer.Doctor", b =>
-                {
-                    b.HasOne("MedicalSystem.CoreLayer.Clinic", "Clinic")
-                        .WithMany()
-                        .HasForeignKey("ClinicId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MedicalSystem.CoreLayer.Department", "Department")
-                        .WithMany("Doctors")
-                        .HasForeignKey("DepartmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Clinic");
-
-                    b.Navigation("Department");
-                });
-
             modelBuilder.Entity("MedicalSystem.CoreLayer.DoctorQualification", b =>
                 {
                     b.HasOne("MedicalSystem.CoreLayer.Doctor", "Doctor")
@@ -1589,7 +1891,6 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                     b.HasOne("MedicalSystem.CoreLayer.Patient", "Patient")
                         .WithMany("Reviews")
                         .HasForeignKey("PatientId")
-                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Doctor");
@@ -1597,16 +1898,16 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                     b.Navigation("Patient");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole<int>", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<int>", b =>
                 {
                     b.HasOne("MedicalSystem.CoreLayer.User", null)
                         .WithMany()
@@ -1615,7 +1916,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
                 {
                     b.HasOne("MedicalSystem.CoreLayer.User", null)
                         .WithMany()
@@ -1624,9 +1925,9 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<int>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole<int>", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1639,13 +1940,31 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>
                 {
                     b.HasOne("MedicalSystem.CoreLayer.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("MedicalSystem.CoreLayer.Doctor", b =>
+                {
+                    b.HasOne("MedicalSystem.CoreLayer.Clinic", "Clinic")
+                        .WithMany()
+                        .HasForeignKey("ClinicId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MedicalSystem.CoreLayer.Department", "Department")
+                        .WithMany("Doctors")
+                        .HasForeignKey("DepartmentId")
+                        .IsRequired();
+
+                    b.Navigation("Clinic");
+
+                    b.Navigation("Department");
                 });
 
             modelBuilder.Entity("MedicalSystem.CoreLayer.Appointment", b =>
@@ -1655,6 +1974,8 @@ namespace MedicalSystem.DataAccessLayer.Migrations
 
             modelBuilder.Entity("MedicalSystem.CoreLayer.Branch", b =>
                 {
+                    b.Navigation("Appoitments");
+
                     b.Navigation("BranchDoctors");
 
                     b.Navigation("Clinics");

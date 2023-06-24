@@ -13,7 +13,7 @@ namespace MedicalSystem.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Policy ="Doctor")]
+    
     public class DoctorController : ControllerBase
     {
         private readonly IDoctorManager _doctorManager;

@@ -18,7 +18,6 @@ namespace MedicalSystem.Api.Controllers
 		}
 
 		[HttpGet]
-		[Authorize]
 		public ActionResult<List<ReviewWithIdDto>> GetAll()
 		{
 			var Reviews = _ReviewManager.GetAll();

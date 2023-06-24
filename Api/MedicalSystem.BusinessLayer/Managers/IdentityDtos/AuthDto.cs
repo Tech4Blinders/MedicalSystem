@@ -8,6 +8,7 @@ namespace MedicalSystem.BusinessLayer.Managers.IdentityDtos
 {
     public class AuthDto
     {
+        public string Id { get; set; } = string.Empty;
         public string Message { get; set; } = String.Empty;
         public bool IsAuthenticated { get; set; }
         public string Username { get; set; } = String.Empty;

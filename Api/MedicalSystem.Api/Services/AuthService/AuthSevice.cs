@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CloudinaryDotNet.Actions;
 using MedicalSystem.Api.Services.AuthService;
 using MedicalSystem.Api.Services.Helper;
 using MedicalSystem.BusinessLayer;
@@ -44,11 +45,15 @@ public class AuthSevice : IAuthService
                 authDto.Message = "Password is wrong";
             }
             var token = await CreateJwtToken(user);
+            var claims =await _userManager.GetClaimsAsync(user);
             var tokenHandeler = new JwtSecurityTokenHandler();
             authDto.Token = tokenHandeler.WriteToken(token);
             authDto.IsAuthenticated = true;
             authDto.Username = user.UserName;
             authDto.Email = user.Email;
+            authDto.Role = claims.Where(a => a.Type == ClaimTypes.Role).FirstOrDefault()!.Value;
+            authDto.Id= claims.Where(a => a.Type == ClaimTypes.NameIdentifier).FirstOrDefault()!.Value;
+
         }
         
         return authDto;
@@ -79,39 +84,37 @@ public class AuthSevice : IAuthService
             return new AuthDto { Message = "Role is Not Found " };
             }
         var result = await _userManager.CreateAsync(user, dto.Password);
-           if(!result.Succeeded)
+        var claims = new List<Claim>()
+        {
+            new Claim(ClaimTypes.Role ,dto.Role),
+            new Claim(ClaimTypes.Email , user.Email) ,
+            new Claim(ClaimTypes.Name , user.Name),
+            new Claim(ClaimTypes.NameIdentifier ,user.Id.ToString())
+        };
+        
+        if (!result.Succeeded)
             {
             string errors = string.Empty;
             foreach (var error in result.Errors)
                 errors += $"{error.Description}"; 
             return new AuthDto { Message = errors }; 
             }
+       await _userManager.AddClaimsAsync(user, claims);
         var jwtSecurityToken = await CreateJwtToken(user, dto.Role);
         return new AuthDto
         {
             Email = user.Email,
             Username = user.UserName,
-            Token = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken) ,
-            IsAuthenticated =true,
-            ExpiresOn = jwtSecurityToken.ValidTo ,
-            Role = jwtSecurityToken.Claims.FirstOrDefault(c=>c.Type==ClaimTypes.Role).Value 
+            Token = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken),
+            IsAuthenticated = true,
+            ExpiresOn = jwtSecurityToken.ValidTo,
+            Role = claims.Where(a => a.Type == ClaimTypes.Role).FirstOrDefault()!.Value
         };
         
     }
 
     private async Task<JwtSecurityToken> CreateJwtToken(User user, string role)
     {
-
-    var claims = new List<Claim>()
-    {
-       new Claim(ClaimTypes.Role , role == String.Empty ? "patient" : role),
-       new Claim(ClaimTypes.Email , user.Email) ,
-       new Claim(ClaimTypes.Name , user.Name),
-       new Claim(ClaimTypes.NameIdentifier ,user.Id.ToString())
-    };
-        await _userManager.AddClaimsAsync(user, claims);
-
-
         string key = _jwt.Key; 
         var keyinbytes = Encoding.ASCII.GetBytes(key);
         var symmetricSecurityKey = new SymmetricSecurityKey(keyinbytes);
@@ -119,7 +122,6 @@ public class AuthSevice : IAuthService
 
         var jwtsecuritytoken = new JwtSecurityToken(
 
-            claims: claims,
             signingCredentials: siginingcredintials,
             expires: DateTime.Now.AddDays(_jwt.DurationInDays) ,
             issuer:_jwt.Issuer , 
@@ -130,16 +132,9 @@ public class AuthSevice : IAuthService
     private async Task<JwtSecurityToken> CreateJwtToken(User user)
     {
 
-        var claims = new List<Claim>()
-    {
-       new Claim(ClaimTypes.Email , user.Email) ,
-       new Claim(ClaimTypes.Name , user.Name),
-       new Claim(ClaimTypes.NameIdentifier ,user.Id.ToString())
-    };
-        await _userManager.AddClaimsAsync(user, claims);
-
-
-        string key = _configuration.GetValue<string>("key") ?? string.Empty;
+        var claims=await _userManager.GetClaimsAsync(user);
+        //string key = _configuration.GetValue<string>("key") ?? string.Empty;
+        string key=_jwt.Key;
         var keyinbytes = Encoding.ASCII.GetBytes(key);
         var symmetricSecurityKey = new SymmetricSecurityKey(keyinbytes);
         var siginingcredintials = new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha256);
@@ -149,7 +144,7 @@ public class AuthSevice : IAuthService
             claims: claims,
             signingCredentials: siginingcredintials,
             issuer:_jwt.Issuer ,
-            audience:_jwt.Audience ,    
+            audience:_jwt.Audience,    
             expires: DateTime.Now.AddDays(_jwt.DurationInDays)
             );
         return jwtSecurityToken;

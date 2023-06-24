@@ -8,6 +8,7 @@ using MedicalSystem.DataAccessLayer;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Stripe;
@@ -22,6 +23,17 @@ namespace MedicalSystem.Api
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Services.AddIdentity<User, IdentityRole<int>>(options =>
+            {
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireDigit = false;
+                options.User.RequireUniqueEmail = true;
+            })
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+           
+
             builder.Services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = "Tech6Blinders";
@@ -37,9 +49,9 @@ namespace MedicalSystem.Api
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
                       
-                       ValidateIssuerSigningKey = true,
-                        ValidateIssuer = true,
-                        ValidateAudience = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidateIssuer = false,
+                        ValidateAudience = false,
                         ValidateLifetime = true,
                         ValidIssuer = builder.Configuration["JWT:Issuer"] ,
                         ValidAudience = builder.Configuration["JWT:Audience"],
@@ -89,7 +101,6 @@ namespace MedicalSystem.Api
             #endregion
 
             builder.Services.AddDbContext<ApplicationDbContext>(option=>option.UseSqlServer(builder.Configuration.GetConnectionString("LocalConnection")));
-            builder.Services.AddIdentity<User, IdentityRole<int>>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
             builder.Services.AddScoped<IPatientManager, PatientManager>();
             builder.Services.AddScoped<IBranchDoctorManager, BranchDoctorManager>();

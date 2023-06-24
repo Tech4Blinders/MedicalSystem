@@ -10,6 +10,7 @@ namespace MedicalSystem.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [AllowAnonymous]
     public class UsersController : ControllerBase
     {
         private readonly IAuthService _auth;

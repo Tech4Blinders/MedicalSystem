@@ -1,3 +1,4 @@
+using MedicalSystem.Api.Services;
 using MedicalSystem.Api.Services.UploadImage;
 using MedicalSystem.BusinessLayer;
 using MedicalSystem.DataAccessLayer;
@@ -32,6 +33,7 @@ namespace MedicalSystem.Api
             builder.Services.AddScoped<IBranchAddManager,BranchAddManager>();
             builder.Services.AddScoped<IAvaliableAppointmentManager, AvaliableAppointmentManager>();
             builder.Services.AddScoped<IDoctorQualificationManager, DoctorQualificationManager>();
+            builder.Services.AddScoped<IAuthService, AuthSevice>();
 
 
             builder.Services.AddScoped<IUploadImg, UploadImg>();

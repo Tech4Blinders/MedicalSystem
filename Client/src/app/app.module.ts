@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,12 +21,11 @@ import { DashboardModule } from './dashboard/dashboard.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     CoreModule,
-    HomeModule,ButtonModule , 
+    HomeModule,ButtonModule ,
     AuthenticationModule ,
     DashboardModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

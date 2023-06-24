@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BranchService} from 'src/app/Services/branch.service';
 import { Branch } from 'src/app/_Models/dtos/branch';
+interface AutoCompleteCompleteEvent {
+  originalEvent: Event;
+  query: string;
+}
 
 @Component({
   selector: 'app-hospital-card',
@@ -24,12 +28,12 @@ export class HospitalCardComponent implements OnInit{
     selectedHospitalAdvanced: Branch[];
     getAllHos(){
        this.branchService.getAllHospitals().subscribe((data) => {
-       this.hospitals=data;    
+       this.hospitals=data;   
   })
 }
 
 
-    filterHospital(event) {
+    filterHospital(event:AutoCompleteCompleteEvent) {
       let filtered: Branch[] = [];
       let query = event.query;
       for (let i = 0; i < this.hospitals.length; i++) {

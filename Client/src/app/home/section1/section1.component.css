@@ -84,7 +84,7 @@
 .hero {
   position: relative;
   /* height: calc(90vh - 84px); */
-  height:100vh;
+  height:65vh;
   overflow: hidden !important;
 }
 
@@ -146,14 +146,11 @@ img {
 
   /* border-radius: 15%; */
 }
-#test {
-  background-color: aqua;
-  font-size: larger;
-}
+
 /* caption */
 .caption{
   display: flex;
-  top: 65%;
+  top: 90%;
   z-index:5;
 }
  .p-galleria-caption {
@@ -162,10 +159,39 @@ img {
   color: #f8f9fa;
   padding: 1rem;
   display: flex;
-  top: 65%;
+  top: 100% !important;
   z-index:5;
+  
 }
-
+/* CSS */
+.button-5 {
+  align-items: center;
+  background-clip: padding-box;
+  background-color: #0DCAF0;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all .5s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+  }
 
 /*-----Zoom SDK-------*/
 /* body {

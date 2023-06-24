@@ -1,16 +1,14 @@
-<section class="clinic-card section-padding" id="hamada">
+<section class="clinic-card section-padding" id="hospital_1">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-12">
                 <h2 class="mb-5">Our <u class="text-info">Clinics</u></h2>
             </div>
             <div class="col-lg-4 cardItem mb-5" *ngFor="let item of clinics">
-                <p-card header={{item.specilization}} subheader="roomNumber: {{item.roomNumber}}" [style]="{ width: '360px' }">
+                <p-card header={{item.specilization}} subheader="Room : {{item.roomNumber}}" [style]="{ width: '360px' }">
                     <ng-template pTemplate="header">
                         <img class="cardImg" alt="Card" src={{item.image}} />
-                        <div class="middle">
-                            <div class="text">see more</div>
-                          </div>
+                        
                     </ng-template>
                     <p>
                        {{item?.description}}
@@ -19,7 +17,7 @@
                         <!-- <p-button label="Save" icon="pi pi-check"></p-button>
                         <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{ 'margin-left': '.5em' }"></p-button> -->
                         <!-- HTML !-->
-                         <a class="button-18" role="button" (click)="SelectClinic(item)">Button 18</a>
+                         <a class="button-18" role="button" (click)="SelectClinic(item)">Choose</a>
 
                     </ng-template>
                 </p-card>

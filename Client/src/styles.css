@@ -342,7 +342,16 @@ strong {
 .social-icon-link:hover {
   background: var(--primary-color);
   color: var(--white-color);
+} 
+.p-card{
+    border: 2px solid;
+    border-color: var(--navbar-bg-color);
+    border-radius: 5% 0 5% 0;
+    padding: 30px;
+    background-color: whitesmoke;
+    height:100%;
 }
+
 
 
 /*---------------------------------------
@@ -469,26 +478,30 @@ strong {
   }
 }
 
-.p-galleria .p-galleria-thumbnail-container {
-  background-color: transparent !important;
+.p-galleria .p-galleria-thumbnail-container .p-galleria-thumbnail-wrapper .p-galleria-footer {
+  display: none; 
+ 
+}
+.p-galleria::after{
+  display: none;
 }
 .p-galleria-caption {
  
   position: absolute;
-  /* bottom: -53px; */
-
   width: 100%;
   z-index: 5;
   background-color: transparent !important;
   color: #ffffff !important;
-  top: 60% !important;
+  top: 70% !important;
   left: 50% !important;
   transform: translate(-50%, -50%);
   text-align: center;
 }
-.p-galleria-caption p{
-  color: #ffffff;
+.p-autocomplete{
+  width: 80vw !important;
+
 }
+
 
 
 /* -----Zoom SDK-------*/

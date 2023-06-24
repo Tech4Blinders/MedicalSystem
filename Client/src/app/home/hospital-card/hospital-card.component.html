@@ -1,42 +1,54 @@
-<section class="hospitalCard ">
-    <div class="container">
-        <div class="py-5">
-            <label class="me-5">search for hospital Name</label>
-
-            <p-autoComplete [(ngModel)]="selectedHospitalAdvanced" 
-               [suggestions]="filteredHospitals"
-               (completeMethod)="filterHospital($event)" 
-               field="name" 
-               [dropdown]="true">
-               <ng-template let-hospital pTemplate="item">
-                   <div class="hospital-item">
-                       <div>{{ hospital.name }}</div>
-                   </div>
-               </ng-template>
-           </p-autoComplete>
-        </div>
-        
-        <div class="row">
-            <div class="col-lg-4 cardItem mb-5 text-center" *ngFor="let item of filteredHospitals">
-                <p-card header={{item.name}} subheader="Phone Number: {{item.phoneNumber}}" [style]="{ width: '360px' }">
-                    <ng-template pTemplate="header">
-                        <img class="cardImg" alt="Card" src={{item.image}} />
-                        <div class="middle">
-                            <div class="text">{{item.hospitalName}}</div>
-                          </div>
-                    </ng-template>
-                    <p>
-                       {{item.city}},{{item.country}}
-                    </p>
-                    <ng-template pTemplate="footer">
-                        <!-- <p-button label="Save" icon="pi pi-check"></p-button>
-                        <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{ 'margin-left': '.5em' }"></p-button> -->
-                        <!-- HTML !-->
-                         <a class="button-18" (click)="setHospital(item)" role="button" routerLink="/clinic">Button 18</a>
-
-                    </ng-template>
-                </p-card>
-                </div>
-        </div>
+<section class="hospitalCard">
+  <div class="container">
+    <div class="py-5">
+      <p-autoComplete
+        [(ngModel)]="selectedHospitalAdvanced"
+        [suggestions]="filteredHospitals"
+        placeholder="Looking For Hospital?"
+        (completeMethod)="filterHospital($event)"
+        field="name"
+        [dropdown]="true"
+      >
+        <ng-template let-hospital pTemplate="item">
+          <div class="hospital-item">
+            <div>{{ hospital.name }}</div>
+          </div>
+        </ng-template>
+      </p-autoComplete>
     </div>
+
+    <div class="row">
+      <div
+        class="col-lg-4 cardItem mb-5 text-center"
+        *ngFor="let item of filteredHospitals"
+      >
+        <p-card
+          header="{{ item.name }}"
+          subheader="Phone Number: {{ item.phoneNumber }}"
+          [style]="{ width: '360px', color: '#09223b',border:'5% 0 5% 0 solid black' }"
+          class="text"
+        >
+          <ng-template pTemplate="header" id="byo">
+            <div class="contain">
+              <img class="cardImg" alt="Card" src="{{ item.image }}" />
+            </div>
+            <div class="middle">
+              <div class="text h5">{{ item.hospitalName }}</div>
+              <h6 class="text">{{ item.city }},{{ item.country }}</h6>
+            </div>
+          </ng-template>
+
+          <ng-template pTemplate="footer">
+            <a
+              class="button-18 text"
+              (click)="setHospital(item)"
+              role="button"
+              routerLink="/clinic"
+              >Visit Us!</a
+            >
+          </ng-template>
+        </p-card>
+      </div>
+    </div>
+  </div>
 </section>

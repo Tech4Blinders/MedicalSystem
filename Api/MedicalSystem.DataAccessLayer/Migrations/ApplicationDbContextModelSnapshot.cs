@@ -45,7 +45,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                     b.Property<int>("PatientId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ZoomMeetingId")
+                    b.Property<int?>("ZoomMeetingId")
                         .HasColumnType("int");
 
                     b.Property<bool>("isOnline")
@@ -185,7 +185,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             Id = 1,
                             BranchAddressId = 1,
                             HospitalId = 1,
-                            Image = "",
+                            Image = "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg",
                             Name = "Branch A",
                             PhoneNumber = "1234567890"
                         },
@@ -194,7 +194,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             Id = 2,
                             BranchAddressId = 2,
                             HospitalId = 2,
-                            Image = "",
+                            Image = "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg",
                             Name = "Branch B",
                             PhoneNumber = "9876543210"
                         },
@@ -203,7 +203,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             Id = 3,
                             BranchAddressId = 3,
                             HospitalId = 3,
-                            Image = "",
+                            Image = "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg",
                             Name = "Branch C",
                             PhoneNumber = "5555555555"
                         },
@@ -212,7 +212,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             Id = 4,
                             BranchAddressId = 4,
                             HospitalId = 4,
-                            Image = "",
+                            Image = "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg",
                             Name = "Branch D",
                             PhoneNumber = "1112223333"
                         },
@@ -221,7 +221,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             Id = 5,
                             BranchAddressId = 5,
                             HospitalId = 1,
-                            Image = "",
+                            Image = "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg",
                             Name = "Branch E",
                             PhoneNumber = "5646546546"
                         },
@@ -230,7 +230,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             Id = 6,
                             BranchAddressId = 6,
                             HospitalId = 2,
-                            Image = "",
+                            Image = "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg",
                             Name = "Branch F",
                             PhoneNumber = "1555154654"
                         },
@@ -239,7 +239,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             Id = 7,
                             BranchAddressId = 7,
                             HospitalId = 3,
-                            Image = "",
+                            Image = "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg",
                             Name = "Branch J",
                             PhoneNumber = "7797988521"
                         },
@@ -248,7 +248,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             Id = 8,
                             BranchAddressId = 8,
                             HospitalId = 4,
-                            Image = "",
+                            Image = "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg",
                             Name = "Branch H",
                             PhoneNumber = "6597451215"
                         },
@@ -257,7 +257,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             Id = 9,
                             BranchAddressId = 9,
                             HospitalId = 1,
-                            Image = "",
+                            Image = "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg",
                             Name = "Branch I",
                             PhoneNumber = "1564989848"
                         });
@@ -516,7 +516,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             Id = 1,
                             BranchId = 1,
                             Description = "Description for Family Medicine Clinic",
-                            Image = "",
+                            Image = "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg",
                             RoomNumber = 1001,
                             Specilization = "Family Medicine"
                         },
@@ -525,7 +525,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             Id = 2,
                             BranchId = 1,
                             Description = "Description for Dental Clinic",
-                            Image = "",
+                            Image = "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg",
                             RoomNumber = 1002,
                             Specilization = "Dentistry"
                         },
@@ -534,7 +534,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             Id = 3,
                             BranchId = 2,
                             Description = "Description for Internal Medicine Clinic",
-                            Image = "",
+                            Image = "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg",
                             RoomNumber = 1003,
                             Specilization = "Internal Medicine"
                         },
@@ -543,7 +543,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             Id = 4,
                             BranchId = 2,
                             Description = "Description for Orthopedic Clinic",
-                            Image = "",
+                            Image = "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg",
                             RoomNumber = 1004,
                             Specilization = "Orthopedics"
                         },
@@ -552,7 +552,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             Id = 5,
                             BranchId = 3,
                             Description = "Description for Cardiology Clinic",
-                            Image = "",
+                            Image = "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg",
                             RoomNumber = 1005,
                             Specilization = "Cardiology"
                         },
@@ -561,7 +561,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             Id = 6,
                             BranchId = 3,
                             Description = "Description for Pediatric Clinic",
-                            Image = "",
+                            Image = "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg",
                             RoomNumber = 1006,
                             Specilization = "Pediatrics"
                         });
@@ -705,7 +705,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             DepartmentId = 1,
                             Email = "ahmed.ali@example.com",
                             Gender = "Male",
-                            Image = "",
+                            Image = "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687384280/Medical%20System/doctor.png",
                             Name = "Dr. Ahmed Ali",
                             OfflineCost = 200m,
                             OnlineCost = 100m,
@@ -721,7 +721,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             DepartmentId = 2,
                             Email = "fatima.hassan@example.com",
                             Gender = "Female",
-                            Image = "",
+                            Image = "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687384280/Medical%20System/doctor.png",
                             Name = "Dr. Fatima Hassan",
                             OfflineCost = 300m,
                             OnlineCost = 200m,
@@ -737,7 +737,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             DepartmentId = 3,
                             Email = "ali.mahmoud@example.com",
                             Gender = "Male",
-                            Image = "",
+                            Image = "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687384280/Medical%20System/doctor.png",
                             Name = "Dr. Ali Mahmoud",
                             OfflineCost = 400m,
                             OnlineCost = 300m,
@@ -753,7 +753,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             DepartmentId = 4,
                             Email = "aisha.khan@example.com",
                             Gender = "Female",
-                            Image = "",
+                            Image = "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687384280/Medical%20System/doctor.png",
                             Name = "Dr. Aisha Khan",
                             OfflineCost = 500m,
                             OnlineCost = 400m,
@@ -769,7 +769,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             DepartmentId = 5,
                             Email = "omar.ahmed@example.com",
                             Gender = "Male",
-                            Image = "",
+                            Image = "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687384280/Medical%20System/doctor.png",
                             Name = "Dr. Omar Ahmed",
                             OfflineCost = 600m,
                             OnlineCost = 500m,
@@ -785,7 +785,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             DepartmentId = 6,
                             Email = "layla.hassan@example.com",
                             Gender = "Female",
-                            Image = "",
+                            Image = "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687384280/Medical%20System/doctor.png",
                             Name = "Dr. Layla Hassan",
                             OfflineCost = 700m,
                             OnlineCost = 600m,
@@ -801,7 +801,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             DepartmentId = 7,
                             Email = "ibrahim.khalid@example.com",
                             Gender = "Male",
-                            Image = "",
+                            Image = "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687384280/Medical%20System/doctor.png",
                             Name = "Dr. Ibrahim Khalid",
                             OfflineCost = 800m,
                             OnlineCost = 700m,
@@ -817,7 +817,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             DepartmentId = 8,
                             Email = "sarah.ahmed@example.com",
                             Gender = "Female",
-                            Image = "",
+                            Image = "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687384280/Medical%20System/doctor.png",
                             Name = "Dr. Sarah Ahmed",
                             OfflineCost = 900m,
                             OnlineCost = 800m,
@@ -969,43 +969,6 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             Id = 7,
                             Email = "barnesjewish@example.com",
                             Name = "Barnes-Jewish Hospital"
-                        });
-                });
-
-            modelBuilder.Entity("MedicalSystem.CoreLayer.Models.ZoomMeeting", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("Duration")
-                        .HasColumnType("int");
-
-                    b.Property<string>("MeetingId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("StartTime")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("zoomMeetings");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Duration = 60,
-                            MeetingId = "89944185248",
-                            Password = "123",
-                            StartTime = new DateTime(2023, 6, 15, 10, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
@@ -1301,6 +1264,43 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("MedicalSystem.CoreLayer.ZoomMeeting", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Duration")
+                        .HasColumnType("int");
+
+                    b.Property<string>("MeetingId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("StartTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("zoomMeetings");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Duration = 60,
+                            MeetingId = "89944185248",
+                            Password = "123",
+                            StartTime = new DateTime(2023, 6, 15, 10, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -1454,11 +1454,9 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MedicalSystem.CoreLayer.Models.ZoomMeeting", "ZoomMeeting")
+                    b.HasOne("MedicalSystem.CoreLayer.ZoomMeeting", "ZoomMeeting")
                         .WithMany()
-                        .HasForeignKey("ZoomMeetingId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ZoomMeetingId");
 
                     b.Navigation("Branch");
 

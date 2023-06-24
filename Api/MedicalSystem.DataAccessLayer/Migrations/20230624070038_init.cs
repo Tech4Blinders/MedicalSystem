@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MedicalSystem.DataAccessLayer.Migrations
 {
-    public partial class DatabaseInitialization : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -338,7 +338,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                     PatientId = table.Column<int>(type: "int", nullable: false),
                     BranchId = table.Column<int>(type: "int", nullable: false),
                     isOnline = table.Column<bool>(type: "bit", nullable: false),
-                    ZoomMeetingId = table.Column<int>(type: "int", nullable: false)
+                    ZoomMeetingId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -365,8 +365,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         name: "FK_Appointment_zoomMeetings_ZoomMeetingId",
                         column: x => x.ZoomMeetingId,
                         principalTable: "zoomMeetings",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -532,15 +531,15 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                 columns: new[] { "Id", "BranchAddressId", "HospitalId", "Image", "Name", "PhoneNumber" },
                 values: new object[,]
                 {
-                    { 1, 1, 1, "", "Branch A", "1234567890" },
-                    { 2, 2, 2, "", "Branch B", "9876543210" },
-                    { 3, 3, 3, "", "Branch C", "5555555555" },
-                    { 4, 4, 4, "", "Branch D", "1112223333" },
-                    { 5, 5, 1, "", "Branch E", "5646546546" },
-                    { 6, 6, 2, "", "Branch F", "1555154654" },
-                    { 7, 7, 3, "", "Branch J", "7797988521" },
-                    { 8, 8, 4, "", "Branch H", "6597451215" },
-                    { 9, 9, 1, "", "Branch I", "1564989848" }
+                    { 1, 1, 1, "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg", "Branch A", "1234567890" },
+                    { 2, 2, 2, "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg", "Branch B", "9876543210" },
+                    { 3, 3, 3, "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg", "Branch C", "5555555555" },
+                    { 4, 4, 4, "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg", "Branch D", "1112223333" },
+                    { 5, 5, 1, "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg", "Branch E", "5646546546" },
+                    { 6, 6, 2, "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg", "Branch F", "1555154654" },
+                    { 7, 7, 3, "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg", "Branch J", "7797988521" },
+                    { 8, 8, 4, "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg", "Branch H", "6597451215" },
+                    { 9, 9, 1, "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg", "Branch I", "1564989848" }
                 });
 
             migrationBuilder.InsertData(
@@ -548,12 +547,12 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                 columns: new[] { "Id", "BranchId", "Description", "Image", "RoomNumber", "Specilization" },
                 values: new object[,]
                 {
-                    { 1, 1, "Description for Family Medicine Clinic", "", 1001, "Family Medicine" },
-                    { 2, 1, "Description for Dental Clinic", "", 1002, "Dentistry" },
-                    { 3, 2, "Description for Internal Medicine Clinic", "", 1003, "Internal Medicine" },
-                    { 4, 2, "Description for Orthopedic Clinic", "", 1004, "Orthopedics" },
-                    { 5, 3, "Description for Cardiology Clinic", "", 1005, "Cardiology" },
-                    { 6, 3, "Description for Pediatric Clinic", "", 1006, "Pediatrics" }
+                    { 1, 1, "Description for Family Medicine Clinic", "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg", 1001, "Family Medicine" },
+                    { 2, 1, "Description for Dental Clinic", "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg", 1002, "Dentistry" },
+                    { 3, 2, "Description for Internal Medicine Clinic", "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg", 1003, "Internal Medicine" },
+                    { 4, 2, "Description for Orthopedic Clinic", "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg", 1004, "Orthopedics" },
+                    { 5, 3, "Description for Cardiology Clinic", "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg", 1005, "Cardiology" },
+                    { 6, 3, "Description for Pediatric Clinic", "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg", 1006, "Pediatrics" }
                 });
 
             migrationBuilder.InsertData(
@@ -576,14 +575,14 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                 columns: new[] { "Id", "City", "ClinicId", "Country", "DepartmentId", "Email", "Gender", "Image", "Name", "OfflineCost", "OnlineCost", "PhoneNumber", "Street" },
                 values: new object[,]
                 {
-                    { 1, "Dubai", 1, "United Arab Emirates", 1, "ahmed.ali@example.com", "Male", "", "Dr. Ahmed Ali", 200m, 100m, "+971 123-456-7890", "123 Main St" },
-                    { 2, "Abu Dhabi", 2, "United Arab Emirates", 2, "fatima.hassan@example.com", "Female", "", "Dr. Fatima Hassan", 300m, 200m, "+971 987-654-3210", "456 Elm St" },
-                    { 3, "Sharjah", 3, "United Arab Emirates", 3, "ali.mahmoud@example.com", "Male", "", "Dr. Ali Mahmoud", 400m, 300m, "+971 555-123-4567", "789 Oak St" },
-                    { 4, "Ajman", 4, "United Arab Emirates", 4, "aisha.khan@example.com", "Female", "", "Dr. Aisha Khan", 500m, 400m, "+971 555-987-6543", "321 Pine St" },
-                    { 5, "Ras Al Khaimah", 5, "United Arab Emirates", 5, "omar.ahmed@example.com", "Male", "", "Dr. Omar Ahmed", 600m, 500m, "+971 555-567-8901", "987 Maple St" },
-                    { 6, "Fujairah", 6, "United Arab Emirates", 6, "layla.hassan@example.com", "Female", "", "Dr. Layla Hassan", 700m, 600m, "+971 555-210-9876", "654 Walnut St" },
-                    { 7, "Umm Al Quwain", 1, "United Arab Emirates", 7, "ibrahim.khalid@example.com", "Male", "", "Dr. Ibrahim Khalid", 800m, 700m, "+971 555-876-5432", "210 Cedar St" },
-                    { 8, "Al Ain", 2, "United Arab Emirates", 8, "sarah.ahmed@example.com", "Female", "", "Dr. Sarah Ahmed", 900m, 800m, "+971 555-432-1098", "876 Birch St" }
+                    { 1, "Dubai", 1, "United Arab Emirates", 1, "ahmed.ali@example.com", "Male", "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687384280/Medical%20System/doctor.png", "Dr. Ahmed Ali", 200m, 100m, "+971 123-456-7890", "123 Main St" },
+                    { 2, "Abu Dhabi", 2, "United Arab Emirates", 2, "fatima.hassan@example.com", "Female", "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687384280/Medical%20System/doctor.png", "Dr. Fatima Hassan", 300m, 200m, "+971 987-654-3210", "456 Elm St" },
+                    { 3, "Sharjah", 3, "United Arab Emirates", 3, "ali.mahmoud@example.com", "Male", "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687384280/Medical%20System/doctor.png", "Dr. Ali Mahmoud", 400m, 300m, "+971 555-123-4567", "789 Oak St" },
+                    { 4, "Ajman", 4, "United Arab Emirates", 4, "aisha.khan@example.com", "Female", "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687384280/Medical%20System/doctor.png", "Dr. Aisha Khan", 500m, 400m, "+971 555-987-6543", "321 Pine St" },
+                    { 5, "Ras Al Khaimah", 5, "United Arab Emirates", 5, "omar.ahmed@example.com", "Male", "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687384280/Medical%20System/doctor.png", "Dr. Omar Ahmed", 600m, 500m, "+971 555-567-8901", "987 Maple St" },
+                    { 6, "Fujairah", 6, "United Arab Emirates", 6, "layla.hassan@example.com", "Female", "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687384280/Medical%20System/doctor.png", "Dr. Layla Hassan", 700m, 600m, "+971 555-210-9876", "654 Walnut St" },
+                    { 7, "Umm Al Quwain", 1, "United Arab Emirates", 7, "ibrahim.khalid@example.com", "Male", "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687384280/Medical%20System/doctor.png", "Dr. Ibrahim Khalid", 800m, 700m, "+971 555-876-5432", "210 Cedar St" },
+                    { 8, "Al Ain", 2, "United Arab Emirates", 8, "sarah.ahmed@example.com", "Female", "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687384280/Medical%20System/doctor.png", "Dr. Sarah Ahmed", 900m, 800m, "+971 555-432-1098", "876 Birch St" }
                 });
 
             migrationBuilder.InsertData(

@@ -6,6 +6,8 @@ import { ZoomMeetingRoutingModule } from './zoom-meeting-routing.module';
 import { MeetingComponent } from './meeting/meeting.component';
 import { StartMeetingComponent } from './start-meeting/start-meeting.component';
 import { JoinMeetingComponent } from './join-meeting/join-meeting.component';
+import { TableModule } from 'primeng/table';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,13 +20,15 @@ import { JoinMeetingComponent } from './join-meeting/join-meeting.component';
   imports: [
     CommonModule,
     ZoomMeetingRoutingModule,
+    TableModule,
   ],
   exports:[
     DoctorMeetingComponent,
     PatientMeetingComponent,
     MeetingComponent,
     StartMeetingComponent,
-    JoinMeetingComponent
+    JoinMeetingComponent,
+  
   ]
 })
 export class ZoomMeetingModule { }

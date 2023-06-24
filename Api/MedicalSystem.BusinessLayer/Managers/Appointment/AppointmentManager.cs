@@ -20,6 +20,8 @@ public class AppointmentManager : IAppointmentManager
             DoctorId = appointmentToAdd.DoctorId,
             PatientId = appointmentToAdd.PatientId,
             BranchId = appointmentToAdd.BranchId,
+            isOnline = appointmentToAdd.isOnline,
+            ZoomMeetingId=appointmentToAdd?.ZoomMeetingId
         };
         _unitOfWork._AppointmentRepo.AddAsync(newAppointment);
         _unitOfWork.SaveChanges();
@@ -122,19 +124,28 @@ public class AppointmentManager : IAppointmentManager
 
     public bool UpdateAppointment(AppointmentUpdateDto AppointmentUpdateDto)
     {
-        throw new NotImplementedException();
+        Appointment appointment = _unitOfWork._AppointmentRepo.GetAppointmentById(AppointmentUpdateDto.appointmentId);
+        {
+            if (appointment == null)
+            {
+                return false;
+            }
+            appointment.ZoomMeetingId = AppointmentUpdateDto.meetingId;
+            _unitOfWork.SaveChanges();
+            return true;
+        }
     }
     public IEnumerable<AppointmentReadDto> GetAppointmentByDoctor(int id)
     {
-        var appointment = _unitOfWork._AppointmentRepo.GetWith(a => a.DoctorId == id, new string[] {"Branch","Patient"}).Result;
-        if(appointment is null)
+        var appointment = _unitOfWork._AppointmentRepo.GetWith(a => a.DoctorId == id, new string[] { "Branch", "Patient" }).Result;
+        if (appointment is null)
         {
             return new List<AppointmentReadDto>();
         }
         return appointment.Select(appointment => new AppointmentReadDto
         {
             Id = appointment.Id,
-            AppointmentDate=appointment.AppointmentDate,
+            AppointmentDate = appointment.AppointmentDate,
             Cost = appointment.Cost,
             Branch = new AppointmentBranchReadDto
             {
@@ -156,17 +167,17 @@ public class AppointmentManager : IAppointmentManager
 
     }
 
-     public IEnumerable<AppointmentReadDto> GetAppointmentByPatient(int id)
+    public IEnumerable<AppointmentReadDto> GetAppointmentByPatient(int id)
     {
-        var appointment = _unitOfWork._AppointmentRepo.GetWith(a => a.PatientId == id, new string[] {"Branch","Doctor"}).Result;
-        if(appointment is null)
+        var appointment = _unitOfWork._AppointmentRepo.GetWith(a => a.PatientId == id, new string[] { "Branch", "Doctor" }).Result;
+        if (appointment is null)
         {
             return new List<AppointmentReadDto>();
         }
         return appointment.Select(appointment => new AppointmentReadDto
         {
             Id = appointment.Id,
-            AppointmentDate=appointment.AppointmentDate,
+            AppointmentDate = appointment.AppointmentDate,
             Cost = appointment.Cost,
             Doctor = new AppointmentDoctorReadDto
             {
@@ -189,13 +200,6 @@ public class AppointmentManager : IAppointmentManager
         }).ToList();
 
     }
-		Appointment appointment = _unitOfWork._AppointmentRepo.GetAppointmentById(AppointmentUpdateDto.appointmentId);
-		if (appointment == null)
-		{
-            return false;
-		}
-        appointment.ZoomMeetingId= AppointmentUpdateDto.meetingId;
-        _unitOfWork.SaveChanges();
-        return true;
-	}
+    
+	
 }

@@ -39,7 +39,7 @@ namespace MedicalSystem.CoreLayer
 
 
         [ForeignKey("ZoomMeeting")]
-        public int ZoomMeetingId { get; set; }
+        public int? ZoomMeetingId { get; set; }
         public ZoomMeeting? ZoomMeeting { get; set; }
     }
 }

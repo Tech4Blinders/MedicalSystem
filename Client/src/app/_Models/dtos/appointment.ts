@@ -4,4 +4,5 @@ export class Appointment {
   public  doctorId: number;
    public patientId: number;
    public branchId: number;
+   public isOnline:boolean
 }

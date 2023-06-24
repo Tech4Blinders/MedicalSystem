@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute ,Router} from '@angular/router';
+import { AppointmentService } from 'src/app/Services/appointment.service';
+import { FullAppointment } from 'src/app/_Models/dtos/fullAppointment';
 
 @Component({
   selector: 'app-meeting',
@@ -9,20 +11,22 @@ import { ActivatedRoute ,Router} from '@angular/router';
 })
 export class MeetingComponent {
   private code : string = '';
+  public appointments: FullAppointment[] = [];
   constructor (
     private route: ActivatedRoute,
     private http: HttpClient,
-    private router:Router
+    private router:Router,
+    private appointmentService: AppointmentService
   ) {}
-
+  ngOnInit(): void {
+    this.appointmentService.getAppointmentByDoctorId(1).subscribe({
+      next: (data) => {
+        this.appointments = data;
+      },
+    });
+  }
   createMeeting() {
     console.log('byeeeeeee')
-    // this.authorize().subscribe((data) => {
-    //   console.log(data)
-    //   this.code = this.route.snapshot.queryParamMap.get('code');
-    //   console.log(this.code);
-    // });
-
     this.router.navigateByUrl('https://zoom.us/oauth/authorize?client_id=75Vsq2TiT8WBkw3Axb7pJA&response_type=code&redirect_uri=https://localhost:4200')
   }
   authorize() {

@@ -67,9 +67,19 @@ export class AppointmentComponent implements OnInit {
     
     this.actualAppointment.date=appointment.date;
     this.actualAppointment.doctorId=appointment.doctorId;
-    this.actualAppointment.cost=this.checked ? this.doctor.offlineCost: this.doctor.onlineCost;
+    if(this.checked)
+    {
+      this.actualAppointment.cost=this.doctor.onlineCost;
+      this.actualAppointment.isOnline=true
+    }
+    else
+    {
+      this.actualAppointment.cost=this.doctor.offlineCost;
+      this.actualAppointment.isOnline=false
+    }
     this.actualAppointment.patientId=this.patient.id;
     this.actualAppointment.branchId=this.branch.id;
+    
     this.appointmentService.setAppointment(this.actualAppointment);
     this.router.navigate(["payment"],{relativeTo:this.route})
 

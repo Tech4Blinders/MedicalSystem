@@ -118,6 +118,6 @@ export class PaymentComponent implements OnInit {
     this.validPayment = true;
   }
   navigateToMeeting(){
-    this.router.navigate(["clinic/meeting"]);
+    this.router.navigate(["/meeting"]);
   }
 }

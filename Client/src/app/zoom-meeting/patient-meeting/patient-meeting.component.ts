@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewChecked, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ZoomMeetingService } from 'src/app/Services/zoom-meeting.service';
 import { MeetingJoinData } from 'src/app/_Models/dtos/MeetingJoinData';
@@ -20,6 +20,15 @@ export class PatientMeetingComponent  implements OnInit{
       .subscribe(meetingData  => {
         console.log(meetingData);
         this.meeting = meetingData});
+  }
+  ngOnDestroy(): void {
+    document.getElementById("hidefooter").style.display='block';
+    document.getElementById("hidenavbar").style.display='block';
+  }
+  async ngAfterContentInit():Promise<any> {
+    document.getElementById("zmmtg-root").style.display='block';
+    document.getElementById("hidefooter").style.display='none';
+    document.getElementById("hidenavbar").style.display='none';
   }
 
   joinMeeting()

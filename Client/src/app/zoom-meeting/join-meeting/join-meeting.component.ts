@@ -1,5 +1,5 @@
 
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { ZoomMtg } from '@zoomus/websdk';
 import { ZoomMeetingService } from 'src/app/Services/zoom-meeting.service';
 import { MeetingJoinData } from 'src/app/_Models/dtos/MeetingJoinData';
@@ -21,14 +21,21 @@ ZoomMtg.i18n.reload('en-US');
   templateUrl: './join-meeting.component.html',
   styleUrls: ['./join-meeting.component.css']
 })
-export class JoinMeetingComponent {
+export class JoinMeetingComponent implements OnDestroy {
 
   private meeting : MeetingJoinData;
   constructor(
     private zoomMeetingService : ZoomMeetingService
   ){}
+  ngOnDestroy(): void {
+    document.getElementById("hidefooter").style.display='block';
+    document.getElementById("hidenavbar").style.display='block';
+  }
   async ngAfterContentInit():Promise<any> {
-    debugger
+    document.getElementById("zmmtg-root").style.display='block';
+    document.getElementById("hidefooter").style.display='none';
+    document.getElementById("hidenavbar").style.display='none';
+
     this.zoomMeetingService.getJoinMeeting().subscribe((meetingJoinData:MeetingJoinData) => {
       console.log(`====>${meetingJoinData}`)
       this.meeting = meetingJoinData;

@@ -4,31 +4,26 @@ import { DoctorMeetingComponent } from './doctor-meeting/doctor-meeting.componen
 import { PatientMeetingComponent } from './patient-meeting/patient-meeting.component';
 import { ZoomMeetingRoutingModule } from './zoom-meeting-routing.module';
 import { MeetingComponent } from './meeting/meeting.component';
-import { StartMeetingComponent } from './start-meeting/start-meeting.component';
-import { JoinMeetingComponent } from './join-meeting/join-meeting.component';
 import { TableModule } from 'primeng/table';
-import { FormsModule } from '@angular/forms';
+import { StartMeetingComponent } from "./start-meeting/start-meeting.component";
+import { JoinMeetingComponent } from './join-meeting/join-meeting.component';
 
 @NgModule({
-  declarations: [
-    DoctorMeetingComponent,
-    PatientMeetingComponent,
-    MeetingComponent,
-    StartMeetingComponent,
-    JoinMeetingComponent
-  ],
-  imports: [
-    CommonModule,
-    ZoomMeetingRoutingModule,
-    TableModule,
-  ],
-  exports:[
-    DoctorMeetingComponent,
-    PatientMeetingComponent,
-    MeetingComponent,
-    StartMeetingComponent,
-    JoinMeetingComponent,
-  
-  ]
+    declarations: [
+        DoctorMeetingComponent,
+        PatientMeetingComponent,
+        MeetingComponent,
+        StartMeetingComponent,
+        JoinMeetingComponent
+    ],
+    exports: [
+      
+    ],
+    imports: [
+        CommonModule,
+        ZoomMeetingRoutingModule,
+        TableModule
+        
+    ]
 })
 export class ZoomMeetingModule { }

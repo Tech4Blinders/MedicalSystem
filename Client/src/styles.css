@@ -491,16 +491,20 @@ strong {
 }
 
 
-/*-----Zoom SDK-------*/
-body {
+/* -----Zoom SDK-------*/
+ body {
   overflow: auto !important;
 }
 
 /* body > #zmmtg-root {
-  display: none !important;
+  display: none ; 
 }  */
 
-#zmmtg-root, .meeting-client, .meeting-client-inner {
+#zmmtg-root {
+  display: none ; 
+}
+
+/* #zmmtg-root, .meeting-client, .meeting-client-inner {
   width: 100% !important;
   height: 100% !important;
   position: relative !important;
@@ -518,9 +522,15 @@ body {
 #sv-active-video, .active-main, #sv-active-speaker-view, .main-layout {
   height: 100% !important;
   width: 100% !important;
-}
+} */
 
-.suspension-window {
+/* .suspension-window {
   transform: translate(-444px, 10px) !important;
-}
+} */
 
+  #hidefooter{
+    display: block !important;
+  }
+  #hidenavbar{
+    display: block !important;
+  }

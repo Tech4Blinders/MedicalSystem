@@ -24,6 +24,13 @@ export class StartMeetingComponent {
     private zoomMeetingService : ZoomMeetingService
   ){}
   async ngAfterContentInit():Promise<any> {
+    document.getElementById("zmmtg-root").style.display='block';
+    document.getElementById("hidefooter").style.display='none';
+    document.getElementById("hidenavbar").style.display='none';
+
+    
+
+
     this.zoomMeetingService.getMeeting().subscribe((meetingData:MeetingData) => {
       this.meeting = meetingData;
     })

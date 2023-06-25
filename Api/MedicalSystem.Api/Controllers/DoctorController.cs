@@ -60,17 +60,17 @@ namespace MedicalSystem.Api.Controllers
             bool isdeleted = _doctorManager.Delete(id);
             if (isdeleted == false)
                 return BadRequest("Not Deleted");
-            return Ok("Deleted");
+            return NoContent();
         }
         [HttpPut]
-        public ActionResult Update(UpdateDoctorDto doctorDto)
+        public ActionResult Update( UpdateDoctorDto doctorDto)
         {
-
+          
             if (!_doctorManager.Update(doctorDto))
             {
                 return BadRequest("Not Updated");
             }
-            return Ok("Updated");
+            return NoContent();
 
         }
     }

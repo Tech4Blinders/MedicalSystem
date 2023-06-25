@@ -1,6 +1,7 @@
 ﻿using MedicalSystem.Api.Services.UploadImage;
 using MedicalSystem.BusinessLayer;
 using MedicalSystem.CoreLayer;
+using MedicalSystem.CoreLayer.Dtos.BranchDtos;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MedicalSystem.Api.Controllers
@@ -36,6 +37,17 @@ namespace MedicalSystem.Api.Controllers
             }
             return Ok(branch);
         }
+        [HttpGet]
+        [Route("branches/{id}")]
+        public ActionResult<HospitalWithBranches> getAllBranches(int id)
+        {
+            var branches = branchManager.GetAllBranches(id);
+            if (branches == null)
+            {
+                return NotFound();
+            }
+            return Ok(branches);
+        }
 
         [HttpPost]
         public ActionResult addBranch([FromForm] AddBranchDto branch)
@@ -47,6 +59,19 @@ namespace MedicalSystem.Api.Controllers
 
             branch.Image = uploadImg.uploadImg(branch.File.FileName, branch.File.OpenReadStream());
             int newId = branchManager.Add(branch);
+            return CreatedAtAction("getById", new { id = newId }, new { m = "branch added successfully" });
+        }
+
+        [HttpPost("branchesWithAdd")]
+        public ActionResult addBranchWithAddress([FromForm] AddBranchWithAddressDto branch)
+        {
+            if (branch.File == null || branch.File.Length == 0)
+            {
+                return BadRequest("No file was uploaded.");
+            }
+
+            branch.Image = uploadImg.uploadImg(branch.File.FileName, branch.File.OpenReadStream());
+            int newId = branchManager.AddBranchWithAddres(branch);
             return CreatedAtAction("getById", new { id = newId }, new { m = "branch added successfully" });
         }
 

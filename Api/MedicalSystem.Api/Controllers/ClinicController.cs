@@ -69,8 +69,14 @@ namespace MedicalSystem.Api.Controllers
 
         // PUT api/<ClinicController>/5
         [HttpPut]
-        public ActionResult Update(ClinicWithIdDto ClinicDto)
+        public ActionResult Update([FromForm] ClinicWithIdDto ClinicDto)
         {
+            if (ClinicDto.File == null || ClinicDto.File.Length == 0)
+            {
+                return BadRequest("No file was uploaded.");
+            }
+
+            ClinicDto.Image = uploadImg.uploadImg(ClinicDto.File.FileName, ClinicDto.File.OpenReadStream());
             var isFound = _ClinicManager.Update(ClinicDto);
             if (!isFound)
             {

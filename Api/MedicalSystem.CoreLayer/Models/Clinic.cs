@@ -20,6 +20,6 @@ namespace MedicalSystem.CoreLayer
         public int BranchId { get; set; }
         public Branch? Branch { get; set; }
 
-        public ICollection<Doctor> Doctors = new HashSet<Doctor>();
+        public ICollection<Doctor> Doctors { get; set; } = new HashSet<Doctor>();
     }
 }

@@ -24,7 +24,7 @@ public class DoctorManager : IDoctorManager
             Country = doctorDto.Country,
             Street = doctorDto.Street,
             Email = doctorDto.Email,
-            Image = doctorDto.Image ?? "",
+            Image = doctorDto.Image ,
             PhoneNumber = doctorDto.PhoneNumber,
             OfflineCost = doctorDto.OfflineCost,
             OnlineCost = doctorDto.OnlineCost,

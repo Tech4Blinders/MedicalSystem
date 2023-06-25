@@ -20,7 +20,8 @@ namespace MedicalSystem.BusinessLayer
 				Specilization=clinicWithoutIdDto.Specilization,
 				Description=clinicWithoutIdDto.Description,
 				RoomNumber=clinicWithoutIdDto.RoomNumber,
-				Image = clinicWithoutIdDto.Image 
+				Image = clinicWithoutIdDto.Image ,
+				BranchId= clinicWithoutIdDto.BranchId
 			};
 			_unitOfWork._ClinicRepo.AddAsync(clinic);
 			_unitOfWork.SaveChanges();
@@ -69,12 +70,20 @@ namespace MedicalSystem.BusinessLayer
 
 		}
 
-		public Clinic? GetById(int id)
+		public ClinicWithIdDto? GetById(int id)
 		{
 			var clinic = _unitOfWork._ClinicRepo.GetByIdAsync(id).Result;
+			var newClinic = new ClinicWithIdDto
+			{
+				Id = clinic.Id,
+				Specilization = clinic.Specilization,
+				Description = clinic.Description,
+				RoomNumber = clinic.RoomNumber,
+				Image = clinic.Image
+			};
 			if (clinic is null)
 				return null;
-			return clinic;
+			return newClinic;
 		}
 
         public List<ClinicWithIdDto> GetClinicsByHosId(int branchId)

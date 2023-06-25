@@ -13,6 +13,8 @@ import { RegisterationComponent } from './registeration/registeration.component'
 import { LoginComponent } from './login/login.component';
 import { DoctorComponent } from './doctor/doctor.component';
 import { HospitalComponent } from './hospital/hospital.component';
+import { SigninGoogleComponent } from './signin-google/signin-google.component';
+import { SignoutGoogleComponent } from './signout-google/signout-google.component';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { HospitalComponent } from './hospital/hospital.component';
     RegisterationComponent,
     LoginComponent,
     DoctorComponent,
-    HospitalComponent
+    HospitalComponent,
+    SigninGoogleComponent,
+    SignoutGoogleComponent
   ],
   imports: [
     CommonModule,

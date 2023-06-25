@@ -7,16 +7,10 @@ import { RouterModule } from '@angular/router';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { SelectButtonModule } from 'primeng/selectbutton';
-import { SignoutGoogleComponent } from './signout-google/signout-google.component';
-import { SigninGoogleComponent } from './signin-google/signin-google.component';
 
 
 @NgModule({
   declarations: [
-    RegisterationComponent,
-    LoginComponent,
-    SigninGoogleComponent,
-    SignoutGoogleComponent
   ],
   imports: [
     CommonModule ,
@@ -29,10 +23,9 @@ import { SigninGoogleComponent } from './signin-google/signin-google.component';
     SelectButtonModule
     
   ]
-    RouterModule,
 
-  ],
-  exports:[RegisterationComponent , LoginComponent] ,
+  ,
+  exports:[] ,
 })
 export class AuthenticationModule {
 

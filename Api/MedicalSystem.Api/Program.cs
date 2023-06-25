@@ -1,5 +1,4 @@
 using CloudinaryDotNet.Actions;
-using MedicalSystem.Api.Services.AuthService;
 using MedicalSystem.Api.Services.Helper;
 using MedicalSystem.Api.Services;
 using MedicalSystem.Api.Services.UploadImage;

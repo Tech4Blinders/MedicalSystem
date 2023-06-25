@@ -1,5 +1,4 @@
-﻿using MedicalSystem.Api.Services.AuthService;
-using MedicalSystem.Api.Services.UploadImage;
+﻿using MedicalSystem.Api.Services.UploadImage;
 using MedicalSystem.BusinessLayer;
 using MedicalSystem.CoreLayer;
 using Microsoft.AspNetCore.Authorization;

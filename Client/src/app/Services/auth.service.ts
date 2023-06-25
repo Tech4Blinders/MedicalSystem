@@ -1,11 +1,9 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { LoginDto } from '../_Models/dtos/login.dto';
 import { Response } from '../_Models/dtos/responseLogin.dto';
 import { Injectable, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, Subject } from 'rxjs';
+import {  HttpHeaders } from '@angular/common/http';
 import { Environment } from 'src/environment/environment';
 
 
@@ -15,7 +13,6 @@ import { Environment } from 'src/environment/environment';
 export class AuthService {
 
   private googleLoginURL : string = Environment.googleLoginURL;
-  constructor(private _httpclient: HttpClient) {}
 
   public signOutExternal = () => {
     localStorage.removeItem("token");
@@ -26,12 +23,6 @@ export class AuthService {
     const header = new HttpHeaders().set('Content-type', 'application/json');
     // return this._httpclient.post(this.googleLoginURL, JSON.stringify({credential:credential,role:role}), { headers: header, withCredentials: true });
     return this._httpclient.post(this.googleLoginURL, JSON.stringify({credential:credential,role:role}), { headers: header });
-  }
-  register(data: object): Observable<any> {
-    return this._httpclient.post('register endpoint', data);
-  }
-  login(data: object): Observable<any> {
-    return this._httpclient.post('login enpoint', data);
   }
   public isLogged:BehaviorSubject<boolean>=new BehaviorSubject<boolean>(false);
   constructor(private _httpclient:HttpClient) { }

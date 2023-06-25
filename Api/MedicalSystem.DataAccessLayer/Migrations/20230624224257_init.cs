@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MedicalSystem.DataAccessLayer.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -42,6 +42,22 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "zoomMeetings",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    MeetingId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    StartTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Duration = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_zoomMeetings", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -72,11 +88,18 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                     Cost = table.Column<int>(type: "int", nullable: false),
                     DoctorId = table.Column<int>(type: "int", nullable: false),
                     PatientId = table.Column<int>(type: "int", nullable: false),
-                    BranchId = table.Column<int>(type: "int", nullable: false)
+                    BranchId = table.Column<int>(type: "int", nullable: false),
+                    isOnline = table.Column<bool>(type: "bit", nullable: false),
+                    ZoomMeetingId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Appointment", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Appointment_zoomMeetings_ZoomMeetingId",
+                        column: x => x.ZoomMeetingId,
+                        principalTable: "zoomMeetings",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -188,160 +211,6 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
-<<<<<<<< HEAD:Api/MedicalSystem.DataAccessLayer/Migrations/20230624070038_init.cs
-                name: "BranchAddress",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    PostalCode = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    Street = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    City = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    State = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    Country = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_BranchAddress", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Hospital",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Hospital", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Patient",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: false),
-                    Gender = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Age = table.Column<int>(type: "int", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Patient", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "zoomMeetings",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    MeetingId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    StartTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Duration = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_zoomMeetings", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AspNetRoleClaims",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspNetRoleClaims", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_AspNetRoleClaims_AspNetRoles_RoleId",
-                        column: x => x.RoleId,
-                        principalTable: "AspNetRoles",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AspNetUserClaims",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspNetUserClaims", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_AspNetUserClaims_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AspNetUserLogins",
-                columns: table => new
-                {
-                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ProviderKey = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ProviderDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspNetUserLogins", x => new { x.LoginProvider, x.ProviderKey });
-                    table.ForeignKey(
-                        name: "FK_AspNetUserLogins_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AspNetUserRoles",
-                columns: table => new
-                {
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspNetUserRoles", x => new { x.UserId, x.RoleId });
-                    table.ForeignKey(
-                        name: "FK_AspNetUserRoles_AspNetRoles_RoleId",
-                        column: x => x.RoleId,
-                        principalTable: "AspNetRoles",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_AspNetUserRoles_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-========
->>>>>>>> authentication:Api/MedicalSystem.DataAccessLayer/Migrations/20230623090951_InitialCreate.cs
                 name: "AspNetUserTokens",
                 columns: table => new
                 {
@@ -521,195 +390,29 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-<<<<<<<< HEAD:Api/MedicalSystem.DataAccessLayer/Migrations/20230624070038_init.cs
-            migrationBuilder.CreateTable(
-                name: "Doctor",
-                columns: table => new
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "Image", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[,]
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Gender = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Country = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    City = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Street = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DepartmentId = table.Column<int>(type: "int", nullable: false),
-                    ClinicId = table.Column<int>(type: "int", nullable: false),
-                    OfflineCost = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    OnlineCost = table.Column<decimal>(type: "decimal(18,2)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Doctor", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Doctor_Clinic_ClinicId",
-                        column: x => x.ClinicId,
-                        principalTable: "Clinic",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Doctor_Department_DepartmentId",
-                        column: x => x.DepartmentId,
-                        principalTable: "Department",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                    { 10, 0, "63615b3a-e1bb-4ede-94f9-42da8b84cc20", "Hospital", "stjude@example.com", false, "", false, null, "St. Jude Children's Research Hospital", null, null, null, null, false, null, false, null },
+                    { 20, 0, "f65d0f64-8f52-4f10-9e6d-4c96eba9fd5d", "Hospital", "mountsinai@example.com", false, "", false, null, "Mount Sinai Hospital", null, null, null, null, false, null, false, null },
+                    { 30, 0, "acbb728c-51de-4ef7-ab7a-4dccbd2a397a", "Hospital", "chop@example.com", false, "", false, null, "Children's Hospital of Philadelphia", null, null, null, null, false, null, false, null },
+                    { 40, 0, "67d5945f-1c18-4523-abb3-cb4392e0ac54", "Hospital", "torontogeneral@example.com", false, "", false, null, "Toronto General Hospital", null, null, null, null, false, null, false, null },
+                    { 50, 0, "8789f63e-f0dc-4949-a9d3-115addc3d703", "Hospital", "tmc@example.com", false, "", false, null, "Texas Medical Center", null, null, null, null, false, null, false, null },
+                    { 60, 0, "de7c905d-3ce0-42f9-9e16-99d6ec8ec43f", "Hospital", "moffitt@example.com", false, "", false, null, "Moffitt Cancer Center", null, null, null, null, false, null, false, null },
+                    { 70, 0, "a37c3541-7189-4a11-882f-d4668216fb7d", "Hospital", "barnesjewish@example.com", false, "", false, null, "Barnes-Jewish Hospital", null, null, null, null, false, null, false, null }
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Appointment",
-                columns: table => new
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "Age", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "Gender", "Image", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[,]
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    AppointmentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Cost = table.Column<int>(type: "int", nullable: false),
-                    DoctorId = table.Column<int>(type: "int", nullable: false),
-                    PatientId = table.Column<int>(type: "int", nullable: false),
-                    BranchId = table.Column<int>(type: "int", nullable: false),
-                    isOnline = table.Column<bool>(type: "bit", nullable: false),
-                    ZoomMeetingId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Appointment", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Appointment_Branch_BranchId",
-                        column: x => x.BranchId,
-                        principalTable: "Branch",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Appointment_Doctor_DoctorId",
-                        column: x => x.DoctorId,
-                        principalTable: "Doctor",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Appointment_Patient_PatientId",
-                        column: x => x.PatientId,
-                        principalTable: "Patient",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Appointment_zoomMeetings_ZoomMeetingId",
-                        column: x => x.ZoomMeetingId,
-                        principalTable: "zoomMeetings",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AvaliableAppointment",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    DoctorId = table.Column<int>(type: "int", nullable: false),
-                    Date = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AvaliableAppointment", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_AvaliableAppointment_Doctor_DoctorId",
-                        column: x => x.DoctorId,
-                        principalTable: "Doctor",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "BranchDoctor",
-                columns: table => new
-                {
-                    BranchId = table.Column<int>(type: "int", nullable: false),
-                    DoctorId = table.Column<int>(type: "int", nullable: false),
-                    StaringDate = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_BranchDoctor", x => new { x.DoctorId, x.BranchId });
-                    table.ForeignKey(
-                        name: "FK_BranchDoctor_Branch_BranchId",
-                        column: x => x.BranchId,
-                        principalTable: "Branch",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_BranchDoctor_Doctor_DoctorId",
-                        column: x => x.DoctorId,
-                        principalTable: "Doctor",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "DoctorQualification",
-                columns: table => new
-                {
-                    DoctorId = table.Column<int>(type: "int", nullable: false),
-                    Certification = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
-                    CertificationFrom = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_DoctorQualification", x => new { x.DoctorId, x.Certification });
-                    table.ForeignKey(
-                        name: "FK_DoctorQualification_Doctor_DoctorId",
-                        column: x => x.DoctorId,
-                        principalTable: "Doctor",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Review",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ReviewText = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    Rate = table.Column<int>(type: "int", nullable: false),
-                    DoctorId = table.Column<int>(type: "int", nullable: false),
-                    PatientId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Review", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Review_Doctor_DoctorId",
-                        column: x => x.DoctorId,
-                        principalTable: "Doctor",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Review_Patient_PatientId",
-                        column: x => x.PatientId,
-                        principalTable: "Patient",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Report",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Description = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    Prescription = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    AppointmentId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Report", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Report_Appointment_AppointmentId",
-                        column: x => x.AppointmentId,
-                        principalTable: "Appointment",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                    { 100, 0, 25, "d6784edb-3e8e-4d64-88f4-3e4b70d066a5", "Patient", "john@example.com", false, "M", "", false, null, "John Smith", null, null, null, "1234567890", false, null, false, null },
+                    { 200, 0, 30, "31c52753-5114-4ea6-9925-4f14e92a8eb1", "Patient", "jane@example.com", false, "F", "", false, null, "Jane Doe", null, null, null, "9876543210", false, null, false, null },
+                    { 300, 0, 40, "2a11c830-5624-4b68-8396-1e63868fe735", "Patient", "alex@example.com", false, "M", "", false, null, "Alex Johnson", null, null, null, "5555555555", false, null, false, null },
+                    { 400, 0, 22, "9822f025-2e3e-4e89-8fd9-ba241189c017", "Patient", "emily@example.com", false, "F", "", false, null, "Emily Williams", null, null, null, "1112223333", false, null, false, null }
                 });
 
             migrationBuilder.InsertData(
@@ -729,31 +432,6 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Hospital",
-                columns: new[] { "Id", "Email", "Name" },
-                values: new object[,]
-                {
-                    { 1, "stjude@example.com", "St. Jude Children's Research Hospital" },
-                    { 2, "mountsinai@example.com", "Mount Sinai Hospital" },
-                    { 3, "chop@example.com", "Children's Hospital of Philadelphia" },
-                    { 4, "torontogeneral@example.com", "Toronto General Hospital" },
-                    { 5, "tmc@example.com", "Texas Medical Center" },
-                    { 6, "moffitt@example.com", "Moffitt Cancer Center" },
-                    { 7, "barnesjewish@example.com", "Barnes-Jewish Hospital" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Patient",
-                columns: new[] { "Id", "Age", "Email", "Gender", "Image", "Name", "PhoneNumber" },
-                values: new object[,]
-                {
-                    { 1, 25, "john@example.com", "M", "", "John Smith", "1234567890" },
-                    { 2, 30, "jane@example.com", "F", "", "Jane Doe", "9876543210" },
-                    { 3, 40, "alex@example.com", "M", "", "Alex Johnson", "5555555555" },
-                    { 4, 22, "emily@example.com", "F", "", "Emily Williams", "1112223333" }
-                });
-
-            migrationBuilder.InsertData(
                 table: "zoomMeetings",
                 columns: new[] { "Id", "Duration", "MeetingId", "Password", "StartTime" },
                 values: new object[] { 1, 60, "89944185248", "123", new DateTime(2023, 6, 15, 10, 0, 0, 0, DateTimeKind.Unspecified) });
@@ -763,15 +441,15 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                 columns: new[] { "Id", "BranchAddressId", "HospitalId", "Image", "Name", "PhoneNumber" },
                 values: new object[,]
                 {
-                    { 1, 1, 1, "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg", "Branch A", "1234567890" },
-                    { 2, 2, 2, "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg", "Branch B", "9876543210" },
-                    { 3, 3, 3, "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg", "Branch C", "5555555555" },
-                    { 4, 4, 4, "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg", "Branch D", "1112223333" },
-                    { 5, 5, 1, "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg", "Branch E", "5646546546" },
-                    { 6, 6, 2, "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg", "Branch F", "1555154654" },
-                    { 7, 7, 3, "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg", "Branch J", "7797988521" },
-                    { 8, 8, 4, "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg", "Branch H", "6597451215" },
-                    { 9, 9, 1, "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg", "Branch I", "1564989848" }
+                    { 1, 1, 10, "", "Branch A", "1234567890" },
+                    { 2, 2, 20, "", "Branch B", "9876543210" },
+                    { 3, 3, 30, "", "Branch C", "5555555555" },
+                    { 4, 4, 40, "", "Branch D", "1112223333" },
+                    { 5, 5, 10, "", "Branch E", "5646546546" },
+                    { 6, 6, 20, "", "Branch F", "1555154654" },
+                    { 7, 7, 30, "", "Branch J", "7797988521" },
+                    { 8, 8, 40, "", "Branch H", "6597451215" },
+                    { 9, 9, 10, "", "Branch I", "1564989848" }
                 });
 
             migrationBuilder.InsertData(
@@ -803,18 +481,18 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Doctor",
-                columns: new[] { "Id", "City", "ClinicId", "Country", "DepartmentId", "Email", "Gender", "Image", "Name", "OfflineCost", "OnlineCost", "PhoneNumber", "Street" },
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "City", "ClinicId", "ConcurrencyStamp", "Country", "DepartmentId", "Discriminator", "Email", "EmailConfirmed", "Doctor_Gender", "Image", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "OfflineCost", "OnlineCost", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "Street", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { 1, "Dubai", 1, "United Arab Emirates", 1, "ahmed.ali@example.com", "Male", "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687384280/Medical%20System/doctor.png", "Dr. Ahmed Ali", 200m, 100m, "+971 123-456-7890", "123 Main St" },
-                    { 2, "Abu Dhabi", 2, "United Arab Emirates", 2, "fatima.hassan@example.com", "Female", "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687384280/Medical%20System/doctor.png", "Dr. Fatima Hassan", 300m, 200m, "+971 987-654-3210", "456 Elm St" },
-                    { 3, "Sharjah", 3, "United Arab Emirates", 3, "ali.mahmoud@example.com", "Male", "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687384280/Medical%20System/doctor.png", "Dr. Ali Mahmoud", 400m, 300m, "+971 555-123-4567", "789 Oak St" },
-                    { 4, "Ajman", 4, "United Arab Emirates", 4, "aisha.khan@example.com", "Female", "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687384280/Medical%20System/doctor.png", "Dr. Aisha Khan", 500m, 400m, "+971 555-987-6543", "321 Pine St" },
-                    { 5, "Ras Al Khaimah", 5, "United Arab Emirates", 5, "omar.ahmed@example.com", "Male", "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687384280/Medical%20System/doctor.png", "Dr. Omar Ahmed", 600m, 500m, "+971 555-567-8901", "987 Maple St" },
-                    { 6, "Fujairah", 6, "United Arab Emirates", 6, "layla.hassan@example.com", "Female", "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687384280/Medical%20System/doctor.png", "Dr. Layla Hassan", 700m, 600m, "+971 555-210-9876", "654 Walnut St" },
-                    { 7, "Umm Al Quwain", 1, "United Arab Emirates", 7, "ibrahim.khalid@example.com", "Male", "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687384280/Medical%20System/doctor.png", "Dr. Ibrahim Khalid", 800m, 700m, "+971 555-876-5432", "210 Cedar St" },
-                    { 8, "Al Ain", 2, "United Arab Emirates", 8, "sarah.ahmed@example.com", "Female", "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687384280/Medical%20System/doctor.png", "Dr. Sarah Ahmed", 900m, 800m, "+971 555-432-1098", "876 Birch St" }
+                    { 1, 0, "Dubai", 1, "f57f5ce4-4c12-4828-9dc8-5f65b3445896", "United Arab Emirates", 1, "Doctor", "ahmed.ali@example.com", false, "Male", "", false, null, "Dr. Ahmed Ali", null, null, 200m, 100m, null, "+971 123-456-7890", false, null, "123 Main St", false, null },
+                    { 2, 0, "Abu Dhabi", 2, "9f2f510e-d901-4ea4-918a-15defbc5cf0b", "United Arab Emirates", 2, "Doctor", "fatima.hassan@example.com", false, "Female", "", false, null, "Dr. Fatima Hassan", null, null, 300m, 200m, null, "+971 987-654-3210", false, null, "456 Elm St", false, null },
+                    { 3, 0, "Sharjah", 3, "dd19786f-b0e8-4f8f-804f-9cd2890ef277", "United Arab Emirates", 3, "Doctor", "ali.mahmoud@example.com", false, "Male", "", false, null, "Dr. Ali Mahmoud", null, null, 400m, 300m, null, "+971 555-123-4567", false, null, "789 Oak St", false, null },
+                    { 4, 0, "Ajman", 4, "60154035-6162-4cc6-9057-6de1fca5708c", "United Arab Emirates", 4, "Doctor", "aisha.khan@example.com", false, "Female", "", false, null, "Dr. Aisha Khan", null, null, 500m, 400m, null, "+971 555-987-6543", false, null, "321 Pine St", false, null },
+                    { 5, 0, "Ras Al Khaimah", 5, "8c0f7029-a05d-467e-a9dc-b61c3bfd67ea", "United Arab Emirates", 5, "Doctor", "omar.ahmed@example.com", false, "Male", "", false, null, "Dr. Omar Ahmed", null, null, 600m, 500m, null, "+971 555-567-8901", false, null, "987 Maple St", false, null },
+                    { 6, 0, "Fujairah", 6, "d781f224-4bc6-48dd-a05a-c2bd0dd07a48", "United Arab Emirates", 6, "Doctor", "layla.hassan@example.com", false, "Female", "", false, null, "Dr. Layla Hassan", null, null, 700m, 600m, null, "+971 555-210-9876", false, null, "654 Walnut St", false, null },
+                    { 7, 0, "Umm Al Quwain", 1, "39ac409e-70c2-47ac-8d8b-701161f25b04", "United Arab Emirates", 7, "Doctor", "ibrahim.khalid@example.com", false, "Male", "", false, null, "Dr. Ibrahim Khalid", null, null, 800m, 700m, null, "+971 555-876-5432", false, null, "210 Cedar St", false, null },
+                    { 8, 0, "Al Ain", 2, "b229e8b8-0c7d-4550-ac2b-01f8876f08d9", "United Arab Emirates", 8, "Doctor", "sarah.ahmed@example.com", false, "Female", "", false, null, "Dr. Sarah Ahmed", null, null, 900m, 800m, null, "+971 555-432-1098", false, null, "876 Birch St", false, null }
                 });
 
             migrationBuilder.InsertData(
@@ -889,8 +567,6 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                     { 5, 5, new DateTime(2023, 6, 19, 11, 30, 0, 0, DateTimeKind.Unspecified), "Patient complained of persistent headaches.", "Prescribed pain relievers and recommended further evaluation." }
                 });
 
-========
->>>>>>>> authentication:Api/MedicalSystem.DataAccessLayer/Migrations/20230623090951_InitialCreate.cs
             migrationBuilder.CreateIndex(
                 name: "IX_Appointment_BranchId",
                 table: "Appointment",
@@ -1113,10 +789,10 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                 name: "Appointment");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "zoomMeetings");
 
             migrationBuilder.DropTable(
-                name: "zoomMeetings");
+                name: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "Clinic");

@@ -11,10 +11,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { ZoomMeetingModule } from './zoom-meeting/zoom-meeting.module';
+import { AuthenticatorModule } from './authenticator/authenticator.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { InterceptorInterceptor } from './interceptor.interceptor';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -26,9 +29,11 @@ import { ZoomMeetingModule } from './zoom-meeting/zoom-meeting.module';
     AuthenticationModule,
     DashboardModule,
     ReactiveFormsModule,
-    ZoomMeetingModule
+    ZoomMeetingModule,
+    AuthenticatorModule
+    
   ],
-  providers: [],
+  providers: [{provide:HTTP_INTERCEPTORS,useClass:InterceptorInterceptor,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

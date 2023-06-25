@@ -45,6 +45,12 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                     b.Property<int>("PatientId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("ZoomMeetingId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("isOnline")
+                        .HasColumnType("bit");
+
                     b.HasKey("Id");
 
                     b.HasIndex("BranchId");
@@ -52,6 +58,8 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                     b.HasIndex("DoctorId");
 
                     b.HasIndex("PatientId");
+
+                    b.HasIndex("ZoomMeetingId");
 
                     b.ToTable("Appointment");
 
@@ -63,7 +71,9 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             BranchId = 1,
                             Cost = 100,
                             DoctorId = 1,
-                            PatientId = 1
+                            PatientId = 1,
+                            ZoomMeetingId = 1,
+                            isOnline = true
                         },
                         new
                         {
@@ -72,7 +82,9 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             BranchId = 2,
                             Cost = 75,
                             DoctorId = 2,
-                            PatientId = 2
+                            PatientId = 2,
+                            ZoomMeetingId = 1,
+                            isOnline = true
                         },
                         new
                         {
@@ -81,7 +93,9 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             BranchId = 3,
                             Cost = 120,
                             DoctorId = 3,
-                            PatientId = 3
+                            PatientId = 3,
+                            ZoomMeetingId = 1,
+                            isOnline = true
                         },
                         new
                         {
@@ -90,7 +104,9 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             BranchId = 4,
                             Cost = 90,
                             DoctorId = 4,
-                            PatientId = 4
+                            PatientId = 4,
+                            ZoomMeetingId = 1,
+                            isOnline = true
                         },
                         new
                         {
@@ -99,7 +115,9 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             BranchId = 5,
                             Cost = 80,
                             DoctorId = 5,
-                            PatientId = 1
+                            PatientId = 1,
+                            ZoomMeetingId = 1,
+                            isOnline = true
                         });
                 });
 
@@ -498,7 +516,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             Id = 1,
                             BranchId = 1,
                             Description = "Description for Family Medicine Clinic",
-                            Image = "",
+                            Image = "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg",
                             RoomNumber = 1001,
                             Specilization = "Family Medicine"
                         },
@@ -507,7 +525,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             Id = 2,
                             BranchId = 1,
                             Description = "Description for Dental Clinic",
-                            Image = "",
+                            Image = "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg",
                             RoomNumber = 1002,
                             Specilization = "Dentistry"
                         },
@@ -516,7 +534,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             Id = 3,
                             BranchId = 2,
                             Description = "Description for Internal Medicine Clinic",
-                            Image = "",
+                            Image = "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg",
                             RoomNumber = 1003,
                             Specilization = "Internal Medicine"
                         },
@@ -525,7 +543,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             Id = 4,
                             BranchId = 2,
                             Description = "Description for Orthopedic Clinic",
-                            Image = "",
+                            Image = "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg",
                             RoomNumber = 1004,
                             Specilization = "Orthopedics"
                         },
@@ -534,7 +552,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             Id = 5,
                             BranchId = 3,
                             Description = "Description for Cardiology Clinic",
-                            Image = "",
+                            Image = "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg",
                             RoomNumber = 1005,
                             Specilization = "Cardiology"
                         },
@@ -543,7 +561,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                             Id = 6,
                             BranchId = 3,
                             Description = "Description for Pediatric Clinic",
-                            Image = "",
+                            Image = "https://res.cloudinary.com/dhksv3uz9/image/upload/v1687355579/Medical%20System/R.jpg",
                             RoomNumber = 1006,
                             Specilization = "Pediatrics"
                         });
@@ -931,6 +949,43 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                     b.HasDiscriminator<string>("Discriminator").HasValue("User");
                 });
 
+            modelBuilder.Entity("MedicalSystem.CoreLayer.ZoomMeeting", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Duration")
+                        .HasColumnType("int");
+
+                    b.Property<string>("MeetingId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("StartTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("zoomMeetings");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Duration = 60,
+                            MeetingId = "89944185248",
+                            Password = "123",
+                            StartTime = new DateTime(2023, 6, 15, 10, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<int>", b =>
                 {
                     b.Property<int>("Id")
@@ -1104,7 +1159,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         {
                             Id = 1,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "90a642eb-6041-4c06-834b-56f06681ea45",
+                            ConcurrencyStamp = "f57f5ce4-4c12-4828-9dc8-5f65b3445896",
                             Email = "ahmed.ali@example.com",
                             EmailConfirmed = false,
                             Image = "",
@@ -1126,7 +1181,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         {
                             Id = 2,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "44ca18c8-424e-4b4b-92b2-c226c47a0c0b",
+                            ConcurrencyStamp = "9f2f510e-d901-4ea4-918a-15defbc5cf0b",
                             Email = "fatima.hassan@example.com",
                             EmailConfirmed = false,
                             Image = "",
@@ -1148,7 +1203,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         {
                             Id = 3,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "bdd5b8e9-9413-4a31-8ed8-a82050cb07e1",
+                            ConcurrencyStamp = "dd19786f-b0e8-4f8f-804f-9cd2890ef277",
                             Email = "ali.mahmoud@example.com",
                             EmailConfirmed = false,
                             Image = "",
@@ -1170,7 +1225,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         {
                             Id = 4,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4f089c85-99b7-4a87-b2a1-ec8df18a5afc",
+                            ConcurrencyStamp = "60154035-6162-4cc6-9057-6de1fca5708c",
                             Email = "aisha.khan@example.com",
                             EmailConfirmed = false,
                             Image = "",
@@ -1192,7 +1247,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         {
                             Id = 5,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f23edd18-e0fe-4450-9ab2-97bcf1c594bb",
+                            ConcurrencyStamp = "8c0f7029-a05d-467e-a9dc-b61c3bfd67ea",
                             Email = "omar.ahmed@example.com",
                             EmailConfirmed = false,
                             Image = "",
@@ -1214,7 +1269,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         {
                             Id = 6,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "16611eb1-322c-40cc-b798-d2266ec872e6",
+                            ConcurrencyStamp = "d781f224-4bc6-48dd-a05a-c2bd0dd07a48",
                             Email = "layla.hassan@example.com",
                             EmailConfirmed = false,
                             Image = "",
@@ -1236,7 +1291,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         {
                             Id = 7,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6650de46-cd05-4563-934b-3f6fc39f6fa7",
+                            ConcurrencyStamp = "39ac409e-70c2-47ac-8d8b-701161f25b04",
                             Email = "ibrahim.khalid@example.com",
                             EmailConfirmed = false,
                             Image = "",
@@ -1258,7 +1313,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         {
                             Id = 8,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "11c60080-19b9-41e2-a46f-4f79c343ffb2",
+                            ConcurrencyStamp = "b229e8b8-0c7d-4550-ac2b-01f8876f08d9",
                             Email = "sarah.ahmed@example.com",
                             EmailConfirmed = false,
                             Image = "",
@@ -1289,7 +1344,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         {
                             Id = 10,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e9b15875-c2cb-4801-86b1-9c3cf5078b0e",
+                            ConcurrencyStamp = "63615b3a-e1bb-4ede-94f9-42da8b84cc20",
                             Email = "stjude@example.com",
                             EmailConfirmed = false,
                             Image = "",
@@ -1302,7 +1357,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         {
                             Id = 20,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "85f0e798-e385-470a-8dc4-b830aa48c03f",
+                            ConcurrencyStamp = "f65d0f64-8f52-4f10-9e6d-4c96eba9fd5d",
                             Email = "mountsinai@example.com",
                             EmailConfirmed = false,
                             Image = "",
@@ -1315,7 +1370,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         {
                             Id = 30,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "889b1d18-fe89-4155-8577-42e9ddcd6516",
+                            ConcurrencyStamp = "acbb728c-51de-4ef7-ab7a-4dccbd2a397a",
                             Email = "chop@example.com",
                             EmailConfirmed = false,
                             Image = "",
@@ -1328,7 +1383,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         {
                             Id = 40,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7c628e42-6697-453f-82cd-aecd7e2621a5",
+                            ConcurrencyStamp = "67d5945f-1c18-4523-abb3-cb4392e0ac54",
                             Email = "torontogeneral@example.com",
                             EmailConfirmed = false,
                             Image = "",
@@ -1341,7 +1396,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         {
                             Id = 50,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2038ef2f-71b4-4184-a1ae-a06a942161fe",
+                            ConcurrencyStamp = "8789f63e-f0dc-4949-a9d3-115addc3d703",
                             Email = "tmc@example.com",
                             EmailConfirmed = false,
                             Image = "",
@@ -1354,7 +1409,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         {
                             Id = 60,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9f49fd9f-ea81-4085-98b7-153520791b52",
+                            ConcurrencyStamp = "de7c905d-3ce0-42f9-9e16-99d6ec8ec43f",
                             Email = "moffitt@example.com",
                             EmailConfirmed = false,
                             Image = "",
@@ -1367,7 +1422,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         {
                             Id = 70,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b23a2980-5dc5-498e-82ed-588796f36cf5",
+                            ConcurrencyStamp = "a37c3541-7189-4a11-882f-d4668216fb7d",
                             Email = "barnesjewish@example.com",
                             EmailConfirmed = false,
                             Image = "",
@@ -1396,7 +1451,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         {
                             Id = 100,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c669f66a-5b13-4cc7-b878-7a958f830214",
+                            ConcurrencyStamp = "d6784edb-3e8e-4d64-88f4-3e4b70d066a5",
                             Email = "john@example.com",
                             EmailConfirmed = false,
                             Image = "",
@@ -1412,7 +1467,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         {
                             Id = 200,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "efa1fbc3-883a-4d08-99b8-e08ebb6cca01",
+                            ConcurrencyStamp = "31c52753-5114-4ea6-9925-4f14e92a8eb1",
                             Email = "jane@example.com",
                             EmailConfirmed = false,
                             Image = "",
@@ -1428,7 +1483,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         {
                             Id = 300,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3e0abf8b-12fd-41a8-b5e7-83095a95fbe8",
+                            ConcurrencyStamp = "2a11c830-5624-4b68-8396-1e63868fe735",
                             Email = "alex@example.com",
                             EmailConfirmed = false,
                             Image = "",
@@ -1444,7 +1499,7 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         {
                             Id = 400,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "21715648-dcc7-443e-abc4-2f5d75cdce12",
+                            ConcurrencyStamp = "9822f025-2e3e-4e89-8fd9-ba241189c017",
                             Email = "emily@example.com",
                             EmailConfirmed = false,
                             Image = "",
@@ -1477,11 +1532,17 @@ namespace MedicalSystem.DataAccessLayer.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("MedicalSystem.CoreLayer.ZoomMeeting", "ZoomMeeting")
+                        .WithMany()
+                        .HasForeignKey("ZoomMeetingId");
+
                     b.Navigation("Branch");
 
                     b.Navigation("Doctor");
 
                     b.Navigation("Patient");
+
+                    b.Navigation("ZoomMeeting");
                 });
 
             modelBuilder.Entity("MedicalSystem.CoreLayer.AvaliableAppointment", b =>

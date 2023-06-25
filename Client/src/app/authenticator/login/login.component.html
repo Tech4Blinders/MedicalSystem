@@ -2,11 +2,11 @@
 <div class="w-75 mx-auto py-4">
     <h2>Login Now</h2>
      <form (ngSubmit)="handleLogin(loginform)" [formGroup]="loginform">
-      <label for="Email">Email :</label>
-      <input formControlName="Email" id="Email" class="form-control mb-2"  type="email">
-       <div *ngIf="loginform.get('Email')?.errors && loginform.get('Email')?.touched " class="alert alert-danger">
-             <p *ngIf="loginform.get('Email')?.getError('required')">Email is Required</p>
-             <p *ngIf="loginform.get('Email')?.getError('email')">Invalid Email</p>
+      <label for="UserName">UserName :</label>
+      <input formControlName="UserName" id="UserName" class="form-control mb-2"  type="UserName">
+       <div *ngIf="loginform.get('UserName')?.errors && loginform.get('UserName')?.touched " class="alert alert-danger">
+             <p *ngIf="loginform.get('UserName')?.getError('required')">UserName is Required</p>
+             <p *ngIf="loginform.get('UserName')?.getError('UserName')">Invalid Email</p>
        </div>
   
       <label for="Password">Password :</label>

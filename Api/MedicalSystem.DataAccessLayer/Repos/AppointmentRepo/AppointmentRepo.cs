@@ -19,9 +19,9 @@ public class AppointmentRepo : GenericRepo<Appointment>, IAppointmentRepo
     public List<Appointment>? GetAllAppointments()
     {
         return _context.Set<Appointment>()
-            .Include(appointment => appointment.Doctor)
-            .Include(appointment => appointment.Patient)
-            .Include(appointment => appointment.Branch)
+            .Include("Doctor")
+            .Include("Branch")
+            .Include("Patient")
             .ToList();
     }
 

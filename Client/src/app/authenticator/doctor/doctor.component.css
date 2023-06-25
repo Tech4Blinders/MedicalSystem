@@ -1,0 +1,35 @@
+.trial{
+    padding-top: 2%;
+    padding-bottom: 2%;
+   margin: auto;
+   font-family: var(--body-font-family);
+   font-weight: var(--font-weight-bold);
+   color: var(--dark-color);
+   font-size: var(--h5-font-size);
+}
+form{
+    width: 80%;
+    margin:auto;
+    border: 5px solid;
+    border-color: var(--navbar-bg-color);
+    border-radius: 5% 0 5% 0;
+    padding: 30px;
+    background-color: whitesmoke;
+}
+h4{
+    width:35%
+}
+input{
+    height: 5vh;
+    margin-top: 2vh;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+.card{
+    flex-direction: row;
+    justify-content: space-around;
+    width: fit-content;
+    align-self: center;
+}

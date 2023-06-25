@@ -20,7 +20,7 @@
       >
     </a>
 
-    <a class="nav-link custom-btn btn d-lg-none" href="#">Register</a>
+    <a *ngIf="!isLogged" class="nav-link custom-btn btn d-lg-none" [routerLink]="'/register'">Register</a>
 
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
@@ -55,19 +55,27 @@
           <a class="nav-link click-scroll" href="#section_7">Contact</a>
         </li>
 
-        <li class="nav-item">
+        <li *ngIf="!isLogged" class="nav-item">
           <a
             class="nav-link custom-btn btn d-none d-lg-block"
-            routerLink="register"
+            [routerLink]="'/register'"
             >Register</a
           >
         </li>
 
-        <li class="nav-item">
+        <li *ngIf="!isLogged" class="nav-item">
           <a
             class="nav-link custom-btn btn d-none d-lg-block"
             routerLink="login"
             >Login</a
+          >
+        </li>
+        <li *ngIf="isLogged" class="nav-item">
+          <a
+            class="nav-link custom-btn btn d-none d-lg-block"
+            routerLink="/"
+            (click)="LogOut()"
+            >LogOut</a
           >
         </li>
       </ul>

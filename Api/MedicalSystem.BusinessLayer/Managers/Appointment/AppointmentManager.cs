@@ -39,9 +39,9 @@ public class AppointmentManager : IAppointmentManager
         return true;
     }
 
-    public List<AppointmentReadDto> GetAllAppointments()
+    public async Task<List<AppointmentReadDto>> GetAllAppointments()
     {
-        IEnumerable<Appointment> Appointments = _unitOfWork._AppointmentRepo.GetAllAppointments();
+       var Appointments = await _unitOfWork._AppointmentRepo.GetWith(null, new string [] {"Branch","Doctor","Patient"});
         if (Appointments == null)
         {
             return new List<AppointmentReadDto>();

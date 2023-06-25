@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { HospitalService } from 'src/app/Services/hospital.service';
+import { BranchService} from 'src/app/Services/branch.service';
+import { Branch } from 'src/app/_Models/dtos/branch';
+interface AutoCompleteCompleteEvent {
+  originalEvent: Event;
+  query: string;
+}
 
 @Component({
   selector: 'app-hospital-card',
@@ -9,9 +14,9 @@ import { HospitalService } from 'src/app/Services/hospital.service';
 })
 export class HospitalCardComponent implements OnInit{
 
-   hospitals: any[];
+   hospitals: Branch[];
    route: ActivatedRoute
-   constructor(private hospitalSer: HospitalService, private router:Router) {}
+   constructor(private branchService: BranchService, private router:Router) {}
 
    ngOnInit(): void {
       this.getAllHos();
@@ -19,19 +24,17 @@ export class HospitalCardComponent implements OnInit{
  
 
 
-    filteredHospitals: any[];
-    selectedHospitalAdvanced: any[];
+    filteredHospitals: Branch[];
+    selectedHospitalAdvanced: Branch[];
     getAllHos(){
-       this.hospitalSer.getAllHospitals().subscribe((a:any) => {
-       this.hospitals=a;
-       console.log(a);
-    
+       this.branchService.getAllHospitals().subscribe((data) => {
+       this.hospitals=data;   
   })
 }
 
 
-    filterHospital(event) {
-      let filtered: any[] = [];
+    filterHospital(event:AutoCompleteCompleteEvent) {
+      let filtered: Branch[] = [];
       let query = event.query;
       for (let i = 0; i < this.hospitals.length; i++) {
           let newHospital = this.hospitals[i];
@@ -46,7 +49,7 @@ export class HospitalCardComponent implements OnInit{
 
   setHospital(item){
     console.log(item);
-    this.hospitalSer.setHospital(item)
+    this.branchService.setHospital(item)
     this.router.navigate(["visit"],{relativeTo:this.route})
   }
 

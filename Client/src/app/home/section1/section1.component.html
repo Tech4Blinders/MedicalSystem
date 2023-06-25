@@ -5,49 +5,37 @@
           <div class="col-lg-5 col-12 m-auto">
               <div class="hero-text">
 
-                  <h1 class="text-white mb-4"><u class="text-info">ALAlamiya</u> Center 2023</h1>
+                  <h1 class="text-white mb-4"><u class="text-info">Medico</u> Solutions</h1>
 
                   <div class="d-flex justify-content-center align-items-center">
-                      <span class="date-text">We Offer Online Courses</span>
+                      <span class="date-text">Empowering Healthcare</span>
 
-                      <span class="location-text">Tahrir Square, Al Riyadh</span>
+                      <span class="location-text">Connecting Lives</span>
                   </div>
-
-                  <a href="#section_2" class="custom-link bi-arrow-down arrow-icon"></a>
               </div>
           </div>
       </div>
   </div>
 
-  <div class="video-wrap">
-      <!-- <video autoplay="" loop="" muted="" class="custom-video" poster="">
-          <source src="../../../assets/videos/backgroundvideo.mp4" type="video/mp4">
-
-          Your browser does not support the video tag.
-      </video> -->
-      <p-galleria [(value)]="images" [responsiveOptions]="responsiveOptions" [autoPlay]="true" [containerStyle]="{ 'max-width': '100%' }" [numVisible]="4">
+   <div>
+      <p-galleria [(value)]="hospitals" [responsiveOptions]="responsiveOptions" [showThumbnailNavigators]="true"  [showItemNavigators]="true" [autoPlay]="true" [circular]="true" [containerStyle]="{ 'max-width': '100%' }" [numVisible]="4">
         <ng-template pTemplate="item" let-item>
-            <img [src]="item.itemImageSrc" style="width: 100%; display: block;" />
+            <img [src]="item.image" style="width: 100%; display: block;" />
         </ng-template>
-        <!-- <ng-template pTemplate="thumbnail" let-item>
-            <div class="grid grid-nogutter justify-content-between">
-                <img [src]="item.thumbnailImageSrc" style="display: block; width: 20vh; height: 20vh;" />
-            </div>
-        </ng-template> -->
-        <ng-template pTemplate="caption" let-item id="test">
+        <ng-template pTemplate="caption" let-item >
             <div class="hero-text">
-                <h4 class="" style="margin-bottom: .5rem; color: #300000; ">{{ item.title }}</h4>
-                <a class="" [routerLink]="'visit'">{{ item.alt }}</a>
+              <p (click)="setHospital(item)">
+                </p>
+                <a href="#ibrahim" class="button-5 me-3 bi-arrow-down"  (click)="setHospital(item)" [routerLink]="'visit'" role="button">{{item.name}}</a>
             </div>
-
         </ng-template>
-</p-galleria>
-  </div>
+     </p-galleria>
+  </div> 
 </section>
 
 
-<section class="highlight">
-  <!-- <div class="container">
+<!-- <section class="highlight">
+  <div class="container">
       <div class="row">
           <div class="col-lg-4 col-md-6 col-12">
               <div class="highlight-thumb">
@@ -60,6 +48,7 @@
                   </div>
               </div>
           </div>
+          
 
           <div class="col-lg-4 col-md-6 col-12">
               <div class="highlight-thumb">
@@ -100,11 +89,8 @@
             <h4 style="margin-bottom: .5rem; color: #ffffff; ">{{ item.title }}</h4>
             <a [routerLink]="'visit'">{{ item.alt }}</a>
         </ng-template>
-</p-galleria> -->
+</p-galleria> </section> -->
 
 
 
-
-
-</section>
 

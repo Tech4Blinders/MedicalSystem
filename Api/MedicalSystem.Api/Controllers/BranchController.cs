@@ -1,12 +1,14 @@
 ﻿using MedicalSystem.Api.Services.UploadImage;
 using MedicalSystem.BusinessLayer;
 using MedicalSystem.CoreLayer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MedicalSystem.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class BranchController : Controller
     {
        
@@ -67,6 +69,12 @@ namespace MedicalSystem.Api.Controllers
                 return NotFound();
             }
             return NoContent();
+        }
+        [HttpGet("Address")]
+        public ActionResult GetAllWithAddress()
+        {
+            var branches = branchManager.GetByIdWithAddress().Result;
+            return Ok(branches);
         }
     }
 

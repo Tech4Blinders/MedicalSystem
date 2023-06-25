@@ -1,0 +1,300 @@
+<div class="w-75 mx-auto py-4 w-25 trial">
+  <form [formGroup]="registerform">
+    <h4>Register As A Doctor</h4>
+    <div class="flex justify-content-between">
+      <p-button
+        class="mx-3"
+        label="Patient"
+        [routerLink]="'/register'"
+      ></p-button>
+      <p-button label="Hospital" [routerLink]="'/register/admin'"></p-button>
+    </div>
+    <!-- <label for="Name">Patient Name : </label> -->
+    <input
+      placeholder="Name"
+      formControlName="Name"
+      type="text"
+      class="form-control mb-2"
+      id="Name"
+    />
+    <div
+      *ngIf="
+        registerform.get('Name')?.errors && registerform.get('Name')?.touched
+      "
+      class="alert alert-danger"
+    >
+      <p *ngIf="registerform.get('Name')?.getError('minlength')" class="m-0">
+        Name minLength is 3
+      </p>
+      <p *ngIf="registerform.get('Name')?.getError('required')">
+        Name is Required
+      </p>
+    </div>
+
+    <!-- <label for="UserName">Patient UserName : </label> -->
+    <input
+      placeholder="User Name"
+      formControlName="UserName"
+      type="text"
+      class="form-control mb-2"
+      id="UserName"
+    />
+    <div
+      *ngIf="
+        registerform.get('UserName')?.errors &&
+        registerform.get('UserName')?.touched
+      "
+      class="alert alert-danger"
+    >
+      <p
+        *ngIf="registerform.get('UserName')?.getError('minlength')"
+        class="m-0"
+      >
+        UserName minLength is 3
+      </p>
+      <p *ngIf="registerform.get('UserName')?.getError('required')">
+        UserName is Required
+      </p>
+    </div>
+
+    <!-- <label for="Email">Email :</label> -->
+    <input
+      placeholder="Email"
+      formControlName="Email"
+      type="email"
+      class="form-control mb-2"
+      id="Email"
+    />
+    <div
+      *ngIf="
+        registerform.get('Email')?.errors && registerform.get('Email')?.touched
+      "
+      class="alert alert-danger"
+    >
+      <p *ngIf="registerform.get('Email')?.getError('required')" class="m-0">
+        Email is Required
+      </p>
+      <p *ngIf="registerform.get('Email')?.getError('email')" class="m-0">
+        Invalid Email
+      </p>
+    </div>
+    <!-- <label for="Password">Password :</label> -->
+    <input
+      placeholder="Password"
+      formControlName="Password"
+      type="password"
+      class="form-control mb-2"
+      id="password"
+    />
+    <div
+      *ngIf="
+        registerform.get('Password')?.errors &&
+        registerform.get('Password')?.touched
+      "
+      class="alert alert-danger"
+    >
+      <p *ngIf="registerform.get('Password')?.getError('required')" class="m-0">
+        Password Is Required
+      </p>
+    </div>
+    <!-- <label for="Gender">Gender :</label> -->
+    <select
+      formControlName="Gender"
+      type="text"
+      class="form-control mb-2"
+      id="Gender"
+    >
+      <option [selected]="true">--Please choose your gender--</option>
+      <option value="M">Male</option>
+      <option value="F">Female</option>
+    </select>
+    <div
+      *ngIf="
+        registerform.get('Gender')?.errors &&
+        registerform.get('Gender')?.touched
+      "
+      class="alert alert-danger"
+    >
+      <p *ngIf="registerform.get('Gender')?.getError('required')">
+        Gender Is Required
+      </p>
+    </div>
+    <!-- <label for="PhoneNumber">PhoneNumber :</label> -->
+    <input
+      placeholder="Phone Number"
+      formControlName="PhoneNumber"
+      type="number"
+      class="form-control mb-2"
+      id="PhoneNumber"
+    />
+    <div
+      *ngIf="
+        registerform.get('PhoneNumber')?.errors &&
+        registerform.get('PhoneNumber')?.touched
+      "
+      class="alert alert-danger"
+    >
+      <p *ngIf="registerform.get('PhoneNumber')?.getError('required')">
+        PhoneNumber Is Required
+      </p>
+    </div>
+    <!-- <label for="Age">Age :</label> -->
+    <input
+      placeholder="Country"
+      formControlName="Country"
+      type="text"
+      class="form-control mb-2"
+      id="Country"
+    />
+    <div
+      *ngIf="
+        registerform.get('Country')?.errors &&
+        registerform.get('Country')?.touched
+      "
+      class="alert alert-danger"
+    >
+      <p *ngIf="registerform.get('Country')?.getError('required')">
+        Country Is Required
+      </p>
+    </div>
+
+    <input
+      placeholder="City"
+      formControlName="City"
+      type="text"
+      class="form-control mb-2"
+      id="City"
+    />
+    <div
+      *ngIf="
+        registerform.get('City')?.errors &&
+        registerform.get('City')?.touched
+      "
+      class="alert alert-danger"
+    >
+      <p *ngIf="registerform.get('City')?.getError('required')">
+        City Is Required
+      </p>
+    </div>
+
+    <input
+      placeholder="Street"
+      formControlName="Street"
+      type="text"
+      class="form-control mb-2"
+      id="Street"
+    />
+    <div
+      *ngIf="
+        registerform.get('Street')?.errors &&
+        registerform.get('Street')?.touched
+      "
+      class="alert alert-danger"
+    >
+      <p *ngIf="registerform.get('Street')?.getError('required')">
+        Street Is Required
+      </p>
+    </div>
+
+
+    <input
+      placeholder="OfflineCost"
+      formControlName="OfflineCost"
+      type="number"
+      class="form-control mb-2"
+      id="OfflineCost"
+    />
+    <div
+      *ngIf="
+        registerform.get('OfflineCost')?.errors &&
+        registerform.get('OfflineCost')?.touched
+      "
+      class="alert alert-danger"
+    >
+      <p *ngIf="registerform.get('OfflineCost')?.getError('required')">
+        OfflineCost Is Required
+      </p>
+    </div>
+
+
+    <input
+      placeholder="OnlineCost"
+      formControlName="OnlineCost"
+      type="number"
+      class="form-control mb-2"
+      id="OnlineCost"
+    />
+    <div
+      *ngIf="
+        registerform.get('OnlineCost')?.errors &&
+        registerform.get('OnlineCost')?.touched
+      "
+      class="alert alert-danger"
+    >
+      <p *ngIf="registerform.get('OnlineCost')?.getError('required')">
+        OnlineCost Is Required
+      </p>
+    </div>
+    <label for="Picture">Personal Picture :</label>
+    <input
+      formControlName="Picture"
+      (change)="onFileSelected($event)"
+      type="file"
+      class="form-control mb-2"
+      id="Picture"
+    />
+    <div
+      *ngIf="
+        registerform.get('Picture')?.errors &&
+        registerform.get('Picture')?.touched
+      "
+      class="alert alert-danger"
+    >
+      <p *ngIf="registerform.get('Picture')?.getError('required')">
+        Image Is Required
+      </p>
+    </div>
+
+    <button
+      (click)="handleRegisteration(registerform)"
+      type="submit"
+      class="btn d-block ms-auto btn-info"
+    >
+      Register
+    </button>
+  </form>
+</div>
+
+<div class="card flex justify-content-center test">
+  <p-dialog
+    styleClass="p-dialog-alert"
+    header="Registeration"
+    [(visible)]="visible"
+    [modal]="true"
+    [style]="{ width: '40vw', height: 'auto' }"
+    [draggable]="false"
+    [resizable]="false"
+  >
+    <ng-container *ngIf="validRegisteration">
+      <p [ngClass]="messageClass ?? 'alert alert-warning text-center p-5 h4'">
+        {{ paymentMessage }}
+        <ng-container #response *ngIf="sucessfulPayment">
+          <span class="d-flex justify-content-center">
+            <p-button
+              label="Login"
+              class="m-3 w-25"
+              styleClass="p-button-success p-button-lg"
+              [routerLink]="'/login'"
+            ></p-button>
+            <p-button
+              label="Home"
+              class="m-3 w-25"
+              styleClass="p-button-success p-button-lg"
+              routerLink=""
+            ></p-button>
+          </span>
+        </ng-container>
+      </p>
+    </ng-container>
+  </p-dialog>
+</div>

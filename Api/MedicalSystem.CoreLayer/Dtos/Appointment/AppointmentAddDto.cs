@@ -13,4 +13,6 @@ public class AppointmentAddDto
     public int DoctorId { get; set; }
     public int PatientId { get; set; }
     public int BranchId { get; set; }
+    public int? ZoomMeetingId { get; set; }  
+    public Boolean isOnline { get; set; }
 }

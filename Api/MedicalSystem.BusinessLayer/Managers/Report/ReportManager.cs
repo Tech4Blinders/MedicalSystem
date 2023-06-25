@@ -38,7 +38,7 @@ public class ReportManager : IReportManager
 
     public List<ReportReadDto> GetAllReports()
     {
-        IEnumerable<Report> reports = _unitOfWork._ReportRepo.GetAllReports();
+        IEnumerable<Report>? reports = _unitOfWork._ReportRepo.GetAllReports();
         if (reports == null)
         {
             return new List<ReportReadDto>();
@@ -61,7 +61,7 @@ public class ReportManager : IReportManager
 
     public ReportReadDto? GetRepotById(int id)
     {
-        Report report = _unitOfWork._ReportRepo.GetReportById(id);
+        Report? report = _unitOfWork._ReportRepo.GetReportById(id);
         if(report == null)
         {
             return new ReportReadDto();

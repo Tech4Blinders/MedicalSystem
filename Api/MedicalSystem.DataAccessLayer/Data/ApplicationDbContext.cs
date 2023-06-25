@@ -1,17 +1,19 @@
 ﻿using MedicalSystem.CoreLayer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 namespace MedicalSystem.DataAccessLayer
 {
-    public class ApplicationDbContext : IdentityDbContext<User>
+    public class ApplicationDbContext : IdentityDbContext<User,IdentityRole<int> ,int>
     {
         #region CTOR
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> option) : base(option)
         {
 
         }
-
+      
         #endregion 
 
         #region OnConfiguring
@@ -19,7 +21,7 @@ namespace MedicalSystem.DataAccessLayer
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server =. ; Database = ELMostshfa; Trusted_Connection = true; Encrypt = false;");
+                optionsBuilder.UseSqlServer("Server =. ; Database = NewMedicalLocalDb; Trusted_Connection = true; Encrypt = false;");
             }
         }
         #endregion
@@ -37,6 +39,18 @@ namespace MedicalSystem.DataAccessLayer
                 .HasOne(a => a.Doctor).WithMany(b => b.BranchDoctors)
                 .HasForeignKey(a => a.DoctorId)
                 .OnDelete(DeleteBehavior.ClientSetNull);
+            builder.Entity<Review>()
+                   .HasOne(r => r.Patient).WithMany(p => p.Reviews)
+                   .HasForeignKey(r => r.PatientId)
+                   .OnDelete(DeleteBehavior.ClientSetNull);
+            builder.Entity<Appointment>()
+                   .HasOne(r => r.Branch).WithMany(a=>a.Appoitments)
+                   .HasForeignKey(r => r.BranchId)
+                   .OnDelete(DeleteBehavior.ClientSetNull);
+            builder.Entity<Doctor>()
+             .HasOne(r => r.Department).WithMany(a => a.Doctors)
+             .HasForeignKey(r => r.DepartmentId)
+             .OnDelete(DeleteBehavior.ClientSetNull);
 
             builder.Entity<BranchDoctor>()
                 .HasOne(a => a.Branch).WithMany(b => b.BranchDoctors)
@@ -62,6 +76,7 @@ namespace MedicalSystem.DataAccessLayer
             builder.Entity<Doctor>().HasData(FakeData.DoctorData());
             builder.Entity<DoctorQualification>().HasData(FakeData.DoctorQualificationData());
             builder.Entity<BranchDoctor>().HasData(FakeData.BranchDoctorData());
+            builder.Entity<ZoomMeeting>().HasData(FakeData.ZoomMeetingData());
             builder.Entity<Appointment>().HasData(FakeData.AppointmentData());
             builder.Entity<Report>().HasData(FakeData.ReportData());
             builder.Entity<Review>().HasData(FakeData.ReviewData());
@@ -75,6 +90,7 @@ namespace MedicalSystem.DataAccessLayer
         #endregion
 
         #region Dbset
+
         public DbSet<Doctor> Doctor => Set<Doctor>();
         public DbSet<DoctorQualification> DoctorQualification => Set<DoctorQualification>();
         public DbSet<Clinic> Clinic => Set<Clinic>();
@@ -88,7 +104,7 @@ namespace MedicalSystem.DataAccessLayer
         public DbSet<Patient> Patient => Set<Patient>();
         public DbSet<Department> Department => Set<Department>();
         public DbSet<AvaliableAppointment> AvaliableAppointment => Set<AvaliableAppointment>();
-
+        public DbSet<ZoomMeeting> zoomMeetings => Set<ZoomMeeting>();
 
         #endregion
 

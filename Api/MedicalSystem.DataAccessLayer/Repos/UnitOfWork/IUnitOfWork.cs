@@ -15,5 +15,6 @@ public interface IUnitOfWork
     public IReviewRepo _ReviewRepo { get; }
     public IBranchAddressRepo _BranchAddressRepo { get; }
     public IAvaliableAppointmentRepo _AvaliableAppointmentRepo { get; }
+    public IZoomMeetingRepo _ZoomMeetingRepo { get;}
     int SaveChanges();
 }

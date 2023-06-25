@@ -27,6 +27,8 @@ namespace MedicalSystem.CoreLayer
 
         public ICollection<BranchDoctor> BranchDoctors { get; set;}=new HashSet<BranchDoctor>();
         public ICollection<Clinic> Clinics { get; set; } = new HashSet<Clinic>();
+        public ICollection<Appointment> Appoitments { get; set; } = new HashSet<Appointment>();
+
 
 
     }

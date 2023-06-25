@@ -19,14 +19,17 @@ public class AppointmentRepo : GenericRepo<Appointment>, IAppointmentRepo
     public List<Appointment>? GetAllAppointments()
     {
         return _context.Set<Appointment>()
-            .Include(appointment => appointment.Doctor)
-            .Include(appointment => appointment.Patient)
-            .Include(appointment => appointment.Branch)
+            .Include("Doctor")
+            .Include("Branch")
+            .Include("Patient")
             .ToList();
     }
 
     public Appointment? GetAppointmentById(int id)
     {
-        return _context.Set<Appointment>().FirstOrDefault(appointment => appointment.Id == id);
+        return _context
+            .Set<Appointment>()
+            .Include(app=>app.ZoomMeeting)
+            .FirstOrDefault(appointment => appointment.Id == id);
     }
 }

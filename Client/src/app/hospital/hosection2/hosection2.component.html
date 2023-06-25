@@ -8,8 +8,10 @@
           <h2 class="mb-4">Our <u class="text-info">Doctors</u></h2>
 
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut dolore
+            With years of experience in the medical field, our skilled
+            professionals are equipped to diagnose and treat a wide range of
+            conditions. From routine check-ups to complex procedures, we offer
+            personalized care to help you achieve optimal health.
           </p>
         </div>
       </div>
@@ -17,7 +19,7 @@
       <div class="col-lg-6 col-12">
         <div class="speakers-thumb">
           <img
-            [src]="doctorimages[0].src"
+            [src]="doctors[0]?.image"
             class="img-fluid speakers-image"
             alt=""
           />
@@ -25,9 +27,9 @@
           <small class="speakers-featured-text">Featured</small>
 
           <div class="speakers-info">
-            <h5 class="speakers-title mb-0">Ahmed Ali</h5>
+            <h5 class="speakers-title mb-0">{{ doctors[0]?.name }}</h5>
 
-            <p class="speakers-text mb-0">Surgeon</p>
+            <p class="speakers-text mb-0">{{ doctors[0]?.departmentName }}</p>
 
             <ul class="social-icon">
               <li><a href="#" class="social-icon-link bi-facebook"></a></li>
@@ -45,15 +47,17 @@
           <div class="col-lg-3 col-md-6 col-12">
             <div class="speakers-thumb speakers-thumb-small">
               <img
-                [src]="doctorimages[1].src"
+                [src]="doctors[1]?.image"
                 class="img-fluid speakers-image"
                 alt=""
               />
 
               <div class="speakers-info">
-                <h5 class="speakers-title mb-0">Tarek Shafiea</h5>
+                <h5 class="speakers-title mb-0">{{ doctors[1]?.name }}</h5>
 
-                <p class="speakers-text mb-0">Pediatrician</p>
+                <p class="speakers-text mb-0">
+                  {{ doctors[1]?.departmentName }}
+                </p>
 
                 <ul class="social-icon">
                   <li><a href="#" class="social-icon-link bi-facebook"></a></li>
@@ -69,14 +73,16 @@
           <div class="col-lg-3 col-md-6 col-12">
             <div class="speakers-thumb speakers-thumb-small">
               <img
-                [src]="doctorimages[2].src"
+                [src]="doctors[2]?.image"
                 class="img-fluid speakers-image"
                 alt=""
               />
               <div class="speakers-info">
-                <h5 class="speakers-title mb-0">Hesham Tarek</h5>
+                <h5 class="speakers-title mb-0">{{ doctors[2]?.name }}</h5>
 
-                <p class="speakers-text mb-0">Internal Medicine</p>
+                <p class="speakers-text mb-0">
+                  {{ doctors[2]?.departmentName }}
+                </p>
 
                 <ul class="social-icon">
                   <li>
@@ -92,15 +98,17 @@
           <div class="col-lg-3 col-md-6 col-12">
             <div class="speakers-thumb speakers-thumb-small">
               <img
-                [src]="doctorimages[3].src"
+                [src]="doctors[3]?.image"
                 class="img-fluid speakers-image"
                 alt=""
               />
 
               <div class="speakers-info">
-                <h5 class="speakers-title mb-0">Mona Salem</h5>
+                <h5 class="speakers-title mb-0">{{ doctors[3]?.name }}</h5>
 
-                <p class="speakers-text mb-0">Neruologist</p>
+                <p class="speakers-text mb-0">
+                  {{ doctors[3]?.departmentName }}
+                </p>
 
                 <ul class="social-icon">
                   <li><a href="#" class="social-icon-link bi-facebook"></a></li>
@@ -118,15 +126,17 @@
           <div class="col-lg-3 col-md-6 col-12">
             <div class="speakers-thumb speakers-thumb-small">
               <img
-                [src]="doctorimages[4].src"
+                [src]="doctors[4].image"
                 class="img-fluid speakers-image"
                 alt=""
               />
 
               <div class="speakers-info">
-                <h5 class="speakers-title mb-0">Rehab Ahmed</h5>
+                <h5 class="speakers-title mb-0">{{ doctors[4].name }}</h5>
 
-                <p class="speakers-text mb-0">Dermatologist</p>
+                <p class="speakers-text mb-0">
+                  {{ doctors[4].departmentName }}
+                </p>
 
                 <ul class="social-icon">
                   <li>

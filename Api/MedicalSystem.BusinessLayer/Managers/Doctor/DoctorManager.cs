@@ -68,6 +68,7 @@ public class DoctorManager : IDoctorManager
         var doctorsfromdb = _unitOfWork._DoctorRepo.GetWith(null, new string[] {"Department","Clinic"/*, "DoctorQualification"*/ }).Result;
         return doctorsfromdb.Select(a => new ReadDoctorDto
         {
+            Id=a.Id,
             Name = a.Name,
             City = a.City,
             Country = a.Country,

@@ -342,7 +342,16 @@ strong {
 .social-icon-link:hover {
   background: var(--primary-color);
   color: var(--white-color);
+} 
+.p-card{
+    border: 2px solid;
+    border-color: var(--navbar-bg-color);
+    border-radius: 5% 0 5% 0;
+    padding: 30px;
+    background-color: whitesmoke;
+    height:100%;
 }
+
 
 
 /*---------------------------------------
@@ -469,6 +478,72 @@ strong {
   }
 }
 
-.p-galleria .p-galleria-thumbnail-container {
-  background-color: transparent !important;
+.p-galleria .p-galleria-thumbnail-container .p-galleria-thumbnail-wrapper .p-galleria-footer {
+  display: none; 
+ 
 }
+.p-galleria::after{
+  display: none;
+}
+.p-galleria-caption {
+ 
+  position: absolute;
+  width: 100%;
+  z-index: 5;
+  background-color: transparent !important;
+  color: #ffffff !important;
+  top: 55vh !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.p-autocomplete{
+  width: 80vw !important;
+
+}
+
+
+
+/* -----Zoom SDK-------*/
+ body {
+  overflow: auto !important;
+}
+
+/* body > #zmmtg-root {
+  display: none ; 
+}  */
+
+#zmmtg-root {
+  display: none ; 
+}
+
+/* #zmmtg-root, .meeting-client, .meeting-client-inner {
+  width: 100% !important;
+  height: 100% !important;
+  position: relative !important;
+}
+
+#wc-footer {
+  bottom: auto !important;
+  width: 100% !important;
+}
+
+#dialog-join {
+  width: 100% !important;
+}
+
+#sv-active-video, .active-main, #sv-active-speaker-view, .main-layout {
+  height: 100% !important;
+  width: 100% !important;
+} */
+
+/* .suspension-window {
+  transform: translate(-444px, 10px) !important;
+} */
+
+  #hidefooter{
+    display: block !important;
+  }
+  #hidenavbar{
+    display: block !important;
+  }

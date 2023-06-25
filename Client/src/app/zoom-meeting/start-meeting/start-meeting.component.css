@@ -1,0 +1,14 @@
+body > #zmmtg-root {
+    display: block !important ; 
+  }
+body > #hidefooter {
+    display: none !important ; 
+}
+#wc-container-right {
+    height:100vh;
+    margin-top:3.57vh;
+}
+.adjustParticipantsContainer {
+    height:100vh;
+    margin-top:3.57vh;
+}

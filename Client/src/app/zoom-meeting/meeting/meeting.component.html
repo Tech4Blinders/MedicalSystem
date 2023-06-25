@@ -1,0 +1,40 @@
+<div class="card m-3">
+  <p-table [value]="appointments" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Patient Name</th>
+        <th>Date</th>
+        <th>Phone Number</th>
+        <th>Gender</th>
+        <th>Age</th>
+        <th>Email</th>
+        <th>Branch</th>
+        <th>Branch Phone</th>
+        <th>Payment</th>
+        <th>Meeting</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-appointment>
+      <tr class="m-4">
+        <td>{{ appointment.patient.name }}</td>
+        <td>
+          {{ appointment.appointmentDate | date : "EEEE  MMMM, y, h:mm a" }}
+        </td>
+        <td>{{ appointment.patient.phoneNumber }}</td>
+        <td>{{ appointment.patient.gender }}</td>
+        <td>{{ appointment.patient.age }}</td>
+        <td>{{ appointment.patient.email }}</td>
+        <td>{{ appointment.branch.name }}</td>
+        <td>{{ appointment.branch.phoneNumber }}</td>
+        <td>{{ appointment.cost }} USD</td>
+        <td>
+          <a
+            class="btn btn-primary"
+            href="https://zoom.us/oauth/authorize?client_id=75Vsq2TiT8WBkw3Axb7pJA&response_type=code&redirect_uri=https://localhost:4200/meeting/doctor"
+            >Create Meeting</a
+          >
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

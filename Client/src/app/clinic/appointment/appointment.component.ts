@@ -55,10 +55,13 @@ export class AppointmentComponent implements OnInit {
       // this.patientService.getCurrentPatient().subscribe(data=>{
       //   this.patient=data;
       // })
-      this.patientService.getPatient(1).subscribe(data=>{
+
+      this.patientService.getCurrentPatient().subscribe(data=>{
         this.patient=data;
+        this.patientService.setPatient(this.patient);
+        
       })
-      this.patientService.setPatient(this.patient);
+      
       this.branchService.getCurrentHospital().subscribe(data=>{
         this.branch=data;
       })

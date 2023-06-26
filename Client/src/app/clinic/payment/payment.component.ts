@@ -33,7 +33,7 @@ export class PaymentComponent implements OnInit {
     private appointmentService:AppointmentService
   ) {}
   ngOnInit(): void {
-    this.patientService.getPatient(1).subscribe((data) => {
+    this.patientService.getCurrentPatient().subscribe((data) => {
       this.patient = data;
       console.log(this.patient);
       this.paymentform.controls.email.setValue(this.patient.email);

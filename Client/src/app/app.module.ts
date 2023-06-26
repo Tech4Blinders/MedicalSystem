@@ -14,6 +14,8 @@ import { ZoomMeetingModule } from './zoom-meeting/zoom-meeting.module';
 import { AuthenticatorModule } from './authenticator/authenticator.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorInterceptor } from './interceptor.interceptor';
+import { HealthCalculationModule } from './health-calculation/health-calculation.module';
+
 
 
 @NgModule({
@@ -31,7 +33,8 @@ import { InterceptorInterceptor } from './interceptor.interceptor';
     DashboardModule,
     ReactiveFormsModule,
     ZoomMeetingModule,
-    AuthenticatorModule
+    AuthenticatorModule,
+    HealthCalculationModule
     
   ],
   providers: [{provide:HTTP_INTERCEPTORS,useClass:InterceptorInterceptor,multi:true}],

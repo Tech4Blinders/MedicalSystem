@@ -30,12 +30,13 @@
     <!-- <label for="email">Email :</label> -->
     <input
       formControlName="email"
-      type="email"
+      type="text"
       class="form-control mb-2"
       id="email"
       placeholder="Email Address"
       readonly
     />
+  
     <div
       *ngIf="
         paymentform.get('email')?.errors && paymentform.get('email')?.touched

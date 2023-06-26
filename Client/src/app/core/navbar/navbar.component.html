@@ -13,14 +13,24 @@
     </button>
 
     <a href="index.html" class="navbar-brand mx-auto mx-lg-0">
-      <i class="bi-bullseye brand-logo"></i>
+      <!-- <i class="bi-bullseye brand-logo"></i> -->
+      <img
+        class="bi-bullseye brand-logo"
+        src="../../../assets/images/newlogo.png"
+        alt=""
+      />
       <span class="brand-text"
         >Medico<br />
         Solutions</span
       >
     </a>
 
-    <a *ngIf="!isLogged" class="nav-link custom-btn btn d-lg-none" [routerLink]="'/register'">Register</a>
+    <a
+      *ngIf="!isLogged"
+      class="nav-link custom-btn btn d-lg-none"
+      [routerLink]="'/register'"
+      >Register</a
+    >
 
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
@@ -44,8 +54,8 @@
           <a class="nav-link click-scroll" href="#section_4">Hospitals</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link click-scroll" href="#section_2">Our Misson</a>
-          </li>
+          <a class="nav-link click-scroll" href="#section_2">Our Misson</a>
+        </li>
 
         <li class="nav-item" *ngIf="false">
           <a class="nav-link click-scroll" href="#section_5">Subscribtions</a>
@@ -70,12 +80,18 @@
             >Login</a
           >
         </li>
+        <li
+          *ngIf="isLogged"
+          class="nav-item">
+          <span class="nav-link click-scroll">{{name}}</span>
+          
+        </li>
         <li *ngIf="isLogged" class="nav-item">
           <a
             class="nav-link custom-btn btn d-none d-lg-block"
             routerLink="/"
             (click)="LogOut()"
-            >LogOut</a
+            >Log out</a
           >
         </li>
       </ul>

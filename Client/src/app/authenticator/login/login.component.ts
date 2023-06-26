@@ -37,6 +37,7 @@ export class LoginComponent {
             this.patientService.getPatient(response.id).subscribe((data) => {
               this.patient = data;
               this.patientService.setPatient(this.patient);
+              localStorage.setItem("Role","Patient");
             });
           }
 
@@ -45,6 +46,10 @@ export class LoginComponent {
               let doctor=new Doctor();
               doctor = data;
               this.doctorService.setDoctor(doctor);
+              localStorage.setItem("Role","Doctor");
+          this._authservice.Logging(true);
+
+
             });
           }
          

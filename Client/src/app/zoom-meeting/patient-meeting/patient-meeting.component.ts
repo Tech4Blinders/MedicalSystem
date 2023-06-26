@@ -12,7 +12,8 @@ export class PatientMeetingComponent  implements OnInit{
   private meeting : MeetingJoinData;
   constructor(
     private zoomMeetingService: ZoomMeetingService,
-    private router:Router
+    private router:Router,
+    
   ){}
   ngOnInit() {
     this.zoomMeetingService
@@ -22,13 +23,13 @@ export class PatientMeetingComponent  implements OnInit{
         this.meeting = meetingData});
   }
   ngOnDestroy(): void {
-    document.getElementById("hidefooter").style.display='block';
-    document.getElementById("hidenavbar").style.display='block';
+    // document.getElementById("hidefooter").style.display='block';
+    // document.getElementById("hidenavbar").style.display='block';
   }
   async ngAfterContentInit():Promise<any> {
-    document.getElementById("zmmtg-root").style.display='block';
-    document.getElementById("hidefooter").style.display='none';
-    document.getElementById("hidenavbar").style.display='none';
+    // document.getElementById("zmmtg-root").style.display='block';
+    // document.getElementById("hidefooter").style.display='none';
+    // document.getElementById("hidenavbar").style.display='none';
   }
 
   joinMeeting()

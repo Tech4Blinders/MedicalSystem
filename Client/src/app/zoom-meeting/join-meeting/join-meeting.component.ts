@@ -1,9 +1,13 @@
 
 import { Component, OnDestroy } from '@angular/core';
 import { ZoomMtg } from '@zoomus/websdk';
+import { DoctorService } from 'src/app/Services/doctor.service';
+import { PatientService } from 'src/app/Services/patient.service';
 import { ZoomMeetingService } from 'src/app/Services/zoom-meeting.service';
 import { MeetingJoinData } from 'src/app/_Models/dtos/MeetingJoinData';
+import { Doctor } from 'src/app/_Models/dtos/doctor';
 import { MeetingData } from 'src/app/_Models/dtos/meetingData';
+import { Patient } from 'src/app/_Models/dtos/patient';
 
 
 ZoomMtg.setZoomJSLib('https://source.zoom.us/2.13.0/lib', '/av');
@@ -22,16 +26,20 @@ ZoomMtg.i18n.reload('en-US');
   styleUrls: ['./join-meeting.component.css']
 })
 export class JoinMeetingComponent implements OnDestroy {
-
+  public patient:Patient;
   private meeting : MeetingJoinData;
   constructor(
-    private zoomMeetingService : ZoomMeetingService
+    private zoomMeetingService : ZoomMeetingService,
+    private patientService:PatientService
   ){}
   ngOnDestroy(): void {
     document.getElementById("hidefooter").style.display='block';
     document.getElementById("hidenavbar").style.display='block';
   }
   async ngAfterContentInit():Promise<any> {
+    this.patientService.getCurrentPatient().subscribe(data=>{
+      this.patient=data;
+    })
     document.getElementById("zmmtg-root").style.display='block';
     document.getElementById("hidefooter").style.display='none';
     document.getElementById("hidenavbar").style.display='none';
@@ -46,8 +54,8 @@ export class JoinMeetingComponent implements OnDestroy {
       passWord:this.meeting.password,
       sdkKey:'75Vsq2TiT8WBkw3Axb7pJA',
       sdkSecret:'j8aLbYB18LnBibjKCzJJ7MKvXjMQ4maR',
-      userName:'karim',
-      userEmail:'',
+      userName:this.patient.name ?? "Patient",
+      userEmail:this.patient?.email ?? "",
       role:'0',
       // zak:'eyJ0eXAiOiJKV1QiLCJzdiI6IjAwMDAwMSIsInptX3NrbSI6InptX28ybSIsImFsZyI6IkhTMjU2In0.eyJhdWQiOiJjbGllbnRzbSIsInVpZCI6Ik1nQVhUTnc2U19HUUR4WDgxU211elEiLCJpc3MiOiJ3ZWIiLCJzayI6IjAiLCJzdHkiOjEsIndjZCI6InVzMDUiLCJjbHQiOjAsImV4cCI6MTY4NzAyODU1NCwiaWF0IjoxNjg3MDIxMzU0LCJhaWQiOiI5TTRzelBvWVR3S0xNallFM0QwbGtnIiwiY2lkIjoiIn0.X6ve48JA6RcGdjUfv0fEFztYllIBVUoL0Z9WAoclX4E',
       leaveUrl:'https://localhost:4200/meeting/joinmeeting'

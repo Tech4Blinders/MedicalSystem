@@ -36,3 +36,10 @@
   vertical-align: top;
   margin-right: 20px;
 }
+.brand-logo {
+  font-size: 38px;
+  width: 8rem;
+  height: auto;
+  border-radius: 50%;
+
+}

@@ -7,13 +7,15 @@ import { PatientMeetingComponent } from './patient-meeting/patient-meeting.compo
 import { MeetingComponent } from './meeting/meeting.component';
 import { StartMeetingComponent } from './start-meeting/start-meeting.component';
 import { JoinMeetingComponent } from './join-meeting/join-meeting.component';
+import { DoctorGuardGuard } from '../doctor-guard.guard';
+import { PatientGuardGuard } from '../patient-guard.guard';
 
 const routes: Routes = [
-  { path: '', component: MeetingComponent },
-  { path: 'doctor', component: DoctorMeetingComponent },
-  { path: 'patient', component: PatientMeetingComponent },
-  { path: 'startmeeting', component: StartMeetingComponent },
-  { path: 'joinmeeting', component: JoinMeetingComponent },
+  { path: '', component: MeetingComponent,canActivate:[DoctorGuardGuard] },
+  { path: 'doctor', component: DoctorMeetingComponent,canActivate:[DoctorGuardGuard] },
+  { path: 'patient', component: PatientMeetingComponent,canActivate:[PatientGuardGuard] },
+  { path: 'startmeeting', component: StartMeetingComponent,canActivate:[DoctorGuardGuard] },
+  { path: 'joinmeeting', component: JoinMeetingComponent,canActivate:[PatientGuardGuard] },
 ];
 
 @NgModule({

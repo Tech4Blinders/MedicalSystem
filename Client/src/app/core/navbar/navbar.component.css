@@ -25,6 +25,10 @@
 
 .brand-logo {
   font-size: 38px;
+  width: 4rem;
+  height: auto;
+  border-radius: 50%;
+
 }
 
 .brand-text {

@@ -6,7 +6,7 @@ namespace MedicalSystem.BusinessLayer
 	{
 		List<ClinicWithIdDto> GetAll();
         List<ClinicWithIdDto> GetClinicsByHosId(int branchId);
-        Clinic? GetById(int id);
+        ClinicWithIdDto? GetById(int id);
 		int Add(ClinicWithoutIdDto clinicWithoutIdDto);
 		bool Update(ClinicWithIdDto clinicWithId);
 		void Delete(int id);

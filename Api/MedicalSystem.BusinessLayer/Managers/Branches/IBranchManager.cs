@@ -1,6 +1,7 @@
 ﻿
 
 using MedicalSystem.CoreLayer;
+using MedicalSystem.CoreLayer.Dtos.BranchDtos;
 
 namespace MedicalSystem.BusinessLayer
 {
@@ -8,10 +9,11 @@ namespace MedicalSystem.BusinessLayer
     {
 
         public Task<List<ReadBranchDto>> GetAll();
+        public HospitalWithBranches GetAllBranches(int hospitalId);
         public Task<ReadBranchDto?> GetById(int id);
 
         public int Add(AddBranchDto entity);
-
+        public int AddBranchWithAddres(AddBranchWithAddressDto entity);
         public bool Update(UpdateBranchDto entity);
 
         public void Delete(int id);

@@ -1,1 +1,31 @@
-<p>ideal-body-mass works!</p>
+<div class="fatcard alert alert-primary mt-3 ps-3"> 
+<p-card  header="Ideal Body Mass Calculation">            
+  <br />
+<label for="gender" >Gender</label><br/>
+<select [(ngModel)]="gender" name="gender" id="gender" class="w-50">
+  <option value="male">male</option>
+  <option value="female">female</option>
+</select>
+<br/>
+  <p>Height</p>
+  <input [placeholder]="'Enter Your Height'" [(ngModel)]="height" type="number" max="220"/>
+  <br />
+    <br />
+<label for="bodyFrame" >Body Frame</label><br/>
+<select [(ngModel)]="body_frame" name="bodyFrame" id="bodyFrame" class="w-50">
+  <option value="small">small</option>
+  <option value="medium">medium</option>
+  <option value="large">large</option>
+</select>
+  <br />
+
+  <button (click)="add()" class="btn btn-primary mt-3">Get Ideal Body Mass</button>
+  
+  <div *ngIf="checked">  
+  <hr>
+
+<P>Ideal weight :{{ideal_weight.ideal_weight}}<p>
+
+</div>
+</p-card>
+</div>

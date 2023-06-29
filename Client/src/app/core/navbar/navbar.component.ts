@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Services/auth.service';
 import { DoctorService } from 'src/app/Services/doctor.service';
 import { PatientService } from 'src/app/Services/patient.service';
@@ -15,7 +16,8 @@ export class NavbarComponent implements OnInit {
   constructor(
     private loggingService: AuthService,
     private patientService: PatientService,
-    private doctorService: DoctorService
+    private doctorService: DoctorService,
+    private router:Router
   ) {}
   ngOnInit(): void {
     this.loggingService.IsLogged().subscribe((data) => {
@@ -39,5 +41,15 @@ export class NavbarComponent implements OnInit {
     localStorage.removeItem('token');
     this.loggingService.Logging(false);
     localStorage.removeItem("Role");
+  }
+  GoToMeeting(){
+    if(this.role=="Doctor")
+    {
+      this.router.navigate(["/meeting"]);
+    }
+    if(this.role=="Patient")
+    {
+      this.router.navigate(["/patient"]);
+    }
   }
 }

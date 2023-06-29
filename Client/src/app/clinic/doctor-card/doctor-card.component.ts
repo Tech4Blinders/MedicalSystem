@@ -32,11 +32,13 @@ constructor(private doctors: ClinicServiceService,
   getDoctorsInfo(id:number){
     this.doctors.getDoctors(id).subscribe((a:any) => {
       this.doctorsInfo=a;
+      console.log(this.doctorsInfo)
     })
 
   }
   SelectDoctor(doctor:Doctor){
     this.doctorService.setDoctor(doctor);
+    
     this.router.navigate(["appointment"],{relativeTo:this.route})
   }
 

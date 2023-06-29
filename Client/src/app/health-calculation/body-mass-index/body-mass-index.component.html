@@ -1,1 +1,22 @@
-<p>body-mass-index works!</p>
+<div class="fatcard alert alert-primary mt-3 ps-3"> 
+<p-card  header="Body Mass Index Calculation">            
+
+  <p>Height</p>
+  <input [placeholder]="'Enter Your Height'" [(ngModel)]="bdyMassCalc.height" type="number" max="220"/>
+  <br />
+  <P> Weight </P>
+  <input placeholder="Enter Your Weight" [(ngModel)]="bdyMassCalc.weight" type="number" max="500" />
+  <br />
+  <button (click)="add()" class="btn btn-primary mt-3">Get Body Mass index</button>
+  
+  <div *ngIf="checked">  
+  <hr>
+
+
+<P>Body Fat Status :{{bdyMassResponse.bmi}}<p>
+<P>Gender :{{bdyMassResponse.weight_status}}<p>
+<P>Height :{{bdyMassResponse.height}}<p>
+<P>Weight :{{bdyMassResponse.weight}}<p>
+</div>
+</p-card>
+</div>

@@ -13,6 +13,8 @@ const routes: Routes = [
 {path:'dashboard',loadChildren: ()=>import('./dashboard/dashboard.module').then(m=>m.DashboardModule)} ,
 {path:"reservations",loadChildren:()=>import('./meeting/meeting.module').then(m=>m.MeetingModule)},
 {path:'meeting',loadChildren: ()=>import('./zoom-meeting/zoom-meeting.module').then(m=>m.ZoomMeetingModule)} ,
+{path:'add',loadChildren: ()=>import('./health-calculation/health-calculation.module').then(m=>m.HealthCalculationModule)} ,
+
 
 ];
 

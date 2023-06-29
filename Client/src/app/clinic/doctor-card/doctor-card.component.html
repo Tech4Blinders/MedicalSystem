@@ -8,14 +8,11 @@
                 <p-card header={{item.name}} subheader={{item.country}}  >
                     <ng-template pTemplate="header">
                         <img alt="Card" class="cardImg" src={{item.image}} />
-                        <div class="middle">
-                            <div class="text">see more</div>
-                          </div>
                     </ng-template>
                     <span>
                         <p-rating [(ngModel)]="value" [readonly]="true" [cancel]="false"></p-rating></span>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam 
+                        {{item.departmentName}}
                     </p>
                     <ng-template pTemplate="footer">
                       

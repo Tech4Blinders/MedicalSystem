@@ -62,7 +62,10 @@ export class LoginComponent {
 
           this._router.navigate(['/'], { replaceUrl: true });
         },
-        error: (err) => console.log(err.error.errors.message),
+        error: (err) =>{
+          //  console.log(err.error.errors.message)
+           alert("Wrong Credentials");
+          },
       });
     }
   }

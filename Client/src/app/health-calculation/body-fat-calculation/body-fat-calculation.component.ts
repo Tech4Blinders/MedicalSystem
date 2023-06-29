@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { healthCalcService } from 'src/app/Services/healthCalc.service';
+import { bodyFatPercentage } from 'src/app/_Models/dtos/healthCalculatorDtos/BodyFatPercentage';
+import { BodyFatResponse } from 'src/app/_Models/dtos/healthCalculatorDtos/BodyFatPercentageResponse';
 
 @Component({
   selector: 'app-body-fat-calculation',
@@ -6,11 +9,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./body-fat-calculation.component.css']
 })
 export class BodyFatCalculationComponent {
-  constructor(public healthService: healthCalcService, private router: Router) {}
+  
+  bdyFatCalc: bodyFatPercentage = new bodyFatPercentage();
+  bdyFatResponse: BodyFatResponse = new BodyFatResponse();
+
+  
+  constructor(public healthService: healthCalcService) { }
   add() {
-    this.healthService.add(this.std).subscribe((a) => {
-      console.log(a);
-      this.router.navigateByUrl('/students');
-    });
+      this.healthService.bodyFatePercentage(this.bdyFatCalc.gender ,this.bdyFatCalc.height ,this.bdyFatCalc.weight ,this.bdyFatCalc.age).subscribe((response) => {
+        console.log(response);
+        this.bdyFatResponse=response;
+      });
+    }
   }
-}

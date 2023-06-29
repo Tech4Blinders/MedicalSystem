@@ -9,6 +9,8 @@ import { IdealBodyMassComponent } from './ideal-body-mass/ideal-body-mass.compon
 import { MacronutrientDistributionComponent } from './macronutrient-distribution/macronutrient-distribution.component';
 import { TargetHeartRateComponent } from './target-heart-rate/target-heart-rate.component';
 import { MaincomponentComponent } from './maincomponent/maincomponent.component';
+import { FormsModule } from '@angular/forms';
+import { CardModule } from 'primeng/card';
 
 
 @NgModule({
@@ -23,7 +25,13 @@ import { MaincomponentComponent } from './maincomponent/maincomponent.component'
   ],
   imports: [
     CommonModule,
-    HealthCalculationRoutingModule
+    HealthCalculationRoutingModule,
+    FormsModule,
+    CardModule
+  ],exports:[
+    BodyFatCalculationComponent,
+    BodyMassIndexComponent
+
   ]
 })
 export class HealthCalculationModule { }

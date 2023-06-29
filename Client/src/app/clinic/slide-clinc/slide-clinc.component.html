@@ -5,7 +5,7 @@
             <div class="col-lg-5 col-12 m-auto">
                 <div class="hero-text">
   
-                    <h1 class="text-white mb-4"><u class="text-info">Clinic</u>Specialization</h1>
+                    <h1 class="text-white mb-4"><u class="text-info">{{clinic.specilization}}</u></h1>
                 
                     <span class="text-white"></span>
                     <div class="d-flex justify-content-center align-items-center mt-5">
@@ -13,7 +13,7 @@
   
                         <span class="location-text">Tahrir Square, Al Riyadh</span> -->
                         <!-- HTML !-->
-                         <a href="#hamada" class="button-5 me-3 bi-arrow-down"  role="button">See Our Doctors</a>
+                         <a  class="button-5 me-3 bi-arrow-down"  role="button">See Our Doctors</a>
                          <button class="button-5 dark" role="button">Discover More</button>
 
                     </div>
@@ -25,15 +25,15 @@
     </div>
   
     <div class="video-wrap">
-        <p-galleria [(value)]="images" [responsiveOptions]="responsiveOptions" [autoPlay]="true" [containerStyle]="{ 'max-width': '100%' }" [numVisible]="4">
+        <p-galleria [(value)]="clinic.image" [responsiveOptions]="responsiveOptions" [autoPlay]="true" [containerStyle]="{ 'max-width': '100%' }" [numVisible]="4">
           
           <ng-template pTemplate="item" let-item>
-              <img [src]="item.itemImageSrc" style="width: 100%; display: block;" />
+              <img [src]="clinic.image" style="width: 100%; display: block;" />
           </ng-template>
           <ng-template pTemplate="caption" let-item id="test">
               
-                  <h4 class="hero-text" style="margin-bottom: .5rem; color: #ffffff; top: -80%">title</h4>
-                  <a class="hero-text" style="margin-bottom: .5rem; color: #ffffff; top: -80%" [routerLink]="'visit'">{{ item.alt }}</a>
+                  <h4 class="hero-text" style="margin-bottom: .5rem; color: #ffffff; top: -80%">{{clinic.description}}</h4>
+                  <a class="hero-text" style="margin-bottom: .5rem; color: #ffffff; top: -80%" [routerLink]="'visit'">{{ clinic.alt }}</a>
              
           </ng-template>
         </p-galleria>

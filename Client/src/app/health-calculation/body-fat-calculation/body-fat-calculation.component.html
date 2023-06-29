@@ -1,16 +1,32 @@
-<div class="alert alert-primary mt-3 ps-3">
+<div class="fatcard alert alert-primary mt-3 ps-3"> 
+<p-card  header="Body Fat Calculation">            
   <br />
-  <p>Name</p>
-  <input [(ngModel)]="std.name" />
+<label for="gender" >Gender</label><br/>
+<select [(ngModel)]="bdyFatCalc.gender" name="gender" id="gender" class="w-50">
+  <option value="male">male</option>
+  <option value="female">female</option>
+</select>
+  <p>Height</p>
+  <input [placeholder]="'Enter Your Height'" [(ngModel)]="bdyFatCalc.height" type="number" max="220"/>
+  <br />
+  <P> Weight </P>
+  <input placeholder="Enter Your Weight" [(ngModel)]="bdyFatCalc.weight" type="number" max="500" />
   <br />
   <p>Age</p>
-  <input [(ngModel)]="std.age" />
+  <input placeholder="Enter Your Age" [(ngModel)]="bdyFatCalc.age" type="number" max="120" />
   <br />
-  <P> Department Number </P>
-  <input [(ngModel)]="std.deptNo" />
-  <br />
-  <p>Email</p>
-  <input [(ngModel)]="std.email" />
-  <br />
-  <button (click)="add()" class="btn btn-primary mt-3">Save</button>
+  <button (click)="add()" class="btn btn-primary mt-3">Get Body Fat</button>
+  
+  <div *ngIf="bdyFatResponse.age == 0">  
+  <hr>
+
+<P>Age :{{bdyFatResponse.age}}<p>
+<P>Body Mass Index :{{bdyFatResponse.bmi}}<p>
+<P>Body Fat :{{bdyFatResponse.bodyfat}}<p>
+<P>Body Fat Status :{{bdyFatResponse.bodyfat_status}}<p>
+<P>Gender :{{bdyFatResponse.gender}}<p>
+<P>Height :{{bdyFatResponse.height}}<p>
+<P>Weight :{{bdyFatResponse.weight}}<p>
+</div>
+</p-card>
 </div>

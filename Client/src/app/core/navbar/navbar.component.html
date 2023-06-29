@@ -65,6 +65,10 @@
           <a class="nav-link click-scroll" href="#section_7">Contact</a>
         </li>
 
+        <li class="nav-item">
+          <a class="nav-link click-scroll" [routerLink]="'/add'">Health Calculator</a>
+        </li>
+
         <li *ngIf="!isLogged" class="nav-item">
           <a
             class="nav-link custom-btn btn d-none d-lg-block"
@@ -92,6 +96,14 @@
             routerLink="/"
             (click)="LogOut()"
             >Log out</a
+          >
+        </li>
+        <li *ngIf="isLogged" class="nav-item">
+          <a
+            class="nav-link custom-btn btn d-none d-lg-block"
+            (click)="GoToMeeting()"
+            
+            >Meetings</a
           >
         </li>
       </ul>

@@ -44,8 +44,8 @@ export class StartMeetingComponent {
     let payload = {
       meetingNumber:this.meeting.meetingId,
       passWord:this.meeting.meetingPassword,
-      sdkKey:'75Vsq2TiT8WBkw3Axb7pJA',
-      sdkSecret:'j8aLbYB18LnBibjKCzJJ7MKvXjMQ4maR',
+      sdkKey:'Secret-Key',
+      sdkSecret:'SDK-Secret-Key',
       userName:this.doctor?.name ?? "Doctor",
       userEmail:this.doctor?.email ?? "Doctor@medico.com",
       role:'1',

@@ -12,14 +12,10 @@ export class healthCalcService {
   constructor(private http: HttpClient) { }
    httpOptions :
     HttpHeaders = new HttpHeaders({
-      'X-RapidAPI-Key': 'da6a5c894amshf57b9e93f52b88bp11bacbjsnb7f2bea9b0ca',
+      'X-RapidAPI-Key': 'Secret-Key',
       'X-RapidAPI-Host':'health-calculator-api.p.rapidapi.com'
      })
-  // X-RapidAPI-Key
-    //     da6a5c894amshf57b9e93f52b88bp11bacbjsnb7f2bea9b0ca
-    //     X - RapidAPI - Host 
-    //     health-calculator-api.p.rapidapi.com
-  // private doctor$ = new BehaviorSubject<any>({});
+
   private apiUrl = 'https://health-calculator-api.p.rapidapi.com/';
   bodyFatePercentage(gender , height ,weight ,age){
     return this.http.get<any>(this.apiUrl + `bodyfat/imperial?gender=${gender}&height=${height}&weight=${weight}&age=${age}`, { headers: this.httpOptions });
